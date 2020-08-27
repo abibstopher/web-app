@@ -1,0 +1,104 @@
+# Vectors
+
+## Properties of a vector
+
+$$ - \vec{0} = \vec{0} $$
+$$ - \vec{V} = -1 * \vec{V} $$
+$$ |\vec V| = |- \vec V| $$
+$$ |\vec V| = \sqrt{x^2 + y^2 + z^2} $$
+
+- you can multiply a vector by a scalar (multiplies the length)
+- $$ \vec X + \vec Z = \langle x_1 + x_2, y_1 + y_2, z_1 + z_2 \rangle $$
+
+## Dot Product
+
+- $$ \vec a \cdot \vec b = a_xb_x + a_yb_y + a_zb_z $$
+
+### Properties
+
+1. $$ \vec a \cdot \vec a = |\vec a|^2 $$
+2. $$ \vec a \cdot \vec b = \vec b \cdot \vec a $$
+3. $$ \vec a \cdot (\vec b \vec c) = \vec a \cdot \vec b + \vec a \cdot \vec c $$
+4. $$ (C\vec a) \cdot \vec b = C * (\vec a \cdot \vec b) $$
+5. $$ \vec 0 \cdot \vec a = 0 $$
+
+## Proof for 2
+
+$$ \vec a \cdot \vec b = \vec b \cdot \vec a $$
+by def.:
+$$ a_1b_1 + a_2b_2 + a_3b_3 = b_1a_1 + b_2a_2 + b_3a_3 $$
+by associativity of mult.:
+$$ a_1b_1 + a_2b_2 + a_3b_3 = a_1b_1 + a_2b_2 + a_3b_3 $$
+
+## Theorem for dot product
+
+$$ \vec a \cdot \vec b = |\vec a| * |\vec b| * \cos(\theta) $$
+
+### Proof:
+
+- use the law of cosines with the triangle made by the vectors a, b, and AB (vector from A to B).
+- show AB = b - a
+- simplify using above properties
+
+## Cross Product
+
+- Stewart 12.4
+- the cross product is a vector that is perpendicular to both vectors
+- a vector perpendicular to the plane that a and b are in
+  $$ \vec c = \vec a \times \vec b $$
+
+- note: if u and v are perpendicular, u . v = 0
+- so, to find a x b, find:
+  $$ \vec c \perp \vec a \rightarrow a_1c_1 + a_2c_2 + a_3c_3 = 0 $$
+  $$ \vec c \perp \vec b \rightarrow b_1c_1 + b_2c_2 + b_3c_3 = 0 $$
+
+### Work
+
+- mult by b3 and a3
+  $$ a_1b_3c_1 + a_2b_3c_2 + a_3b_3c_3 = 0 $$
+  $$ a_3b_1c_1 + a_3b_2c_2 + a_3b_3c_3 = 0 $$
+  $$ a_1b_3c_1 + a_2b_3c_2 = a_3b_1c_1 + a_3b_2c_2 $$
+  $$ (a_1b_3 - a_3b_1) * c_1 = (a_3b_2 - a_2b_3) * c_2 $$
+  $$ \begin{vmatrix} a_1 & a_3 \\ b_1 & b_3 \end{vmatrix} \begin{vmatrix} a_3 & a_2 \\ b_3 & b_2 \end{vmatrix} $$
+
+- if we say c1 and c2 are the determinants of the above matrices, (as opposites) the equality is true
+- Similarly, c3 = (a1b2 - a2b1)
+- so,
+  $$ \vec c = \langle a_3b_2 - a_2b_3, a_1b_3 - a_3b_1, a_1b_2 - a_2b_1 \rangle $$
+
+## unit Vectors
+
+$$ \hat i, \hat j, \hat k = \langle 1,0,0 \rangle,...$$
+$$ \vec a = \langle a_1,a_2,a_3 \rangle = a_1 \hat i + a_2 \hat j + a_3 \hat k $$
+
+### With Cross Products:
+
+- $$
+  \vec c = \vec a \times \vec b =
+  \begin{vmatrix}
+  i & j & k \\
+  a_1 & a_2 & a_3 \\
+  b_1 & b_2 & b_3
+  \end{vmatrix}
+  $$
+
+(The determinant of the matrix)
+
+This is because of the properties of determinants -
+it = i \* determinant of bottom right corner - j \* determinant of each side + k \* determinant of bottom left corner
+
+## Cross Product Theorem
+
+If theta is the angle between a and b, then
+$$ |\vec c| = |\vec a \times \vec b| $$
+$$ is $$
+$$ |\vec a \times \vec b| = |\vec a| * |\vec b| * \sin(\theta) $$
+
+### Corrolary
+
+$$
+\vec a \parallel \vec b \nobreakspace\nobreakspace
+if \nobreakspace\nobreakspace \vec a \times \vec b = 0
+$$
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
