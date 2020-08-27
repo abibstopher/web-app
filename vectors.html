@@ -36,8 +36,8 @@ $$ \vec a \cdot \vec b = |\vec a| * |\vec b| * \cos(\theta) $$
 
 ### Proof:
 
-- use the law of cosines with the triangle made by the vectors a, b, and AB (vector from A to B).
-- show AB = b - a
+- use the law of cosines with the triangle made by the vectors $ \vec a $, $ \vec b $, and $ \vec{AB} $ (vector from A to B).
+- show $ \vec{AB} = \vec b - \vec a $
 - simplify using above properties
 
 ## Cross Product
@@ -47,22 +47,22 @@ $$ \vec a \cdot \vec b = |\vec a| * |\vec b| * \cos(\theta) $$
 - a vector perpendicular to the plane that a and b are in
   $$ \vec c = \vec a \times \vec b $$
 
-- note: if u and v are perpendicular, u . v = 0
-- so, to find a x b, find:
+- note: if $ \vec u $ and $ \vec v $ are perpendicular, $ \vec u \cdot \vec v = 0 $
+- so, to find $ \vec a \times \vec b $, find:
   $$ \vec c \perp \vec a \rightarrow a_1c_1 + a_2c_2 + a_3c_3 = 0 $$
   $$ \vec c \perp \vec b \rightarrow b_1c_1 + b_2c_2 + b_3c_3 = 0 $$
 
 ### Work
 
-- mult by b3 and a3
+- mult by $ b_3 $ and $ a_3 $
   $$ a_1b_3c_1 + a_2b_3c_2 + a_3b_3c_3 = 0 $$
   $$ a_3b_1c_1 + a_3b_2c_2 + a_3b_3c_3 = 0 $$
   $$ a_1b_3c_1 + a_2b_3c_2 = a_3b_1c_1 + a_3b_2c_2 $$
   $$ (a_1b_3 - a_3b_1) * c_1 = (a_3b_2 - a_2b_3) * c_2 $$
   $$ \begin{vmatrix} a_1 & a_3 \\ b_1 & b_3 \end{vmatrix} \begin{vmatrix} a_3 & a_2 \\ b_3 & b_2 \end{vmatrix} $$
 
-- if we say c1 and c2 are the determinants of the above matrices, (as opposites) the equality is true
-- Similarly, c3 = (a1b2 - a2b1)
+- if we say $ c_1 $ and $ c_2 $ are the determinants of the above matrices, (as opposites) the equality is true
+- Similarly, $ c_3 = (a_1b_2 - a_2b_1) $
 - so,
   $$ \vec c = \langle a_3b_2 - a_2b_3, a_1b_3 - a_3b_1, a_1b_2 - a_2b_1 \rangle $$
 
@@ -89,16 +89,13 @@ it = i \* determinant of bottom right corner - j \* determinant of each side + k
 
 ## Cross Product Theorem
 
-If theta is the angle between a and b, then
+If $ \theta $ is the angle between $ \vec a $ and $ \vec b $, then
 $$ |\vec c| = |\vec a \times \vec b| $$
 $$ is $$
 $$ |\vec a \times \vec b| = |\vec a| * |\vec b| * \sin(\theta) $$
 
 ### Corrolary
 
-$$
-\vec a \parallel \vec b \nobreakspace\nobreakspace
-if \nobreakspace\nobreakspace \vec a \times \vec b = 0
-$$
+Shows that $ \vec a \parallel \vec b $ if $ \vec a \times \vec b = 0 $
 
 <script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
