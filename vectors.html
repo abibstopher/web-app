@@ -2,32 +2,37 @@
 
 ## Properties of a vector
 
-$$ - \vec{0} = \vec{0} $$
-$$ - \vec{V} = -1 * \vec{V} $$
-$$ |\vec V| = |- \vec V| $$
-$$ |\vec V| = \sqrt{x^2 + y^2 + z^2} $$
+The zero vector is non-directional
+$$- \vec{0} = \vec{0}$$
 
-- you can multiply a vector by a scalar (multiplies the length)
-- $$ \vec X + \vec Z = \langle x_1 + x_2, y_1 + y_2, z_1 + z_2 \rangle $$
+Making a vector negative just flips it's direction
+
+$$\vec{V} = -1 * \vec{V} \rightarrow | \vec V| = |- \vec V |$$
+
+$$ |\vec V| = \sqrt{x^2 + y^2 + z^2} $$
+You can multiply a vector by a scalar ($\lambda$)
+$$ \lambda \vec a = \langle \lambda a_x, \lambda a_y, \lambda a_z \rangle $$
+$$ \vec x + \vec z = \langle x_1 + x_2, y_1 + y_2, z_1 + z_2 \rangle $$
 
 ## Dot Product
 
-- $$ \vec a \cdot \vec b = a_xb_x + a_yb_y + a_zb_z $$
+The dot product produces a scalar output
+$$ \vec a \cdot \vec b = a_xb_x + a_yb_y + a_zb_z $$
 
 ### Properties
 
 1. $$ \vec a \cdot \vec a = |\vec a|^2 $$
 2. $$ \vec a \cdot \vec b = \vec b \cdot \vec a $$
 3. $$ \vec a \cdot (\vec b \vec c) = \vec a \cdot \vec b + \vec a \cdot \vec c $$
-4. $$ (C\vec a) \cdot \vec b = C * (\vec a \cdot \vec b) $$
+4. $$ (\lambda\vec a) \cdot \vec b = \lambda * (\vec a \cdot \vec b) $$
 5. $$ \vec 0 \cdot \vec a = 0 $$
 
 ## Proof for 2
 
 $$ \vec a \cdot \vec b = \vec b \cdot \vec a $$
-by def.:
+by definition:
 $$ a_1b_1 + a_2b_2 + a_3b_3 = b_1a_1 + b_2a_2 + b_3a_3 $$
-by associativity of mult.:
+by associativity of multiplication:
 $$ a_1b_1 + a_2b_2 + a_3b_3 = a_1b_1 + a_2b_2 + a_3b_3 $$
 
 ## Theorem for dot product
@@ -36,40 +41,81 @@ $$ \vec a \cdot \vec b = |\vec a| * |\vec b| * \cos(\theta) $$
 
 ### Proof:
 
-- use the law of cosines with the triangle made by the vectors $ \vec a $, $ \vec b $, and $ \vec{AB} $ (vector from A to B).
-- show $ \vec{AB} = \vec b - \vec a $
+- use the law of cosines with the triangle made by the vectors $\vec a, \vec b,$ and $\vec{AB}$ (vector from A to B).
+- show $\vec{AB} = \vec b - \vec a$
 - simplify using above properties
+
+### Uses of the dot product
+
+Checking for perpendicular vectors:
+
+$\vec a \perp \vec b$ if $\vec a \cdot \vec b = 0$
+
+If $|\vec a|$ and $|\vec b| = 1$ ($\vec a$ and $\vec b$ are unit vectors), then $\vec a \cdot \vec b = \cos(\theta)$
+
+## Projections
+
+Projections are the "shadow" of a vector onto another vector
+
+### Scalar Projections
+
+- scalar projections are the length of the "shadow" you get from drawing a line from the end of $\vec b$ that is perpendicular to $\vec a$
+- scalar projection of $\vec b$ onto $\vec a$ is
+  $$ |\vec b|\cos(\theta) $$
+  So using
+  $$ \vec a \cdot \vec b = |\vec a| * (|\vec b| \cos(\theta)) $$
+  $$ |\vec b| \cos(\theta) = {\vec a \cdot \vec b \over {|\vec a|}} $$
+  So to find the scalar projection of $\vec b$ onto $\vec a$, use:
+  $$ comp_a\vec b = {\vec a \cdot \vec b \over {|\vec a|}} $$
+
+### Vector Projections
+
+- vector projections are the actual vector that spans the "shadow"
+- They are found by multiplying the scalar projection onto the direction (unit vector) of a, or $\vec a \over |\vec a|$
+  $$ proj_a\vec b = \left({\vec a \cdot \vec b \over {|\vec a|}}\right){\vec a \over |\vec a|} = {\vec a \cdot \vec b \over {|\vec a|^2}}a $$
 
 ## Cross Product
 
 - Stewart 12.4
 - the cross product is a vector that is perpendicular to both vectors
-- a vector perpendicular to the plane that a and b are in
+- results in a vector perpendicular to the plane that a and b are in
   $$ \vec c = \vec a \times \vec b $$
 
-- note: if $ \vec u $ and $ \vec v $ are perpendicular, $ \vec u \cdot \vec v = 0 $
-- so, to find $ \vec a \times \vec b $, find:
+- note: if u and v are perpendicular, $\vec u \cdot \vec v = 0$
+- so, to find $\vec a \times \vec b$, find:
   $$ \vec c \perp \vec a \rightarrow a_1c_1 + a_2c_2 + a_3c_3 = 0 $$
   $$ \vec c \perp \vec b \rightarrow b_1c_1 + b_2c_2 + b_3c_3 = 0 $$
 
-### Work
+### Process:
 
-- mult by $ b_3 $ and $ a_3 $
+- mult by b3 and a3
   $$ a_1b_3c_1 + a_2b_3c_2 + a_3b_3c_3 = 0 $$
   $$ a_3b_1c_1 + a_3b_2c_2 + a_3b_3c_3 = 0 $$
+- Subtract $a_3b_3c_3$ and use it to set the rest equal
   $$ a_1b_3c_1 + a_2b_3c_2 = a_3b_1c_1 + a_3b_2c_2 $$
   $$ (a_1b_3 - a_3b_1) * c_1 = (a_3b_2 - a_2b_3) * c_2 $$
   $$ \begin{vmatrix} a_1 & a_3 \\ b_1 & b_3 \end{vmatrix} \begin{vmatrix} a_3 & a_2 \\ b_3 & b_2 \end{vmatrix} $$
 
-- if we say $ c_1 $ and $ c_2 $ are the determinants of the above matrices, (as opposites) the equality is true
-- Similarly, $ c_3 = (a_1b_2 - a_2b_1) $
+- if we say $c_1$ and $c_2$ are the determinants of the above matrices, (as opposites) the equality is true
+- Similarly, $c_3 = (a_1b_2 - a_2b_1)$
 - so,
   $$ \vec c = \langle a_3b_2 - a_2b_3, a_1b_3 - a_3b_1, a_1b_2 - a_2b_1 \rangle $$
 
-## unit Vectors
+## Unit Vectors
 
-$$ \hat i, \hat j, \hat k = \langle 1,0,0 \rangle,...$$
+$$ \hat i = \langle 1,0,0 \rangle $$
+$$ \hat j = \langle 0,1,0 \rangle $$
+$$ \hat k = \langle 0,0,1 \rangle $$
 $$ \vec a = \langle a_1,a_2,a_3 \rangle = a_1 \hat i + a_2 \hat j + a_3 \hat k $$
+
+### Properties of unit vectors
+
+1. $i \times j = k$
+2. $j \times k = i$
+3. $i \times k = j$
+4. $j \times i = -k$
+5. $k \times j = -i$
+6. $k \times i = -j$
 
 ### With Cross Products:
 
@@ -84,18 +130,67 @@ $$ \vec a = \langle a_1,a_2,a_3 \rangle = a_1 \hat i + a_2 \hat j + a_3 \hat k $
 
 (The determinant of the matrix)
 
-This is because of the properties of determinants -
-it = i \* determinant of bottom right corner - j \* determinant of each side + k \* determinant of bottom left corner
+This is because of the properties of determinants:
+
+$$
+\begin{vmatrix}
+  i & j & k \\
+  a_1 & a_2 & a_3 \\
+  b_1 & b_2 & b_3
+\end{vmatrix} =
+\begin{vmatrix}
+  a_2 & a_3 \\
+  b_2 & b_3
+\end{vmatrix} i -
+\begin{vmatrix}
+  a_1 & a_3 \\
+  b_1 & b_3
+\end{vmatrix} j +
+\begin{vmatrix}
+  a_1 & a_2 \\
+  b_1 & b_2
+\end{vmatrix} k
+$$
 
 ## Cross Product Theorem
 
-If $ \theta $ is the angle between $ \vec a $ and $ \vec b $, then
+If theta is the angle between $\vec a$ and $\vec b$, then
 $$ |\vec c| = |\vec a \times \vec b| $$
 $$ is $$
 $$ |\vec a \times \vec b| = |\vec a| * |\vec b| * \sin(\theta) $$
 
 ### Corrolary
 
-Shows that $ \vec a \parallel \vec b $ if $ \vec a \times \vec b = 0 $
+Using the fact that $\sin(0 \degree, 180\degree) = 0$:
+
+$$
+\vec a \parallel \vec b \nobreakspace\nobreakspace
+iff \nobreakspace\nobreakspace \vec a \times \vec b = 0
+$$
+
+### Properties of Cross Product
+
+$\lambda$ is a scalar
+
+1. $\vec a \times \vec b = - \vec b \times \vec a$
+2. $(\lambda\vec a) \times \vec b = (\lambda \vec a \times \vec b) = \vec a \times (\lambda\vec b)$
+3. $\vec a \times (\vec b + \vec c) = \vec a \times \vec b + \vec a \times \vec c$
+4. $(\vec a + \vec b) \times \vec c = \vec a \times \vec c + \vec b \times \vec c$
+5. $\vec a \cdot (\vec b \times \vec c) = (\vec a \times \vec b) \cdot \vec c$
+6. $\vec a \times (\vec b \times \vec c) = (\vec a \cdot \vec c)\vec b - (\vec a \cdot \vec b)\vec c$
+
+### Triple Products
+
+$$
+\vec a \cdot (\vec b \times \vec c) = \begin{vmatrix}
+  a_1 & a_2 & a_3 \\
+  b_1 & b_2 & b_3 \\
+  c_1 & c_2 & c_3
+\end{vmatrix}
+$$
+
+This is important because geometry. Something about the formula for a "parallelpiped":
+
+$$ V = |\vec a \cdot (\vec b \times \vec c)| $$
 
 <script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
