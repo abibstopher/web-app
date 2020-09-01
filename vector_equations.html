@@ -1,0 +1,218 @@
+# Vector Functions and Space Curves
+
+## Vector functions
+
+- a function is a link between one set and another
+  - to be a function, each number from set 1 must have only one result in the second set
+  - Set 1 is Domain, set 2 is Codomain (Range)
+- In a vector function, Set 1 $\in \reals$ and Set 2 is a set of vectors
+  $$\vec r(t) = \langle f(t), g(t), h(t) \rangle$$
+- $f(t), g(t)$, and $h(t)$ are component functions
+- Given two different points, there is exactly one line that goes through each point
+
+<details>
+  <summary>Click to show example 1</summary>
+
+### Question 1:
+
+If $r(t) = \langle t^3, \ln(3 - t), \sqrt{t}\rangle$
+
+then component vectors are
+$$ f(t) = t^3, g(t) = \ln(3 - t), h(t) - \sqrt{t}$$
+$$ 0 \le t \lt 3 $$
+
+</details><br>
+
+### Limits and Continuity
+
+#### Limits
+
+Let $\vec r(t) = \langle f(t), g(t), h(t) \rangle$
+
+$$\lim\limits_{t \to a} \vec r(t) = \langle \lim\limits_{t \to a} f(t), \lim\limits_{t \to a} g(t), \lim\limits_{t \to a} h(t) \rangle$$
+
+<details>
+  <summary>Click to show example 2</summary>
+
+#### Question 2:
+
+Find $\lim\limits_{t \to 0} r(t)$ where $\vec r(t) = (1 + t^3)\hat i + te^{-t}\hat j + {sin(t)\over t}\hat k$
+
+$$\lim\limits_{t \to 0} (1 + t^3) = 1$$
+$$\lim\limits_{t \to 0} te^{-t} = 0$$
+$$\lim\limits_{t \to 0} {sin(t)\over t} = 1$$
+
+$$\lim\limits{t\to 0} \vec r(t) = \langle 1,0,1 \rangle$$
+
+</details><br>
+
+#### Continuity
+
+$\vec r(t) = \langle f(t), g(t), h(t) \rangle$ is **continuous at point a** if the component functions are continuous.
+That is:
+
+$$\lim\limits_{t \to a}f(t) = f(a)$$
+$$\lim\limits_{t \to a}g(t) = g(a)$$
+$$\lim\limits_{t \to a}h(t) = h(a)$$
+
+## Space Curves
+
+Space curves are defined as a vector function in 3d space, where the input is $t$, or time, and the output is a vector $\vec v$ which represents a point $P$
+
+As time progresses, the point described by $P$ will follow a line, or curve, through space
+
+$t$ is called a parameter for the curve $C$
+
+and $\begin{cases} x = f(t) \\ y = g(t) \\ z = h(t) \\ \end{cases}$ are called parametric functions
+
+<details>
+  <summary>Click to show example 3</summary>
+
+#### Question 3:
+
+Given $r(t) = \langle 1 + t, 2 + 5t, -1 + 6t \rangle$, find the vector equation.
+
+The line equation:
+$(1 + t)\hat i + (2 + 5t)\hat j + (-1 + 6t)\hat k$
+
+The equation can be defined with:
+
+1. the point $(1,2,1)$ is on the line and
+2. the blue line is parallel to the vector $\vec v = \langle 1,5,6 \rangle$
+
+Therefore the blue line can be defined by the vector equation $\vec r = \vec r_0 + t\vec v$, where $\vec r_0 = \langle 1,2,-1 \rangle$ and $\vec v = \langle 1,5,6 \rangle$.
+
+</details><br>
+
+<details>
+  <summary>Click to show example 4</summary>
+
+#### Question 4:
+
+Sketch the curve whose vector equation is
+$$\vec r(t) = \cos (t)\hat i + \sin(t)\hat i + t\hat k $$
+
+##### Solution:
+
+Depict the points $(x,y,z)$ such that
+
+$$
+\begin{cases}
+  x = \cos(t)\\
+  y = \sin(t)\\
+  z = t\\
+  for \nobreakspace t \in \reals
+\end{cases}
+$$
+
+If we assume that $t$ corresponds to time and we are at point $\langle \cos(t), \sin(t), t \rangle$ at time t, than our trajectory will describe the curve.
+
+So, we simply need to set the result to this set of parametric eqations.
+
+</details><br>
+
+<details>
+  <summary>Click to show example 5</summary>
+
+#### Question 5:
+
+Find the vector equation and the parametric equation for the line that joins $P(1,3,-2)$ and $Q(2,-1,3)$.
+
+##### Solution:
+
+First find the vector between the two points, and use that to define a line along that vector through one of these points.
+
+According to the notes on Lines, the vector equation of a line is:
+
+$$ \vec r = \vec r_0 + t\vec v $$
+
+In this case, $\vec r_0 = \langle 1,3,-2\rangle$ and $\vec v = \langle 2-1,-1-3,3-(-2)\rangle$
+
+So the equation of the line passing through these points is:
+
+$$\vec r = \langle 1 + t, 3 - 4t, -2 + 5t \rangle $$
+
+But this line is infinite, and we want the line to go only from $P$ to $Q$, so we need to restrict $t$.
+
+So, find the value of $t$ at each point and set $t$ to the interval between them.
+
+In this case, since we used $P$ as the initial point and $\vec{PQ}$ as the vector (meaning $Q$ is the endpoint),
+
+$$ 0 \le t \le 1 $$
+
+Additionallly, the parametric equation is the following:
+
+$\begin{cases} x = 1 + t \\ y = 3 - 4t \\ z = -2 + 5t \end{cases}$, where $0 \le t \le 1$
+
+</details><br>
+
+### Defining a line
+
+This section explains more explicitly how the above example is able to define a line.
+
+Given $P_0, P_1$, $\vec v$ connecting them, a point $Q$ on the line defined by $P_0,P_1$, and a vector $\vec{OQ}$ from the orogin, and $\vec r$ from the origin to $P_0$
+
+For the vec $\vec{P_0Q}$, there exists a scalar $\lambda$ such that $\vec{P_0Q} = \lambda \times \vec v$
+
+Note that $\vec{OQ} = - \vec r_0 + \vec{P_0Q} = -\vec r_0 + \lambda \vec v$
+(Vector equations of the line)
+
+As we will see soon, it is better to denote $\lambda$ by t (because t has the meaning of time)
+
+$\vec{OQ} = \langle x,y,z \rangle$, so the above equation can be rewritten as:
+
+$$ \langle x,y,z \rangle = \langle x_0,y_0,z_0\rangle + t \langle x_1 - x_0, y_1 - y_0, x_1 - z_0\rangle$$
+$$ \langle x,y,z \rangle = \langle x_0 + t(x_1 - x_0),y_0 + t(y_1 - y_0),z_0 + t(z_1 - z_0)\rangle$$
+
+$$ x = x_0 + t(x_1 - x_0) $$
+$$ y = y_0 + t(y_1 - y_0) $$
+$$ z = z_0 + t(z_1 - z_0) $$
+(parametric equation of the line) - or more generally:
+$$ x = x_0 + ta $$
+$$ y = y_0 + tb $$
+$$ z = z_0 + tc $$
+These can be used as $f(t), g(t), h(t)$ from earlier.
+
+### Observation
+
+every continuous vector function $\vec r(t) = \langle f(t), g(t), h(t) \rangle$ is a curve in 3-D space
+
+So as $t$ increases, the point $\langle f(t), g(t), h(t) \rangle$ travels along a curve, which in this case is a straight line
+
+The vector $\vec v$ from the origin to a point on the line can be given as $\vec v = \vec r(t)$
+
+From Stewart 13.1
+
+<details>
+  <summary>Click to show example 6</summary>
+
+### Find a vector function that the curve of the intersection of the cylinder $x^2 + y^2 = 1$ and the plane y + z = 2
+
+$$ x^2 + y^2 = 1 \rightarrow y = \sqrt{1 - x^2}$$
+$$ y + z = 2 \rightarrow z = 2 - y \rightarrow 2 - \sqrt{1 - x^2}$$
+
+$$ \langle x,y,z \rangle = \langle x, \sqrt{1 - x^2}, 2 - \sqrt{1 - x^2} \rangle$$
+
+So we can write:
+
+$$
+\begin{cases}
+  x = f(t) = t \\
+  y = g(t) = \sqrt{1 - t^2} \\
+  z = 2 - \sqrt{1 - t^2}
+\end{cases}
+$$
+
+$$\vec r(t) = \langle t, \sqrt{1 - t^2}, 2 - \sqrt{1 - t^2} \rangle$$
+
+But with this, $t$ is constrained to $0 \le t \le 1$
+
+#### Alternate solution
+
+If we denote $x = \cos(t)$ then we can substitute it into the other equations, getting $y = \sqrt{1 - \cos^2(t)}$, which simplifies to $y = \sin(t)$. Similarly, $z = 2 - \sin(t)$. Then we get:
+
+$$\vec r(t) = \langle \cos(t), \sin(t), 2 - \sin(t) \rangle$$
+
+</details>
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
