@@ -1,0 +1,121 @@
+# Derivatives and Integrals of Vector Functions
+
+TL;DR:
+To take the limit, derivative, or integral of a vector function, do the same to each component function.
+
+## Derivatives
+
+$$\vec r(t) = \langle f(t), g(t), h(t) \rangle$$
+$$\vec r^\prime(t) = \langle f'(t), g'(t), h'(t) \rangle$$
+$$=$$
+$$\lim\limits_{h \to 0} {r(t + h) - r(t) \over h} = $$
+$$\langle \lim\limits_{h \to 0} {f(t + h) - f(t) \over h}, \lim\limits_{h \to 0} {g(t + h) - g(t) \over h}, \lim\limits_{h \to 0} {h(t + h) - h(t) \over h} \rangle$$
+Given $C$ as the curve given by $\vec r(t)$, the point $P$ on the line denoted by $\vec r(t)$ has a tangent line with the following properties:
+
+- The tangent line is parallel to the vector $\vec r'(t)$.
+
+We call $\vec r^\prime(t)$ a **tangent vector** to the curve $C$.
+
+$T(t) = {\vec r^\prime(t)\over|\vec r^\prime(t)|}$ is the **unit tangent** vector.
+
+Sec 13.2
+
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question 1:
+
+Find $\vec r'(t)$ where $\vec r(t) = (1 + t^3)\hat i + te^{-t}\hat j + sin(2t)\hat k$
+
+#### Solution:
+
+$$ r'(t) = (1 + t^3)'\hat i + (te^{-t}) '\hat j + sin(2t)'\hat k $$
+$$ = 3t^2\hat i + (e^{-t} - te^{-t})\hat j + (2\cos(2t))\hat k $$
+$$ = \langle 3t^2, e^{-t} - te^{-t}, 2\cos(2t) \rangle$$
+
+</details>
+
+<details>
+  <summary>Click to show Example 2</summary>
+
+### Question 2:
+
+Find the unit tangent vector at the point $P$, where $t = 0$
+
+#### Solution:
+
+since $t = 0$, $P = (1,0,0)$
+
+$$T(t) = {\vec r^\prime(t)\over|\vec r^\prime(t)|} = {\langle 0,1,2\rangle \over \sqrt{5}}$$
+$$= \langle 0,\frac{1}{\sqrt{5}}, \frac{2}{\sqrt{5}} \rangle$$
+
+</details>
+
+<details>
+  <summary>Click to show Example 3</summary>
+
+### Question 3:
+
+Find the parametric equations for the tangent line to the helix with parametric equations at the point $(0,1,\pi / 2)$
+$$x = 2\cos(t), y = \sin(t), z = t $$
+
+#### Notes:
+
+The equation is an ellipse on the x-y plane
+When $t = 0$, $(x,y,z) = (2,0,0)$. From there, the point follows a spiral path, creating a helix.
+
+#### Solution:
+
+We need to find which value of $t$ results in this point. Since $z = {\pi\over 2}$, $t = {\pi\over 2}$, so
+$$\vec r({\pi\over 2}) = \langle 0,1,{\pi\over 2}\rangle$$
+
+We know that $\vec r^\prime({\pi\over 2})$ is parallel to the tangent. Therefore, the vector equation of the tangent is: (using $\vec r({\pi\over 2})$ as the initial point and $\vec r^\prime({\pi\over 2})$ as the direction)
+$$\vec r({\pi\over 2}) + t * \vec r^\prime({\pi\over 2})$$
+
+$$\vec r^\prime(t) = \langle -2\sin(t), \cos(t), 1 \rangle$$
+$$\downarrow$$
+$$\vec r^\prime({\pi\over 2}) = \langle -2, 0, 1 \rangle$$
+
+So the equation is
+$$ \langle 0,1,{\pi\over 2}\rangle + t\langle -2,0,1\rangle $$
+and the parametric equations are
+
+$$
+\begin{cases}
+  x = 0 + (-2)t = -2t \\
+  y = 1 + 0t = 1 \\
+  z = {\pi\over 2} + 1t = {\pi\over 2} + 1t
+\end{cases}
+$$
+
+</details>
+
+## Integrals
+
+If $\vec r(t) = \langle f(t), g(t), h(t) \rangle$, then the **definite integral**
+
+$$\int_a^b \vec r(t)dt = \langle \int_a^b f(t)dt, \int_a^b g(t)dt, \int_a^b h(t)dt\rangle $$
+
+If $\vec R(t)$ is an anti-derivative of $\vec r(t)$ (i.e. $\vec R'(t) = \vec r(t)$)
+then
+$$ \int_a^b \vec r(t)dt = \vec R(t)|_a^b = \vec R(b) - \vec R(a)$$
+
+<details>
+  <summary>Click to show Example 5</summary>
+
+### Question 5:
+
+$\vec r(t) = 2\cos(t)\hat i + \sin(t)\hat j + 2t\hat k$. Find $\int\limits_0^{\pi/2} r(t)dt$
+
+#### Solution:
+
+First, find $\vec R(t)$
+$$\vec R(t) = \int \vec r(t) = \langle \int 2\cos(t)dt, \int \sin(t)dt, \int 2t dt $$
+$$= \langle 2sin(t), -\cos(t), t^2 \rangle (+ C)$$
+Therefore
+$$\int_0^{\pi/2} \vec r(t) dt = \vec R(t) \rvert_0^{\pi/2} = \left \langle 2sin(t), -\cos(t), t^2 \rangle \right\rvert_0^{\pi/2}$$
+$$ \langle 2, 1, {\pi^2\over 4} \rangle$$
+
+</details>
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
