@@ -1,5 +1,74 @@
 # Planes and Vector Applications
 
+## Equations of Lines
+
+### Vector Equation
+
+The vector equation describes the line as a point and direction. For each value of t, it produces a point on the line
+
+Given starting point $\vec r_0$ and vector paralell to the line $\vec v$
+
+$$ \vec r = \vec r_0 + t\vec v $$
+
+### Parametric Equation
+
+The parametric equation defines x,y,and z separately as functions of t
+
+Given starting point $\langle x_0,y_0,z_0 \rangle$ and vector $\langle a,b,c \rangle$
+
+$$ \langle x,y,z \rangle = \langle x_0 + at, y_0 + bt, z_0 + ct\rangle$$
+
+$$ x(t) = x_0 + at $$
+$$ y(t) = y_0 + bt $$
+$$ z(t) = z_0 + ct $$
+
+### Symmetric Equation(s)
+
+The symmetric equation is found by solving for t, and therefore each one can be set equal
+
+$$ t = {x - x_0 \over a} = {y - y_0 \over b} = {z - z_0 \over c} $$
+
+If one of the pieces a, b, or c is 0, it can still be written as $x = x_0$ for example, if a = 0
+
+### Line segments
+
+If only the portion of a line from $r_0$ to $r_1$ is given by
+
+$$ r(t) = (1 - t)\vec r_0 + t\vec r_1 $$
+$$ 0 \le t \le 1 $$
+
+## Explanation
+
+### Defining a line
+
+This section explains more explicitly how the above example is able to define a line.
+
+![A graphical depiction of the below statements](Line_Equation.jpg)
+
+Given $P_0, P_1$, $\vec v$ connecting them, a point $Q$ on the line defined by $P_0,P_1$, and a vector $\vec{OQ}$ from the orogin, and $\vec r$ from the origin to $P_0$
+
+Since $\vec v$ and $\vec{P_0Q}$ are parallel, one can be scaled to be the other. In other words, for the vec $\vec{P_0Q}$, there exists a scalar $\lambda$ such that $\vec{P_0Q} = \lambda \times \vec v$.
+
+Note that $\vec{OQ} = \vec r + \vec{P_0Q} = \vec r + \lambda \vec v$. 
+This gives the vector equation of the line:
+
+$$\vec r(t) = \vec r_0 + t\vec v$$
+
+As we will see soon, it is better to denote $\lambda$ by $t$ (because $t$ has the meaning of time)
+
+$\vec{OQ} = \langle x,y,z \rangle$, so the above equation can be rewritten as:
+
+$$ \langle x,y,z \rangle = \langle x_0,y_0,z_0\rangle + t \langle x_1 - x_0, y_1 - y_0, x_1 - z_0\rangle$$
+$$ \langle x,y,z \rangle = \langle x_0 + t(x_1 - x_0),y_0 + t(y_1 - y_0),z_0 + t(z_1 - z_0)\rangle$$
+
+$$ x = x_0 + t(x_1 - x_0) $$
+$$ y = y_0 + t(y_1 - y_0) $$
+$$ z = z_0 + t(z_1 - z_0) $$
+(parametric equation of the line) - or more generally:
+$$ x = x_0 + ta $$
+$$ y = y_0 + tb $$
+$$ z = z_0 + tc $$
+
 ## Equations of Planes
 
 - planes are infinite
