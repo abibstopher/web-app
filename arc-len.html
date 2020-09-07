@@ -1,12 +1,14 @@
 # Arc Length and Curvature
 
-This is an un-revised verison. I will add more and fix typos after office hours.
-
 ## Arc Length
 
 For a curve, if we want to find the length from $P_1$ to $P_2$, we use the length of straight lines at many points along the line and add them all up.
 
 So, we want the integral of the length from $\vec r(t)$ to $\vec r(t + h)$ as $h \to 0$. So:
+
+$$\int\limits_{a}^{b} |\vec r(u)|'du$$
+
+$$\int\limits_a^b \left({d\over du}\sqrt{x^2 + y^2 + z^2}\right) du$$
 
 $$\int\limits_a^b \sqrt{\left({dx\over du}\right)^2 + \left({dy\over du}\right)^2 + \left({dz\over du}\right)^2}du$$
 $$Or$$
@@ -18,21 +20,25 @@ So, given $\vec r_i$ at $r(t_i)$, and $\vec r_{i + 1}$ at $r(t_{i + 1})$,
 
 $$\sum_{i = 0}^N | \vec r_{i+1} - \vec r_i| = \sum_{i = 0}^N {|\vec r(t_i + \Delta t_i) - \vec r(t_i)| \over \Delta t_i} \Delta t_i$$
 
-$$ \downarrow \Delta t_i \to 0 $$
+You may notice that the inner portion of this equation is the same as the derivative of a function ($f'(x) = \lim\limits_{h\to 0}{f(x + h) - f(x)\over h}$)
+
+So as $\Delta t_i \to 0$, we can rewrite it as:
 
 $$\sum_{i = 0}^N |\vec r(t_i)|'\Delta t_i \rightarrow \int\limits_{t_i}^{t_{N + 1}} |\vec r(u)|'du$$
 
-$$=$$
+Then, by plugging in the equation for the length of a function (and taking the derivative with respect to $u$) we get:
 
-$$\int_a^b \sqrt{(dx/du)^2 + (dy/du)^2 + (dz/du)^2}du$$
+$$\int\limits_a^b \sqrt{\left({dx\over du}\right)^2 + \left({dy\over du}\right)^2 + \left({dz\over du}\right)^2}du$$
 
-If the curve C is parameterized according to $r(t) = \langle f(t), g(t), h(t)\rangle$ then for t=a & t= b, a < b the length of the arc on C that is in between the points is
+### Equation for the arc length
 
-$$\int_a^b|\vec r'(u)|du = \int_a^b \sqrt{(dx/du)^2 + (dy/du)^2 + (dz/du)^2}du$$
+If the curve C is parameterized according to $r(t) = \langle f(t), g(t), h(t)\rangle$ then for $t=a$ & $t= b$, $a \gt b$ the length of the arc on C that is in between the points is
+
+$$\int\limits_a^b|\vec r'(u)|du = \int\limits_a^b \sqrt{\left({dx\over du}\right)^2 + \left({dy\over du}\right)^2 + \left({dz\over du}\right)^2}du$$
 
 ### Relation to 2D
 
-Let $y = f(x)$ for the curve C
+Let $y = f(x)$ for the curve C. If:
 
 $$
 \begin{cases}
@@ -42,7 +48,7 @@ $$
 \end{cases}
 $$
 
-$$\int_a^b \sqrt{(t')^2 + (f')^2 + (0)^2}$$
+$$L = \int_a^b \sqrt{(t')^2 + (f')^2 + (0)^2}$$
 $$\int_a^b \sqrt{1 + (f'(t))^2}$$
 
 Section 13.3
@@ -52,7 +58,7 @@ Section 13.3
 
 ### Question 1
 
-Curve C = $\vec r(t) = \cos(t)i + \sin(t)j + tk$
+Curve C = $\vec r(t) = \cos(t)i + \sin(t)j + tk$.
 Find the length of arc on C from $(1,0,0)$ to $(1,0,2\pi)$
 
 #### Solution
@@ -69,31 +75,44 @@ $$L = \int_0^{2\pi} \sqrt{1 + 1}du = \sqrt{2} \rvert_0^{2\pi} = \sqrt{2} * 0 + \
 
 ## Arc Length Function
 
-A function that gives the length from $t = 0$ to $t$, denoted by $L = s(t)$
+A function that gives the length from $t = 0$ to $t$, denoted by $L = s(t)$. If we use these values in the above function, we get:
 
 $$ s(t) = \int\limits_0^t |\vec r'(u)|du $$
 
 ### Property
 
+Similarly, we can take the derivative to get:
+
 $$ {ds\over dt} = |\vec r'(t)| $$
 
-### How I understand it:
+### Creating a Natural Equation
 
-For some uses, it is a good idea to make the function of the curve use the length as a parameter instead of $t$. This means that instead of $\vec r(t)$ we are using $\vec r_0(s)$, where $s$ is the length of the arc.
+This is a more detailed paraphrasing of both the lecture and the book. I am still not sure how all of it works together, but what is below seems to make sense. If you see a mistake, please tell me.
 
-To get that function, we need a way to get from $\vec r(t)$ to $\vec r_0(s)$. The best way to do this is to define $t$ in terms of $s$ and plug that into $\vec r(t)$. So, we a re looking for $t(s)$. Since we already have a function $s(t)$ (the length function), we can take the inverse to get $t(s)$.
+The equation $\vec r(t)$, because $t$ is a somewhat arbitrary value, has certain properties that have no relation to the curve itself. For example, the point moves with a certain "velocity" (given by the length of the derivative $|\vec r'(t)|$, as in the speed that the point changes as t moves). This is entirely unrelated to the properties of the curve itself. Therefore, to get a more "natural" representation of the curve, we want the create a function that depends on $s$, not a particular coordinate system.
+
+This means that instead of $\vec r(t)$ we are using $\vec r_0(s)$, where $s$ is the length of the arc.
+
+To get that function, we need a way to get from $\vec r(t)$ to $\vec r_0(s)$. The best way to do this is to define $t$ in terms of $s$ and plug that into $\vec r(t)$. So, we are looking for $t(s)$. Since we already have a function $s(t)$ (the length function), we can take the inverse to get $t(s)$.
 
 $$ t(s) = s^{-1}(t) $$
+
+To get this, it is useful to use the property above and 
+integrate:
+
+$$ {ds\over dt} = |\vec r'(t)| $$
+
+$$s(t) = \int_0^t |\vec r'(u)|du = \int_0^t {ds\over dt}du $$
+
+$$t(s) = s^{-1}(t) = inverse\left(\int_0^t {ds\over dt}du\right)$$
+
+(See example 2 for more applicable clarification)
 
 Then, we plug that into $\vec r(t)$ to get the new function.
 
 $$ \vec r_0(s) = \vec r(t(s)) $$
 
-This function is useful because it can change the domain of the function, so you could get rid of some limits on $t$ (e.g. if $f(t) = ln(t)$ or something). 
-
-He said it also has the properties of the curve but not the velocity or something?
-
-will be in exam
+This function is useful because it is only dependent on the curve itself, and has no arbitrary reliance on a specific coordinate system
 
 ### How he explained it:
 
@@ -101,9 +120,9 @@ We want to find a parametrization $\vec r_0(s)$ so that the "travel speed" with 
 
 $$\int_a^b |\vec r'(u)|du = b - a$$
 $$\downdownarrows$$
-$$|\vec r_0'(u) = 1|$$
+$$|\vec r'(u) = 1|$$
 
-<!--if 
+<!--if
 $$s_1 = \int_0^{t_1} |r'(u)|dt$$
 
 $$s_0 = \int_0^{t_0} |r'(u)|dt$$-->
