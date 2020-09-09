@@ -1,0 +1,94 @@
+# Curvature
+
+Curvature is the measure of how 'bendy' the line is.
+
+## Formal Definition
+
+Intuitively, the curvature is high if the direction of the tangent line changes quickly. Since the tangent is the derivative, the change in tangent seems like it would be the second derivative:
+
+$$\vec r''(t)$$
+
+The issue with this, however, is that this will be influenced by the parameterization (how $t$ is defined).
+In order to make the curvature only dependent on the curve (an intrinsic property), we cannot define it as $|\vec r''(t)|$. Instead, it is $|\vec r''(u)|$ where $u$ is a specific paramerterization: with respect to the arc length. So $K$ (curvature) is:
+
+$$K = |\vec r_0''(s)|$$
+
+Where $\vec r_0(s)$ is the arc-length parameterization (s = arc length). Also,
+
+$$K = |\vec r_0''(s)| = \left|{d \over ds}\vec r_0'(s)\right| = \left|{dT \over ds}\right|$$
+
+Where $T$ is the unit tangent vector (the tangent with length of 1). It is easier to use $t$ instead of $s$, so using the chain rule:
+
+$$\left|{dT \over dt}\right| = \left|{dT\over ds} * {ds\over dt}\right|$$
+And dividing both sides by $|ds/dt|$
+$$\left|{dT \over ds}\right| = \left|{dT/ dt} \over {ds/ dt}\right| = \left|{T'(t)\over r'(t)}\right|$$
+$$K = {|T'(t)|\over |r'(t)|}$$
+
+Alternative formula:
+$$K(t) = {|\vec r'(t) \times \vec r''(t)|\over |r'(t)|^3}$$
+
+(See book for proof: Section 13.3 p. 865)
+
+<details>
+  <summary>Click to show Example 3</summary>
+
+### Question 3:
+
+Show that the curvature of a circle of a radius $a$ is $1/a$.
+
+#### Solution
+
+We want to show that $K(t) = 1/a$. This intuitively makes sense since a circle is uniformly curved. Additionally, if the circle is very large, the curvature is nearly $0$. (Ex: the Earth was thought to be flat because the curvature was so small)
+
+To compute the curvature, we need a parameterization. A circle's parameterization is:
+
+$$\vec r(t) = a\cos(t)\hat i + a\sin(t)\hat j + 0\hat k$$
+
+Where $a$ is the radius. However this is not the only parameterization ($r(t) = 2a\cos({t\over 2})\hat i + ...$ or $r(t) = a\sin(t)\hat i + 0\hat j + a\cos(t)\hat k$)
+
+$$K(t) = {|T'(t)|\over |r'(t)|}$$
+
+$$\vec r'(t) = - a\sin(t)\hat i + a\cos(t)\hat j \rightarrow |\vec r(t)| = a$$
+
+This is because:
+
+$$|\vec r'(t)| = \sqrt{(-a\sin(t))^2 + (a\cos(t))^2} = \sqrt{a^2(\sin^2(t) + \cos^2(t))} = \sqrt{a^2} = a$$
+
+$$T'(t) = \left({-a\sin(t)\hat i + a\cos(t)\hat j\over a}\right)$$
+$$(-\sin(t)\hat i - \sin(t)\hat j)$$
+$$|T'(t)| = |-\cos(t)\hat i - \sin(t)\hat j| = 1$$
+
+(Because of the same property used above)
+
+$$K(t) = {|T'(t)|\over |r'(t)|} = {1\over a}$$
+
+</details><br>
+
+## Application to Physics
+
+With $\vec r(t)$, the tangent is equal to the velocity at time $t$ (the speed the point is moving as t increases). So, $|\vec r'(t)|$ = speed at time $t$. In physics, the acceleration is the double derivative (the rate that speed is changing). So, $\vec r''(t)$ = acceleration at time $t$.
+
+### Newton's Second Law of Motion
+
+If an object is experiencing force, it will accelerate in the direction of force
+
+> $$F(t) = m\vec a(t)$$
+
+Since gravitational force is the only force acting on a projectile (neglecting air resistance), the acceleration will point down and will be equal to a constant ($g = 9.8m/s$).
+
+$$F(t) = gm$$
+$$\vec a(t) = -g\hat j$$
+So,
+$$\vec r''(t) = -g\hat j \rightarrow \vec r'(t) = \int -g\hat j dt + \vec V$$
+Where $\vec V$ is a constant vector, $r'(0) = \vec V = v_0$ (initial velocity)
+$$\vec r'(t) = -gt\hat j + v_0$$
+$$\vec r(t) = \int (-gt\hat j + v_0)dt$$
+$$ -{gt^2\over 2}\hat j + v_0t + \vec D$$
+Where $\vec D$ is another constant vector, $r(0) = \vec D$ (initial position)
+
+So, given a projectile at point $p_0$ with initial velocity $v_0$, the equation is found as:
+
+$$\vec r(t) = \frac{1}{2}\vec gt^2 + v_0t + p_0$$
+Where $\vec g$ is the vertical gravitational acceleration vector $g = -9.8\hat j$
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
