@@ -9,23 +9,23 @@ Intuitively, the curvature is high if the direction of the tangent line changes 
 $$\vec r''(t)$$
 
 The issue with this, however, is that this will be influenced by the parameterization (how $t$ is defined).
-In order to make the curvature only dependent on the curve (an intrinsic property), we cannot define it as $|\vec r''(t)|$. Instead, it is $|\vec r''(u)|$ where $u$ is a specific paramerterization: with respect to the arc length. So $K$ (curvature) is:
+In order to make the curvature only dependent on the curve (an intrinsic property), we cannot define it as $|\vec r''(t)|$. Instead, it is $|\vec r''(u)|$ where $u$ is a specific paramerterization: with respect to the arc length. So $\kappa$ (curvature) is:
 
-$$K = |\vec r_0''(s)|$$
+$$\kappa = |\vec r_0''(s)|$$
 
 Where $\vec r_0(s)$ is the arc-length parameterization (s = arc length). Also,
 
-$$K = |\vec r_0''(s)| = \left|{d \over ds}\vec r_0'(s)\right| = \left|{dT \over ds}\right|$$
+$$\kappa = |\vec r_0''(s)| = \left|{d \over ds}\vec r_0'(s)\right| = \left|{dT \over ds}\right|$$
 
 Where $T$ is the unit tangent vector (the tangent with length of 1). It is easier to use $t$ instead of $s$, so using the chain rule:
 
 $$\left|{dT \over dt}\right| = \left|{dT\over ds} * {ds\over dt}\right|$$
 And dividing both sides by $|ds/dt|$
 $$\left|{dT \over ds}\right| = \left|{dT/ dt} \over {ds/ dt}\right| = \left|{T'(t)\over r'(t)}\right|$$
-$$K = {|T'(t)|\over |r'(t)|}$$
+$$\kappa = {|T'(t)|\over |r'(t)|}$$
 
 Alternative formula:
-$$K(t) = {|\vec r'(t) \times \vec r''(t)|\over |r'(t)|^3}$$
+$$\kappa(t) = {|\vec r'(t) \times \vec r''(t)|\over |r'(t)|^3}$$
 
 (See book for proof: Section 13.3 p. 865)
 
@@ -38,7 +38,7 @@ Show that the curvature of a circle of a radius $a$ is $1/a$.
 
 #### Solution
 
-We want to show that $K(t) = 1/a$. This intuitively makes sense since a circle is uniformly curved. Additionally, if the circle is very large, the curvature is nearly $0$. (Ex: the Earth was thought to be flat because the curvature was so small)
+We want to show that $\kappa(t) = 1/a$. This intuitively makes sense since a circle is uniformly curved. Additionally, if the circle is very large, the curvature is nearly $0$. (Ex: the Earth was thought to be flat because the curvature was so small)
 
 To compute the curvature, we need a parameterization. A circle's parameterization is:
 
@@ -46,7 +46,7 @@ $$\vec r(t) = a\cos(t)\hat i + a\sin(t)\hat j + 0\hat k$$
 
 Where $a$ is the radius. However this is not the only parameterization ($r(t) = 2a\cos({t\over 2})\hat i + ...$ or $r(t) = a\sin(t)\hat i + 0\hat j + a\cos(t)\hat k$)
 
-$$K(t) = {|T'(t)|\over |r'(t)|}$$
+$$\kappa(t) = {|T'(t)|\over |r'(t)|}$$
 
 $$\vec r'(t) = - a\sin(t)\hat i + a\cos(t)\hat j \rightarrow |\vec r(t)| = a$$
 
@@ -60,7 +60,7 @@ $$|T'(t)| = |-\cos(t)\hat i - \sin(t)\hat j| = 1$$
 
 (Because of the same property used above)
 
-$$K(t) = {|T'(t)|\over |r'(t)|} = {1\over a}$$
+$$\kappa(t) = {|T'(t)|\over |r'(t)|} = {1\over a}$$
 
 </details><br>
 
