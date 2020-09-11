@@ -5,7 +5,7 @@
 A vector equation has properties of the parameterization, such as velocity.
 
 Velocity: $\vec v(t) = \vec r'(t)$  
-Speed: $\mu(t) = |\vec v(t)|$  
+Speed: $\nu(t) = |\vec v(t)|$  
 Acceleration: $\vec a(t) = \vec v'(t) = \vec r''(t)$
 
 ### Application:
@@ -28,9 +28,9 @@ One along the velocity, and one perpendicular to it.
 The one along the velocity is the tangential component, and the perpendicular one is the normal component.
 Tangential determines the speed, normal determines the "curviness"
 
-$$\vec T(t) = {\vec r'(t)\over |r'(t)|} = {\vec v(t)\over |\vec v(t)|} = {\vec v(t)\over \mu(t)}$$
-$$\vec v(t) = \mu(t) * T(t)$$
-$$\vec a (t) = \vec v'(t) = \mu'(t) * T + \mu(t) * T'(t)$$
+$$\vec T(t) = {\vec r'(t)\over |r'(t)|} = {\vec v(t)\over |\vec v(t)|} = {\vec v(t)\over \nu(t)}$$
+$$\vec v(t) = \nu(t) * T(t)$$
+$$\vec a (t) = \vec v'(t) = \nu'(t) * T + \nu(t) * T'(t)$$
 
 Note: $T(t)$ is orthagonal to $T'(t)$.
 This is because $|T(t)|$ is constant (see Example 12.4.2, p. 816)
@@ -39,11 +39,11 @@ Let N be the unti vector parallel to T'(t):
 $$\vec N(t) = {T'(t)\over |T'(t)|}$$
 $$T'(t) = \vec N * |T'(t)|$$
 Since
-$$\mu(t) = |v(t)|$$
-$$K = {|T'|\over|r'|} = {|T'|\over \mu}$$
-$$|T'| = \kappa * \mu$$
-$$T' = |T'| * \vec N = \kappa*\mu*\vec N$$
+$$\nu(t) = |v(t)|$$
+$$K = {|T'|\over|r'|} = {|T'|\over \nu}$$
+$$|T'| = \kappa * \nu$$
+$$T' = |T'| * \vec N = \kappa*\nu*\vec N$$
 
-$$a(t) = \mu'T + \kappa*\mu^2N$$
+$$a(t) = \nu'T + \kappa*\nu^2N$$
 
 <script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
