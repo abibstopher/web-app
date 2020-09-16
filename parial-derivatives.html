@@ -1,0 +1,69 @@
+# Partial derivatives
+
+## Functions of multiple varibles
+
+A function is a map from one set of numbers to another set. In a function, there is only one result per source. We have also demonstrated functions that go from a set of real numbers to a set of vectors.
+
+In a multivariable function, set two is a set of real numbers, and set one is a set of _pairs_ of real numbers.
+
+**Examples:**
+$$f(x,y) = x+y$$
+$$f(1,-1) = 0$$
+$$f(1,\sqrt{2}) = 1 + \sqrt{2}$$
+
+---
+
+$$f(x,y) = x = x + 0y$$
+In this, y has no effect, and is called a fictive variable.
+
+---
+
+$$f(x,y) = {1\over{x - y}}$$
+Domain: $(x_0,y_0) \in D$ means $f(x,y)$ is defined at $(x_0,y_0)$
+
+The domain of this is $D = \left\{(x,y) | x\ne y\right\}$
+
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question 1:
+
+For each of the functions, evaluate f(3,2) and find and sketch domain:
+
+1. $f(x,y) = {\sqrt{x + y + 1}\over x - 1}$
+   - Solution:
+     $$ $$
+     Domain: $\begin{cases}x - 1 \ne 0 \iff x\ne 1\\x + y +1 \ge 0 \iff y \ge -x-1\end{cases}$
+
+![The sketch of the domain](domain.jpeg)
+
+1. $f(x,y) = x\ln(y^2 - x)$
+   - Solution:
+     $$f(3,2) = 3\ln(2^2 -3)=3\ln(1)=0$$
+     $$D = \{(x,y)|y^2>x\}$$
+
+![The sketch of the domain](domain2.jpeg)
+
+</details>
+<details>
+  <summary>Click to show Example 4</summary>
+
+### Question 4
+
+Find the domain and range of $g(x,y) = \sqrt{9 - x^2 - y^2}$
+
+#### Solution
+
+Domain:
+$$D = \{(x,y)|9 - x^2 - y^2 \ge 0\}$$
+$$D = \{(x,y)|x^2 + y^2 \le 9\}$$
+![Domain Sketch](domain3.jpeg)
+Range:
+The point $z$ is in the range of $g(x,y)$ if there exists $x,y$ such that $z = \sqrt{9 - x^2 - y^2}$
+$$z \ge 0, z \le 3$$
+For any value $z \in (0,3)$ there exists $x$ such that $z = \sqrt{9 - x^2 - y^2}$\
+Therefore, the range of $g(x,y)$ is the interval $[0,3]$
+
+</details>
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
