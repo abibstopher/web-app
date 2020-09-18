@@ -66,4 +66,75 @@ Therefore, the range of $g(x,y)$ is the interval $[0,3]$
 
 </details>
 
+## Graphing Multivariable functions
+
+A two-dimensional function $y = f(x)$, if it is contiuous, represents a curve in 2-D space. In three dimensions, $z = f(x,y)$, if the function is continuous, will represent a surface in 3-D space.
+
+### Definition
+
+The graph of the function $f(x,y)$ is the set $\Gamma = \{(x,y,z)\}$, where $(x,y) \in D$ (the domain of $f$) and $z = f(x,y)$
+
+### Example
+
+Consider $z = f(x,y) = \sqrt{9 = x^2-y^2}$  
+$D_f =$ Disk of radius 3 centered at $(0,0)$
+
+![An illustration of the disk](hemisphere.jpeg)
+
+## Partial Derivatives
+
+[Video Link](https://www.youtube.com/watch?v=GkB4vW16QHI&list=PLqprwZTA_aALP4M5vFRdNMGNii25qHNBu&index=27)
+
+Recall: With $y = f(x)$ the derivative $f'(x)$ represents the slope of the tangent line. However, this does not work verbatim for graphs of three dimensions.
+
+In three dimensions, the rate of change changes based on which direction you are traveling. In three dimensions, the natural directions are in the zy and zx planes. So, we can take the derivative in the y direction to find the slope of the y direction. This also works for the x direction. 
+
+![An example of the tangents](tangents.jpg)
+
+The partial derivative of the function $f(x,y)$ are $f_x(a,b)$ (the derivative of the x direction) and $f_y(a,b)$ (the derivative of the y direction)
+
+### Formal definition
+
+Given the function $z = f(x,y)$, Let $(a,b) \in D_f$.
+Then, the partial derivative of $f$ at $(a,b)$ with respect to $x$ is defined as:
+
+$${\delta f\over \delta x} = f_x(a,b) = \lim\limits_{h\to 0} {f(a+h, b) - f(a,b) \over h}$$
+
+Similarly, the partial derivative with respect to $y$ is:
+
+$${\delta f\over \delta y} = f_y(a,b) = \lim\limits_{h\to 0} {f(a+h, b) - f(a,b) \over h}$$
+
+Section 14.3
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question 1
+Given $f(x,y) = x^3 + x^2y^3 - 2y^2$, find $f_x(2,1)$ and $f_y(2,1)$
+
+#### Solution
+To compute the partial derivative $f_x$, leave $y$ constant and have x be the only variable.
+
+For simplicity, replace $y$ with constant $b$.
+Then:
+
+$$g(x) = f(x,b) = x^3+x^2b^3-2b^2$$
+Then, plugging a into $x$ to comute the derivative at $(a,b)$:
+$$f_x(a,b) = g'(b) = 3a^2 + 2ab^3$$
+Next, replace $x$ with constant $a$.
+Then:
+
+$$h(x) = f(a,y) = a^3+a^2y^3-2y^2$$
+Then, plugging $b$ into $y$ to compute the derivative at $(a,b)$:
+$$f_y(a,b) = g'(b) = 3a^2b^2 - 4b$$
+
+So now we can plug in the values:
+
+$$f_x(a,b) = 3a^2 + 2ab^3$$
+$$f_x(2,1) = 3(2)^2 + 2(2)(1)^3 = 16$$
+
+$$f_y(a,b) = 3a^2b^2 - 4b$$
+$$f_y(2,1) = 3(2)^2(1)^2 - 4(1) = 8$$
+
+</details>
+
 <script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
