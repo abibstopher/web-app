@@ -1,0 +1,77 @@
+# Tangent Planes
+
+## Partial Derivatives
+
+From last lesson, a multivariable function can be derived in two parts, one for $f_x$ and one for $f_y$.
+
+These pertial derivatives can each be derived once more to obtain a double derivative:
+
+$$f_{xx} = {d\over dx}f_x(x,y)$$
+$$f_{xy} = {d\over dy}f_x(x,y)$$
+$$f_{yx} = {d\over dx}f_y(x,y)$$
+$$f_{yy} = {d\over dy}f_y(x,y)$$
+
+<details>
+  <summary>Click to show lecture example</summary>
+
+$$z = f(x,y) = x^2y + e^{xy}$$
+$${df\over dx} = f_x = 2xy + ye^{xy}$$
+$$f_{xx} = 2y + y^2e^{xy}$$
+
+</details>
+
+## Tangent planes
+
+A function of two variables will not have a tangent line, but a tangent plane. At any single point, a surface (hat is continuous and differentiable) will have two tangent lines, one in the y and one in the x direction. We want the equation of the plane that contains those two lines, which will be tangent to that point.
+
+The equation of the tangent plane at the point $P(x_0,y_0,z_0)$ is given by the equation
+
+$$z - z_0 = f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)$$
+(Essentially point-slope form for three dimensions)
+$$z - z_0 = m_x(x-x_0)+m_y(y-y_0)$$
+
+
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question 1
+Find the tangent plane to the ellliptic paraboloid $z = 2x^2 + y^2$ at the point $P(1,1,3)$
+
+#### Solution:
+$$z - z_0 = f_x(x_0,y_0)(x - x_0) + f_y(x_0,y_0)(y - y_0)$$
+
+$$f_x = 4x_0 = 4$$
+$$f_y = 2y_0 = 2$$
+
+$$z - 3 = 4(x - 1) + 2(y - 1)$$
+
+</details>
+
+## Chain Rule with two-variable Functions
+
+### Chain Rule One
+
+Given a two-variable function $z = f(x,y)$, use the two portions as functions themselves. $x = g(t)$, $y = h(t)$
+$$z(t) = f(g(t),h(t))$$
+$${dz\over dt} = {\delta f\over \delta x}{dx\over dt} + {\delta f\over \delta y}{dy\over dt}$$
+
+<details>
+  <summary>Click to show Example</summary>
+
+### Question 2
+Let $z = x^2y + 3xy^4$, where $x = \sin(2t)$, $y = \cos(t)$.
+Find $dz\over dt$ at $t=0$
+
+#### Solution
+$${dz\over dt} = {\delta f\over \delta x}{dx\over dt} + {\delta f\over \delta y}{dy\over dt}$$
+$${dz\over dt} = {\delta f\over \delta x}(2\cos(2t)) + {\delta f\over \delta y}(-\sin(t))$$
+$${dz\over dt} = {\delta f\over \delta x}(2) + {\delta f\over \delta y}(0)$$
+$${dz\over dt} = (2yx + 3y^4)(2)$$
+$${dz\over dt} = (2y(t)x(t) + 3(y(t))^4)(2)$$
+$${dz\over dt} = (2y(0)x(0) + 3(y(0))^4)(2)$$
+$${dz\over dt} = (2\cos(0)\sin(0) + 3(\cos(0))^4)(2)$$
+$${dz\over dt} = (3)(2) = 6$$
+
+</details>
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
