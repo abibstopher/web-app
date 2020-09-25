@@ -1,0 +1,56 @@
+# Directional Derivatives
+
+## Formal Definition
+
+Given a unit vector $\vec u = \langle a,b \rangle$, $\sqrt{a^2 + b^2} = 1$, then the directional derivative of $f(x,y)$ at $(x,y)$ is :
+$$D_{\vec u}f(x_0,y_0) = \lim\limits_{h\to 0}{f(x_0 + ha, y_0 + hb) - f(x_0,y_0)\over h}$$
+
+This represents the slope along the tangent line of the function along the unit vector's direction.
+
+The partial derivatives $\delta f\over \delta x$ and $\delta f\over \delta y$ are particular instances of directional derivatives.
+Specifically, 
+$${\delta f\over \delta x} = D_{\hat i}f, \hat i = \langle 1,0\rangle$$
+$${\delta f\over \delta y} = D_{\hat j}f, \hat j = \langle 0,1\rangle$$
+
+### Theorem
+If $\vec u = \langle a.b\rangle$, then 
+
+$$D_{\vec u}f(x,y) = f_x(x,y) * a + f_y(x,y) * b$$
+
+<details>
+  <summary>Click to show example 2</summary>
+
+### Question
+Find $D_{\vec u}f(x,y)$, where $f(x,y) = x^3 - 3xy + 4y^2$ and $\vec u = \langle 1/2, \sqrt{3}/2\rangle$
+
+#### Solution
+First, find $\delta f\over\delta x$ and $\delta f\over\delta y$
+
+$${\delta f\over\delta x} = 3x^2 - 3y$$
+$${\delta f\over\delta y} = -3x + 8y$$
+
+$$D_{\vec u}f(x,y) = \frac{1}{2}(3x^2-3y) + \frac{\sqrt{3}}{2}(-3x + 8y)$$
+
+</details>
+
+## Gradient vector
+
+$$\langle {\delta f\over\delta x}, {\delta f\over\delta y}\rangle$$
+Notation for gradient is $\nabla f$.
+Namely, $\nabla f = \langle {\delta f\over\delta x}, {\delta f\over\delta y}\rangle$
+
+By the theorem above, we have that 
+$$D_{\vec u}f(x,y) = {\delta f\over\delta x} * a + {\delta f\over\delta y} * b$$
+$$D_{\vec u}f(x,y) = \langle a.b\rangle\cdot\langle {\delta f\over\delta x}, {\delta f\over\delta y}\rangle$$
+Therefore,
+$$D_{\vec u}f(x,y) = \vec u\cdot\nabla f$$
+
+***Gradient vector defines the direction of the largest slope***
+
+Why is this true?
+$$|D_{\vec u}f(x,y)| = \nabla f \cdot \vec u$$
+$$= |\nabla f| * |\vec u| * \cos{\theta}$$
+$$= |\nabla f| * \cos{\theta} \le |\nabla f|$$
+Moreover, $D_{\vec u}f(x,y) = |\nabla f|$ iff $\cos\theta = 1$ ($\theta = 0$), in which case u has the direction of $\nabla f$ and $D_uf = |\nabla f|$
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
