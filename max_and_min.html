@@ -1,0 +1,90 @@
+# Finding Maximum and Minimum Values of a Function
+
+## Finding Max and Min in single variable
+
+From one-variable calculus:
+$$y = f(x)$$
+The local minimum is the minimum of a portion of the graphp, and the same is true for max. Also:
+$$f'(x_{max}) = f(x_{min}) = 0$$
+$f''(x) \gt 0$ - concave up  
+$f''(x) \lt 0$ - concave down
+
+## Definitions for multivariable
+
+### Definition
+
+We say that $(a,b)$ is a local etremum (max or min), if in a small neighborhood (the area around the point) at $(a,b)$, $f(a,b)$ is either maximum or minimum (it is greater than all its neighbors).
+
+### Theorem
+
+If $(a,b)$ is an extremum point for f(x,y), then we have:
+$${\delta f\over \delta x}(a,b) = {\delta f\over\delta y}(a,b) = 0$$
+
+### Definition
+
+We say that $(a,b)$ is a critical point if ${\delta f\over\delta x}(a,b) = {\delta f\over\delta y}(a,b) = 0$.
+
+The Theorem above says that if $(a,b)$ is an extremum point, then it must be a critical point.
+
+_The inverse is not true_
+
+## Second Derivative Test
+
+$$D(x,y) = \begin{vmatrix}f_{xx} f_{xy} \\ f_{yx} f_{yy}\end{vmatrix} = f_{xx}f_{yy} - f_{xy}f_{yx}$$
+
+Let $(a,b)$ be a critical point for the function $z = f(x,y)$ Then, if
+
+1. If $D(a,b) \gt 0$, we have $(a,b)$ is an extremum point.
+   1. If $f_{xx}(a,b) \gt 0$, then $f(a,b)$ is a *local minimum* (concave up)
+   2. If $f_{xx}(a,b) \lt 0$, then $f(a,b)$ is a *local maximum* (concave down)
+   3. If $f_{xx}(a,b) = 0$, then the test is inconclusive
+2. If $D(a,b) \lt 0$, then $f(a,b)$ is *netiher local maximum nor minimum*
+3. If $D(a,b) = 0$, then the results are inconclusive
+
+If $D(a,b) \gt 0$, then $(a,b)$ is called *saddle point*
+
+![Saddle illustration](saddle.jpg)
+
+<details>
+  <summary>Click to show Example 3</summary>
+
+### Question 3 (Sec 14.7)
+Find the local maximum and minimum values and saddle points of $f(x,y) = x^4 + y^4-4xy +1$
+
+#### Solution
+First, find critical point $(a,b)$: ${\delta f\over\delta x}(a,b) = {\delta f\over\delta y}(a,b) = 0$
+$$
+\begin{vmatrix}
+  {\delta f\over \delta x} = 4x^3 - 4y = 0 
+  {\delta f\over \delta y} = 4y^3 - 4x = 0 
+\end{vmatrix}
+$$
+
+$$y = x^3$$
+$$x^9 - x = 0$$
+$$x(x^8 - 1) = 0$$
+$$x(x^4 - 1)(x^4 + 1) = 0$$
+$$(x^4 + 1) \gt 0$$
+$$x(x^2 - 1)(x^2 + 1) = 0$$
+$$(x^2 + 1) \gt 0$$
+$$x(x - 1)(x + 1) = 0$$
+$$x = -1,0,1$$
+$$x^3 = y = -1,0,1$$
+Therefore, the critical points are $(-1,-1), (0,0), (1,1)$
+
+After finding the critical points, let us compute $D$ at that point
+$$D(x,y) = f_{xx}f_{yy} - f_{xy}f_{yx}$$
+$$D(x,y) = 144x^2y^2 - 16$$
+$$f_{xx} = 12x^2 \ge 0$$
+$$D(-1,-1) = 144 - 16 = 128 \gt 0$$
+$$f_{xx} = 12(-1)^2 \gt 0$$
+$(-1,-1)$ is a *local min* by the second derivative test
+$$D(0,0) = -16$$
+$(-1,-1)$ is a saddle point by the second derivative test
+$$D(1,1) = 144 - 16 = 128 \gt 0$$
+$$f_{xx} = 12(1)^2 \gt 0$$
+$(1,1)$ is a *local min* by the second derivative test
+
+</details>
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
