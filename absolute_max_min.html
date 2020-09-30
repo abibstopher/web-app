@@ -1,0 +1,96 @@
+# Absolute Maximum and Minimum
+
+## Extremum and Critical Points
+
+Critical points are where ${\delta f\over \delta x}(x,y) = {\delta f \over \delta y}(x,y) = 0$
+
+### Theorem:
+If $(x,y)$ is an extremum point, then $(x,y)$ is a critical point
+
+### Theorem (second deriv test)
+If $(x_0, y_0)$ is a critical point, then
+
+1. $D \gt 0$ and $f_{xx}(x_0, y_0) \gt 0$, then $f(x_0, y_0)$ is local max
+2. $D \gt 0$ and $f_{xx}(x_0, y_0) \gt 0$, then $f(x_0, y_0)$ is local max
+3. $D \gt 0$, then the point is a saddle point (nether max nor min)
+
+$$
+D =
+\begin{vmatrix}
+  f_{xx} f_{xy} \\
+  f_{yx} f_{yy}
+\end{vmatrix}
+=
+\begin{vmatrix}
+  f_{xx} f_{xy} \\
+  f_{xy} f_{yy}
+\end{vmatrix}
+= f_{xx}f_{yy} - f_{xy}^2
+$$
+
+$$f_{xy} = f_{yx}$$
+
+## Absolute minimum and maximum values
+
+### Definition
+
+We say that if $(x_0, y_0) \in$ Domain of $f(x,y)$, then $(x_0,y_0)$ is an absolute min/max if for any point $(x,y)\in D$, we have $f(x,y) \ge f(x_0, y_0)$.
+(for max it is $f(x,y) \le f(x_0, y_0)$)
+
+Functions do not always have a max or min value.
+For Ex: $f(x) = 1/x, x\gt 0$. It does not have an absolute maximum in the domain from $(0, +\infty)$, because $\lim\limits_{x\to 0}1/x = \infty$
+
+On the other hand, $f(x) = 1/x, x \in [1,3]$ has a max. Since for any a we have $f(x) \le 1$, and since $f(1) = 1$, $1$ is the absolute max value.
+
+### Theorem (Extreme value theorem for 2-var functions)
+
+If $f$ is continuous and the domain $D$ of $f(x,y)$ is **_closed_**, then the function $f$ reaches its absolute maximum and minimum values on $D$.
+
+This means there are points $(x_0, y_0)$ and $(x_1,y_x)$ both $\in D$ such that for any $(x,y) \in D$, we have
+
+$$f(x_0, y_0) \le f(x,y) \le f(x_1, y_1)$$
+
+### Definition
+
+The set $D\in R^2$ is said to be a closed set if any point on $D$ can be approximated by points on D, and vice versa if $(x,y)\in R^2$ can be approximated by points on $D$, then $(x,y)\in D$
+
+So this means that if a value is on the edge, but not in the set, it can be approximated by D but is not in the set, so the set is not closed. (The boundaries are either open or closed. Open does not include the boundary, but closed does)
+
+Ex: the domain of $\sqrt{x}$ is closed if limited to an area of [0,3] because the edge point (0) is in the domain (as is 3), but $1\over\sqrt{x}$ is not, because the point at zero does not exist (the set is (0,3]), but it can be approximated by the $\lim\limits_{x\to 0}$.
+
+Let $f$ be continuous and its domain $D$, is closed. Then to find absolute max and min values of $f$, one can find the max and min values on the boundary of $D$ and the critical points in $D$, then choose the max and min values of $f$ at that point.
+
+<details>
+  <summary>Click to show example 7 (14.7)</summary>
+
+### Question 7
+
+Find the absolute max and min values of the function $(x,y) = x^2-2xy+2y$ On the rectangle $D = {(x,y)|0\le x\le 3, 0\le y\le 2}$
+
+#### Solution
+
+Since $D$ is closed, an absolute max and min are obtainable.
+
+1. Find the critical points (x,y):
+   $${\delta f\over\delta x}(x,y) = 2x-2y = 0 \to x = y$$
+   $${\delta f\over\delta y}(x,y) = -2x+2 = 0\to x = 1$$
+   Therefore, $(1,1)$ is the only critical point.
+   $f(1,1) = 1^2 + 2*1*1  2*1 = 1$
+2. Find the points at the boundary of $D$
+   We split the edges into four parts:
+   $D =$
+   $${(0,y)|0\le y\le2}U$$
+   $${(x,2)|0\le x\le3}U$$
+   $${(3,y)|0\le y\le2}U$$
+   $${(x,0)|0\le x\le3}$$
+   $$0\le f(0,y)=2y\le 4$$
+   $$0\le f(x,2)=x^2-4x+4 = (x-2)^2\le 4$$
+   $$1 \le f(3,y) = 9-6y + 2y =9 - 4y\le 9$$
+   $$0 \le f(x,0) = x^2 \le 9$$
+   These points are the edges, and their max is 9 and min is 0.
+   These are at the points $(3,0)$ and $(0,0)$. These are absolute (and local) maximum and minimum respectively
+   
+
+</details>
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
