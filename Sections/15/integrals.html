@@ -1,0 +1,41 @@
+# Integrals of Multiple Variables
+
+Indefinite integrals represent the set of all antiderivatives of the function.
+
+For most definite integrals, it represent the sum of the areas of many infinitesmal rectangles under the function.
+
+$$\int\limits_a^b f(x)dx = \lim\limits_{\Delta x \to 0}\sum\limits_{i = 1}^n f(x_{i+1})\Delta x_i$$
+
+
+### Question:
+Can we define integrals that involve functions of two variables? If so, what meaning does it carry.
+
+## Multivariable Integrals
+Let $z = f(x,y)$ and $D$ be a bounded domain of this function. The domain is a closed shape on the xy axis, and the graph is a surface who's projection coincides with this shape. The volume under the function can be represented by length by width by height.
+
+Since the graph is often curved, we will need to split it up into many rectangular boxes of different heights.
+
+Each box will have a width and depth of $\Delta x$ and $\Delta y$, and a height of $f(x, y)$. So, we add up all of them from $a$ to $b$:
+
+$$\iint\limits_{[a, b]\times[c,d]} f(x,y)dxdy = \lim\limits_{(\Delta x, \Delta y) \to (0,0)}\sum\limits_{i = 1}^n\sum\limits_{j = 1}^m f(x_{i+1}, y_{j+1})\Delta x_i\Delta y_j$$
+
+$$\iint\limits_{D}f(x,y)dxdy = \iint\limits_{[a, b]\times[c,d]} f(x,y)dxdy$$
+
+![Integral Illustration](integral_illust.jpg)
+
+### Example
+
+$$z = f(x,y) = x + 0y = x$$
+$$D = [0,1]\times[0,1]$$
+
+The graph will create a prism with sides of 1. The double integral is:
+
+$$\iint\limits_{D}f(x,y)dxdy$$
+$$\iint\limits_{[0,1]\times[0,1]} x dxdy$$
+$$\int\limits_a^b\left(\int\limits_c^d f(x,y)dy\right)dx = \int\limits_a^b g(x)dx$$
+$$\iint\limits_{[0,1]\times[0,1]} x dxdy = \int\limits_0^1\left(\int\limits_0^1 xdy\right)dx$$
+$$g(x) = x\left(\int\limits_0^1 1dy\right) = x*1 = x$$
+$$g(x) =\int\limits_0^1 xdy = xy|_0^1 = 0*x + 1*x = x$$
+$$\int\limits_0^1\left(\int\limits_0^1 xdy\right)dx = \int\limits_0^1 xdx = \frac{1}{2}x^2|_0^1 = 0 + \frac{1}{2}(1)^2 = \frac{1}{2}$$
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
