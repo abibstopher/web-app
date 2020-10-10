@@ -1,0 +1,320 @@
+# Summary, sections 14.1 - 14.8
+
+## Chapter 14 - Partial Derivatives and their Uses
+
+<!-- 
+<details>
+  <summary></summary>
+
+**Question**  
+
+**Solution**  
+
+</details> 
+-->
+
+As a quick note before we get into the rest: this chapter focuses on differentiating multivariable functions and using those derivatives. Multivariable functions are defined as a function that goes from a pair or set of real numbers to a single real number.
+
+$$y = f(x)$$
+Becomes
+$$z = f(x,y)$$
+Or even
+$$s = f(x,y,z)$$
+
+### [Partial Derivatives](Sections/14/partial-derivatives.html)
+
+The partial derivative of a multivariable function depends on the direction it is taken in. The most common are the derivatives in the directions of x and y:
+
+$$f_x = \frac{d}{dx} f(x,y)$$
+$$f_y = \frac{d}{dy} f(x,y)$$
+
+This also works with higher numbers of variables:
+
+$$f_z = \frac{d}{dz} f(x,y,z)$$
+
+These derivatives can be found by simply differentiating with respect to one of the variables and treating the other as a constant
+
+<details>
+  <summary>Click to show examples</summary>
+
+**Question**  
+Find partial derivatives for the following functions:
+
+$$f(x,y) = 2x + 6y$$
+[$$f(x,y) = 2xy + 4x^2 - 5y^2x$$](https://llumen.neocities.org/projects/ray-grapher.html?eq=2xy%2B4x%5E2-5y%5E2x%3Dz&zoom=5&m=[204,-30])
+[$$f(x,y) = \sqrt{x^2 + y^2}$$](https://llumen.neocities.org/projects/ray-grapher.html?eq=z%3Dsqrt(x%5E2%2By%5E2)&zoom=5&m=[264,0])
+$$f(x,y) = y\ln{x}$$
+
+**Solution**  
+
+$$f_x = 2, f_y = 6$$
+$$f_x = 2y + 8x - 5y^2$$
+$$f_y = 2x - 10xy$$
+$$f_x = {x\over \sqrt(x^2 + y^2)}$$
+$$f_y = {y\over \sqrt(x^2 + y^2)}$$
+$$f_x = \frac{y}{x}$$
+$$f_y = \ln{x}$$
+
+</details> 
+
+Second derivatives require differentiating each part into more parts:
+
+$$f_{xx} = \frac{d}{dx} f_x$$
+$$f_{xy} = \frac{d}{dy} f_x$$
+$$f_{yx} = \frac{d}{dx} f_y$$
+$$f_{yy} = \frac{d}{dy} f_y$$
+
+<details>
+  <summary>Click to show lecture example</summary>
+
+$$z = f(x,y) = x^2y + e^{xy}$$
+$${df\over dx} = f_x = 2xy + ye^{xy}$$
+$$f_{xx} = 2y + y^2e^{xy}$$
+
+</details>
+
+#### [Chain Rule One](Sections/14/tangent_planes.html)
+
+Given a two-variable function $z = f(x,y)$, use the two portions as functions themselves. $x = g(t)$, $y = h(t)$
+$$z(t) = f(g(t),h(t))$$
+$${dz\over dt} = {\delta f\over \delta x}{dx\over dt} + {\delta f\over \delta y}{dy\over dt}$$
+
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**
+Let $z = x^2y + 3xy^4$, where $x = \sin(2t)$, $y = \cos(t)$.
+Find $dz\over dt$ at $t=0$
+
+**Solution**
+$${dz\over dt} = {\delta f\over \delta x}{dx\over dt} + {\delta f\over \delta y}{dy\over dt}$$
+$${dz\over dt} = {\delta f\over \delta x}(2\cos(2t)) + {\delta f\over \delta y}(-\sin(t))$$
+$${dz\over dt} = {\delta f\over \delta x}(2) + {\delta f\over \delta y}(0)$$
+$${dz\over dt} = (2yx + 3y^4)(2)$$
+$${dz\over dt} = (2y(t)x(t) + 3(y(t))^4)(2)$$
+$${dz\over dt} = (2y(0)x(0) + 3(y(0))^4)(2)$$
+$${dz\over dt} = (2\cos(0)\sin(0) + 3(\cos(0))^4)(2)$$
+$${dz\over dt} = (3)(2) = 6$$
+
+</details>
+
+#### [Chain Rule Two](Sections/14/more_differentiation.html)
+
+Given a two-variable function $z = f(x,y)$, use the two portions as multivariable functions themselves. $x = g(s, t)$, $y = h(s, t)$
+$${\delta z\over \delta s} = {\delta z\over \delta x} * {\delta x\over \delta s} + {\delta z\over \delta y} * {\delta y\over \delta s}$$
+$${\delta z\over \delta t} = {\delta z\over \delta x} * {\delta x\over \delta t} + {\delta z\over \delta y} * {\delta y\over \delta t}$$
+
+<details>
+  <summary>Click to show Example 3</summary>
+
+**Question**
+
+$z = e^x\sin(y)$, where $x = st^2$, $y = s^2t$. Find $\delta z\over \delta s$
+
+**Solution**
+
+$${\delta z\over \delta s} = {\delta z\over \delta x} * {\delta x\over \delta s} + {\delta z\over \delta y} * {\delta y\over \delta s}$$
+
+$${\delta z\over \delta s} = e^x\sin(y) * t^2 + e^x\cos(y) * 2st$$
+
+This is not desirable because it depends on 4 variables, so plug $st^2$ and $s^2t$ for $x$ and $y$
+
+$${\delta z\over \delta s} = e^{st^2}\sin(s^2t) * t^2 + e^{st^2}\cos(s^2t) * 2st$$
+
+</details>
+
+#### [Directional Derivative](Sections/14/directional_derivatives.html)
+
+The derivative can also be taken in a certain direction. So, we just add together the parts of the vector multiplied by the gradient. The formula for this is:
+
+$$D_{\vec u}f(x,y) = f_x(x,y) * a + f_y(x,y) * b$$
+
+Which means that the derivative in the direction of $\vec u = \langle a,b \rangle$ is equal to the partial derivatives multiplied by the components of $\vec u$
+
+#### [Gradient Vector](Sections/14/directional_derivatives.html)
+
+The gradient is the vector made of the two partial derivatives.
+
+$$\nabla f = \langle f_x f_y \rangle$$
+
+***This gradient vector defines the direction of the largest slope.***
+
+### [Local Maximum and Minimum](Sections/14/max_and_min.html)
+
+The local maximum and minimum can be found by finding critical points, then checking to see if they are max, min, saddle, or unknown
+
+#### [Critical Points](Sections/14/max_and_min.html)
+
+Critical points are all the places where $f'(x,y) = 0$.
+Meaning:
+
+$$f_x = f_y = 0$$
+
+#### [Second Derivatives Test](Sections/14/max_and_min.html)
+
+We can use the second derivative to see if they are maximums or minimums.
+
+
+$$D(x,y) = \begin{vmatrix}f_{xx} f_{xy} \\ f_{yx} f_{yy}\end{vmatrix} = f_{xx}f_{yy} - f_{xy}f_{yx}$$
+
+1. If $D(a,b) \gt 0$, we have $(a,b)$ is an extremum point.
+   1. If $f_{xx}(a,b) \gt 0$, then $f(a,b)$ is a *local minimum* (concave up)
+   2. If $f_{xx}(a,b) \lt 0$, then $f(a,b)$ is a *local maximum* (concave down)
+   3. If $f_{xx}(a,b) = 0$, then the test is inconclusive
+2. If $D(a,b) \lt 0$, then $f(a,b)$ is a *saddle point*
+3. If $D(a,b) = 0$, then the results are inconclusive
+
+Saddle points are like this:
+![Saddle illustration](Sections/14/saddle.jpg)
+
+<details>
+  <summary>Click to show example for local max and min</summary>
+
+**Question**  
+Find the local max and min of the function [$f(x,y) = 3x^2y + y^3 - 3x^2 - 3y^2 + 1$](https://llumen.neocities.org/projects/ray-grapher.html?eq=z%3D3x%5E2y%2By%5E3-3x%5E2-3y%5E2%2B1&zoom=4&m=[442,-42])
+
+**Solution**  
+First, we find the critical points of the function, then use the second derivative test to check wheter they are maximum or minimum.
+
+- find where $f_x = f_y = 0$
+- of those, find which ones $D \gt 0$ (if $D \lt 0$, it is a saddle point)
+- of those, if $f_{xx}\lt 0$, it is a **maximum**, if $f_{xx} \lt 0$, it is a **minimum**
+
+$$f_x = 6xy - 6x = 0$$
+$$f_y = 3x^2 + 3y^2 - 6y = 0$$
+
+The first equation gives that $x = 0$ or $y = 1$. By plugging those into the second equation:
+
+- if $x = 0$, $y = 0,2$
+- if $y = 1$, $x = 1,-1$
+
+These are the critical points. $(0,0),(0,2),(1,1),(-1,1)$
+
+So we test these points in the second derivative. (keep in mind that $f_{xy} = f_{yx}$)
+
+$$D = f_{xx}f_{yy} - f_{xy}f_{yx}$$
+$$D = (6y-6)^2 - (6x)^2$$
+
+- $D(0,0) = 36 \gt 0$
+- $D(0,2) = 36 \gt 0$
+- $D(1,1) = -36 \lt 0$ - it is a saddle point
+- $D(-1,1) = -36 \lt 0$ - it is a saddle point
+
+So now we test in $f_{xx}$
+
+- $f_{xx}(0,0) = -6 \lt 0$, so $(0,0)$ is a maximum
+- $f_{xx}(0,2) = 6 \gt 0$, so $(0,2)$ is a minimum
+
+</details>
+
+### [Absolute Maximum and Minimum](Sections/14/absolute_max_min.html)
+
+#### [Finding Max and Min on the Boundary of the Domain](Sections/14/absolute_max_min.html)
+
+The absolute max and min can be found by checking all local max and min point in the closed domain $D$ along with all the critical points at the edge of the domain
+
+<details>
+  <summary>Click to show example 7 (14.7)</summary>
+
+**Question**
+
+Find the absolute max and min values of the function $(x,y) = x^2-2xy+2y$ On the rectangle $D = {(x,y)|0\le x\le 3, 0\le y\le 2}$
+
+**Solution**
+
+Since $D$ is closed, an absolute max and min are obtainable.
+
+1. Find the critical points (x,y):
+   $${\delta f\over\delta x}(x,y) = 2x-2y = 0 \to x = y$$
+   $${\delta f\over\delta y}(x,y) = -2x+2 = 0\to x = 1$$
+   Therefore, $(1,1)$ is the only critical point.
+   $f(1,1) = 1^2 + 2*1*1  2*1 = 1$
+2. Find the points at the boundary of $D$
+   We split the edges into four parts:
+   $D =$
+   $${(0,y)|0\le y\le2}U$$
+   $${(x,2)|0\le x\le3}U$$
+   $${(3,y)|0\le y\le2}U$$
+   $${(x,0)|0\le x\le3}$$
+   $$0\le f(0,y)=2y\le 4$$
+   $$0\le f(x,2)=x^2-4x+4 = (x-2)^2\le 4$$
+   $$1 \le f(3,y) = 9-6y + 2y =9 - 4y\le 9$$
+   $$0 \le f(x,0) = x^2 \le 9$$
+   These points are the edges, and their max is 9 and min is 0.
+   These are at the points $(3,0)$ and $(0,0)$. These are absolute (and local) maximum and minimum respectively
+   
+
+</details>
+
+
+#### Lagrange Multipliers
+
+Lagrange multipliers are a way to find the absolute max and min of a function $f(x,y)$ given a constraint $g(x,y) = k$
+
+It states:
+
+$$f(x,y) = \lambda g(x,y)$$
+
+To solve these problems, we take the derivatives of each function and set them into these equations, and use the system of equations to solve for $x,y$
+
+$$
+\begin{cases}
+  f_x = \lambda g_x \\
+  f_y = \lambda g-Y \\
+  g(x,y) = k
+\end{cases}
+$$
+
+<details>
+  <summary>Click to show Example for Lagrange</summary>
+
+**Question**  
+Find max and min values for $f(x,y) = 8x^2 - 2y$ provided that $x^2 + y^2 = 1$ ($= g(x,y)$)
+
+*Solution*  
+First we find all the points on (x,y), with some scalar(constant) $\lambda$ that the following is true:
+
+$$
+\begin{cases}
+  \nabla f = \lambda \nabla g \\
+  g(x,y) = 1
+\end{cases}
+$$
+
+Then, we choose among the pairs (x,y) that we found that are the largest/smallest
+
+So, we comute the partial derivatives of each function, and set them equal with a scalar $\lambda$
+
+$$ f_x = \lambda g_x $$
+$$ f_y = \lambda g_y $$
+$$ ... $$
+
+So, for this we have:
+
+$$
+\begin{cases}
+  16x = 2\lambda x \\
+  -2 = 2\lambda y \\
+  x^2 + y^2 = 1
+\end{cases}
+$$
+
+**Step 1:** For the first equation, we have $x = 0$ or $\lambda = 8$. Using these in the third equation shows $y = ± 1$.
+Therefore, $(0,-1)$ and $(0,1)$ are candidates
+
+If $\lambda = 8$, then according to the second equation, $y = -1/8$. Using this in the third equation, we get $x = ±\sqrt{1 - \frac{1}{64}}$
+
+**Step 2:** Finding the candidate points for which $f(x,y)$ takes smallest and largest values.
+
+This just means we evaluate the function at each point and take the largest and smallest values.
+
+- $f(0,-1) = 8*0^2-2(-1)=2$
+- $f(0,1) = 8*0^2-2(1)=-2$
+- $f(±\sqrt{1 - \frac{1}{64}},-1/8) = 8*(1-\frac{1}{64})-2(-1/8)=8-1/8 + 1/4 = 8 + 1/8$
+
+**Answer:** The absolute max of $f(x,y)$ when $x^2 + y^2 = 1$ is equal to max$(2, -2, 8 + 1/8) = 8 + 1/8$  
+Absolute minimum is min$(2,-2,8+1/8) = -2$
+
+</details>
+
+<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
