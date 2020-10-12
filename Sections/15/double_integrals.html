@@ -1,0 +1,112 @@
+# Double Integrals
+
+## Another method of computing double integrals
+
+This type of strategy works for the following:
+
+$$\iint\limits_D f(x,y)dxdy$$
+
+$D$ is one of the following:
+
+1. Region of type one: $D = \{(x,y)|a\le x\le b, g_1(x)\le y \le g_2(x)\}$
+2. Region of type two: $D = \{(x,y)|c\le y\le d, h_1(y)\le x \le h_2(y)\}$
+
+![An example of these domains](domain_types.jpeg)
+
+Some domains are of both types at the same time. This happens when you can either use g(x) or h(y) to describe the bounds
+
+![Another example](double_domain.jpg)
+
+### Theorem / Equation
+
+If $D$ is type one, 
+
+$$D = {(x,y)|a\le x\le b, g_1(x)\le y \le g_2(x)}$$
+
+then we have:
+
+$$\iint\limits_D f(x,y)dxdy = \int\limits_a^b \left( \int\limits_{g_1(x)}^{g_2(x)} f(x,y)dy \right) dx$$
+
+The same can be done for type two:
+
+$$D = {(x,y)|c\le y\le d, h_1(y)\le x \le h_2(y)}$$
+
+$$\iint\limits_D f(x,y)dxdy = \int\limits_c^d \left( \int\limits_{h_1(y)}^{h_2(y)} f(x,y)dx \right) dy$$
+
+<details>
+  <summary>Click to show Example 1 (15.2)</summary>
+
+### Question
+Compute [$\iint\limits (x-2y)dxdy$](https://llumen.neocities.org/projects/ray-grapher.html?eq=z%3Dx-2y&zoom=15&m=[-217,-201]), where $D$ is the region that is bounded by the functions $y = 2x^2$ and $y = 1+x^2$
+
+#### Solution
+First, we figure out where the bounded region is. 
+
+![The domain](domain_one_ex.jpg)
+
+So we have that the domain is bounded by these functions from -1 to 1:
+
+$$D = {(x,y)|-1\le x\le 1, 2x^2\le y \le 1+x^2}$$
+
+So we use theorem one:
+
+$$\iint\limits_D (x + 2y)dxdy = \int\limits_{-1}^1 \left( \int\limits_{2x^2}^{1+x^2} f(x,y)dy \right) dx$$
+
+$$\int\limits_{2x^2}^{1+x^2} f(x,y)dy = (xy + y^2) |_{2x^2}^{1+x^2} = [x(1+x^2)+(1+x^2)^2] - [x(2x^2) + 4x^4]$$
+$$ = -3x^4 - x^3 + 2x^2 + x + 1 $$
+
+$$\int\limits_{-1}^1 \left( \int\limits_{2x^2}^{1+x^2} f(x,y)dy \right) dx = \int\limits_{-1}^1 (-3x^4 - x^3 + 2x^2 + x + 1)dx$$
+$$= (\frac{-3}{5}x^5 - \frac{1}{4}x^4 + \frac{2}{3}x^3 + \frac{1}{2}x^2 + x)|_{-1}^{1}$$
+
+$$\frac{-6}{5} + \frac{4}{3} + 2$$
+
+</details>
+
+<details>
+  <summary>Click to show Example 2 (15.2)</summary>
+
+### Question
+Find the volume of the solid that is under the paraboloid [$z = x^2 + y^2$](https://llumen.neocities.org/projects/ray-grapher.html?eq=z%3Dx%5E2%2By%5E2&zoom=14&m=[-24,-12]) and above the region D in the xy-plane bounded by $y=2x$ and $y=x^2$
+
+#### Solution
+First, determine the volume that is being integrated. This is the volume above the bounded area in the xy-plane, so the domain is type one (defined by two functions of x: y = f(x)), and we just need to find the bounds of $a$ and $b$ on either side. This is the solution of the two functions:
+
+$$2x = x^2$$
+$$x^2 - 2x = 0$$
+$$x = 0, x = 2$$
+
+$$a = (0,0), b = (2,4)$$
+
+$$D = \{(x,y)|0\le x\le 2, x^2 \le y \le 2x\}$$
+
+$$Volume = \iint\limits_D (x^2 + y^2)dxdy$$
+
+$$\int\limits_0^2 \int\limits_{x^2}^{2x} (x^2 + y^2)dydx$$
+
+$$\int\limits_{x^2}^{2x} (x^2 + y^2)dy = (x^2y - 1/3y^3)|_{x^2}^{2x}$$
+
+$$=\frac{1}{3}x^6-x^4+\frac{14}{3}x^3$$
+
+$$\int_0^2(\frac{1}{3}x^6-x^4+\frac{14}{3}x^3)dx = \frac{1}{21}x^7-\frac{1}{5}x^5+\frac{7}{6}x^4$$
+
+$$=\frac{716}{6}-\frac{2^7}{21}-\frac{2^5}{5}$$
+
+#### Solution 2
+
+This can also be done with domain two logic:
+
+$$h_1(y) = \frac{1}{2}y, h_2(y) = y^{1/2}$$
+
+$$D = {(x,y)|0\le x\le 4, \frac{1}{2}y\le y \le y^{1/2}$$
+$$\int\limits_0^4 \int\limits_{\frac{1}{2}y}^{y^{1/2}} (x^2 + y^2)dxdy$$
+
+</details>
+
+So to summarize this method:
+
+1. Detrmine which type of domain it is
+2. Find the edges of the bounds by finding the solutions of the bounding equations
+3. Compute the inner portion of the integral with the bounding functions
+4. Compute the outer integral with the results of the inner
+
+<script src="https://cdn.jsdelivr.net/npm/texme"></script>
