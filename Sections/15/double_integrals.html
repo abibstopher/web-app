@@ -37,7 +37,7 @@ $$\iint\limits_D f(x,y)dxdy = \int\limits_c^d \left( \int\limits_{h_1(y)}^{h_2(y
   <summary>Click to show Example 1 (15.2)</summary>
 
 ### Question
-Compute [$\iint\limits (x-2y)dxdy$](https://llumen.neocities.org/projects/ray-grapher.html?eq=z%3Dx-2y&zoom=15&m=[-217,-201]), where $D$ is the region that is bounded by the functions $y = 2x^2$ and $y = 1+x^2$
+Compute $\iint\limits$[$(x-2y)$](https://llumen.neocities.org/projects/ray-grapher.html?eq=z%3Dx-2y&zoom=15&m=[-217,-201])$dxdy$, where $D$ is the region that is bounded by the functions $y = 2x^2$ and $y = 1+x^2$
 
 #### Solution
 First, we figure out where the bounded region is. 
@@ -97,7 +97,7 @@ This can also be done with domain two logic:
 
 $$h_1(y) = \frac{1}{2}y, h_2(y) = y^{1/2}$$
 
-$$D = {(x,y)|0\le x\le 4, \frac{1}{2}y\le y \le y^{1/2}$$
+$$D = \{(x,y)|0\le x\le 4, \frac{1}{2}y\le y \le y^{1/2}\}$$
 $$\int\limits_0^4 \int\limits_{\frac{1}{2}y}^{y^{1/2}} (x^2 + y^2)dxdy$$
 
 </details>
@@ -108,5 +108,32 @@ So to summarize this method:
 2. Find the edges of the bounds by finding the solutions of the bounding equations
 3. Compute the inner portion of the integral with the bounding functions
 4. Compute the outer integral with the results of the inner
+
+<details>
+  <summary>Click to show example 5 (15.2)</summary>
+
+### Question
+Evaluate the iterated integral $\int\limits_0^1\int\limits_x^1$[$sin(y^2)$](https://llumen.neocities.org/projects/ray-grapher.html?eq=z%3Dsin(y%5E2)&zoom=7&m=[-89,-23])$dydx$
+
+#### Solution
+$$\int\limits_0^1\int\limits_x^1 \sin(y^2)dydx$$
+This integral cannot be nicely integrated, requiring conversion to a Talor polynomial.
+$$f(y) = sin(y^2)$$
+$$\int\limits_x^1f(y)dy = \int\limits_x^1\sum\limits_{n=0}^\infty {f^{(n)}(0)\over n!}*y^n dy$$
+$$\sum\limits_{n=0}^\infty {f^{(n)}(0)\over n!}\int\limits_x^1 y^n dy$$
+
+Instead, we rewrite it as a couble integral:
+
+$$\iint\limits_D \sin(y^2)dydx$$
+$$D = \{(x,y)|0\le x\le 1, x\le y\le 1\}$$
+This is both a type one and type two domain:
+$$D = \{(x,y)|0\le y\le 1, 0\le x\le y\}$$
+
+$$\iint\limits_D \sin(y^2)dydx = \int\limits_0^1\int\limits_0^y \sin(y^2)dxdy$$
+$$= x\sin(y^2)|_0^y = y\sin(y^2)dy$$
+$$\int \limits_0^1 y\sin(y^2)dy = -\frac{1}{2}\cos{1} - (1)\frac{1}{2}\cos{0}$$
+$$ = \frac{1}{2}(1 - cos(1))$$
+
+</details>
 
 <script src="https://cdn.jsdelivr.net/npm/texme"></script>
