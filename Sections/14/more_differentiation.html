@@ -1,3 +1,5 @@
+# More Differentiation
+
 ## Chain Rule 2
 
 if: $z = f(x,y)$, $x = g(s,t)$, $y = h(s,t)$
@@ -38,7 +40,7 @@ If we denote $x =t$, $y=h(x)=h(t)$
 Then, $g(t) = F(t,h(t)) = 0$
 By Chain Rule 1,
 $${dg\over dt} = {\delta F\over \delta x} * {dx\over dt} + {\delta F\over \delta y}*{dy\over dt} = 0$$
-$${dy\over dt} = {dy\over dx} = -{{\delta F\over \delta x}\over{\delta F\over \delta y}} = - {Fx\over Fy}$$
+$${dy\over dt} = {dy\over dx} = -\frac{\delta F\over \delta x}{\delta F\over \delta y} = - {Fx\over Fy}$$
 $$(Fy \ne 0)$$
 
 <details>
@@ -81,4 +83,5 @@ Given the function $z = f(x,y)$, and its partial derivatives $f_x(x_0,y_0$, $f_y
 $$D_uf(x_0,y_0) = \lim\limits_{h\to 0}{f(x_0 + ha, y_0 + hb) - f(x_0,y_0)\over h}$$
 This is showing the limit as a point displaced from $(x_0,y_0)$ by $h$ amount along the vector $u$, or $\langle a,b\rangle$,
 
-<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/texme"></script>
+<link rel="stylesheet" href="/source/theme.css">

@@ -1,0 +1,47 @@
+body {
+  background: #222;
+  color: #ddd;
+}
+main {
+  box-sizing: border-box;
+  width: 80vw;
+  max-width: 50em;
+  background: #333;
+  box-shadow: 2px 2px 4px 4px #0005;
+  padding: 2em;
+}
+
+h1 {
+  width: 60%;
+  font-variant: small-caps;
+  margin: auto;
+  text-align: center;
+  border-bottom: 4px double #ddd;
+}
+
+h2 {
+  border-bottom: 1px solid #ddd;
+}
+
+img {
+  margin: auto;
+  display: flex;
+}
+
+a:link,
+a:visited {
+  color: #6497e6 !important;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  main {
+    width: 100%;
+    margin: 0;
+    box-shadow: none;
+  }
+}
