@@ -1,0 +1,107 @@
+# Double Integrals in Polar Coordinates
+
+Long story short, if you want to do double integrals in polar coords, you need to follow this formula (where $R$ is a domain represented by a polar rectangle):
+
+$$\iint\limits_R f(x,y)dxdy = \int\limits_\alpha^\beta\int\limits_a^b f(r\cos\theta, r\sin\theta)rdrd\theta$$
+
+## Areas of Regions (side note)
+
+Given a domain $D$ in the xy-plane, we want to find the area. To find it, we willl be using the fact that the area of $D$ is equal to the volume of the solid made by extruding the domain by 1.
+
+$$D = \iint\limits_D 1dxdy$$
+
+## Polar coordinates
+
+A shape in 2-D space represented by the angles $\alpha$ and $\beta$ on each side and the distances $a$ and $b$ is called a polar rectangle. This is because in polar coordinates, the description is the same as a normal rectangle:
+
+$$R = \{(r,\theta)|\alpha\le\theta\le\beta, a\le r \le b\} = [\alpha, \beta]\times[a,b]$$
+
+The main topic of this lecture is the following:
+
+Computing the double integral of a polar rectangle.
+
+$$\iint\limits_R f(x,y)dxdy$$
+
+## Explaining the integral
+
+We can divide the rectangle above into smaller and smaller divisions based on the angle and the radius.
+
+![An example](polar_divided.jpeg)
+
+This allows us to treat it like a normal rectangle where we add up the sums of many small areas divided in the x and y directions. So, we take the same approach. We divide $R$ into many small regions $R_{ij}$ and multiply them by the height of the function $f(x_0,y_0)$ add them up:
+
+$$R = \cup R_{ij} \rightarrow \iint\limits_R f(x,y)dxdy = \sum\limits_{i=1}^n\sum\limits_{j=1}^n\iint\limits_{R_{ij}}f(x,y)dxdy$$
+
+The idea is if $R_{ij}$ is very small, then we can assume that the area of it is constant in that region and that its sides are straight lines.
+
+The corner points of $R_{ij}$ are given by:
+
+$$
+\begin{cases}
+  x_0 = r_i\cos\theta_j \\
+  y_0 = r_i\sin\theta_j
+\end{cases}
+$$
+
+So we can use that in the equation to find the height of $f$ in the portion we are finding the area of (keep in mind that this height is a constant, so we can factor it out):
+
+$$\iint\limits_{R_{ij}} f(x_0, y_0)dxdy = f(x_0,y_0) \iint\limits_{R_{ij}}1dxdy$$
+
+Since we discussed above that $\iint\limits_{R}1dxdy$ is equal to the area of $R$:
+
+$$ = f(x_0, y_0) (Area\nobreakspace R_{ij})$$
+
+This is useful because we can find the area with some basic geometry. Assuming that for very small values, the sides of the area can all be approximated by straight lines. That means we can use two triangles to approximate the area, subtracting the inner region of a small slice of the rectangle from the outer region.
+
+$$R \approxeq \frac{1}{2}r_i^2\sin(\theta_j - \theta_{j-1}) - \frac{1}{2}r_{i-1}^2\sin(\theta_j - \theta_{j-1})$$
+
+If we denote that $\theta_j - \theta_{j-1}$ is the change in $\theta$, or $\Delta\theta$, we can further approximate and eliminate the $\sin$. (The $\sin$ can be removed because we are approximating and when $\theta$ is very small, $\sin\theta$ approaches the value of $\theta$)
+
+$$\frac{1}{2}r_i^2\sin(\Delta \theta_j) - \frac{1}{2}r_{i-1}^2\sin(\Delta \theta_j)$$
+
+$$\frac{1}{2}(r_i^2 - r_{i-1}^2)\sin(\Delta \theta_j)$$
+$$\frac{1}{2}(r_i^2 - r_{i-1}^2)\Delta \theta_j$$
+$$\frac{1}{2}(r_i + r_{i-1})(r_i - r_{i-1})\Delta \theta_j$$
+$$\frac{1}{2}(r_i + r_{i-1})\Delta r_i \Delta \theta_j$$
+
+Since $\frac{1}{2}(r_i + r_{i-1})$ is the center of the area, we can approximate it as $r_i$
+
+$$R = r_i\Delta r_i \Delta \theta_j$$
+
+So we can get that the double integral is equal to the sum of all of these infinitely small areas multiplied by the height to get volume:
+
+$$\iint\limits_R f(x,y)dxdy = \sum\limits_{i=1}^n\sum\limits_{j=1}^n\iint\limits_{R_{ij}}f(x,y)dxdy$$
+
+$$ = \lim\limits_{\begin{cases}\Delta\theta_j\to0\\\Delta r_i\to0\end{cases}}\sum\limits_{i=1}^n\sum\limits_{j=1}^n f(r_i\cos\theta_j, r_i\sin\theta_j)r_i\Delta r_i \Delta \theta_j$$
+
+And by the definition of an integral, that is:
+
+$$\int\limits_\alpha^\beta\int\limits_a^b f(r\cos\theta, r\sin\theta)rdrd\theta$$
+
+## Conclusion
+
+If $R$ is  polar rectangle given by 
+
+$$R = \{(r,\theta)|\alpha\le\theta\le\beta, a\le r \le b\} = [\alpha, \beta]\times[a,b]$$
+ Then
+
+$$\iint\limits_R f(x,y)dxdy = \int\limits_\alpha^\beta\int\limits_a^b f(r\cos\theta, r\sin\theta)rdrd\theta$$
+
+It may look strange to have and extra $r$ in the integral, but that results from the equation to find the area of the small divisions. \
+
+![An explanation of above](conversion.jpeg)
+
+## More investigation
+
+We can take the inner portion of the equation, $f(r\cos\theta, r\sin\theta)r$, and represent it as $h(r,\theta)$. This gives:
+
+$$\int\limits_\alpha^\beta\int\limits_a^b h(r,\theta)drd\theta$$
+
+This can be integrated as a standard rectangle, where the ends are $[\alpha, \beta]\times[a,b]$.
+
+$$= \iint\limits_{[\alpha, \beta]\times[a,b]} h(x,y)dxdy$$
+
+This means we are able to convert a polar rectangle to a normal rectangle.
+
+<script src="https://cdn.jsdelivr.net/npm/texme"></script>
+<link rel="stylesheet" href="/source/theme.css">
