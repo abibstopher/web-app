@@ -1,0 +1,64 @@
+# Examples of Polar Integrals
+
+## Review
+
+Remember that we learned the integral of $f(x,y)$ over a polar rectangle $R$ is:
+
+$$\iint\limits_R f(x,y)dxdy = \int\limits_\alpha^\beta \int\limits_a^b f(r\cos(\theta), r\sin(\theta))r drd\theta$$
+
+Where $r,\theta$ can represent polar coordinates as an angle and distance.
+
+<details>
+  <summary>Click to show example 1</summary>
+
+### Question 1 (Sec. 15.3)
+Find $\iint\limits_R$[$(3x+4y^2)$](https://llumen.neocities.org/projects/ray-grapher.html?eq=z%3D3x%2B4y%5E2&zoom=3&m=[194,2])$dxdy$, where $R$ is the region in the upper-half plane bounded by the circles $x^2 + y^2 = 1$ and $x^2 + y^2 = 2^2$
+
+#### Solution
+First we determine the domain. In this case, the area is a polar rectangle bounded by $r = 1, 2$ and $\theta = 0, \pi$
+
+$$R = \{(r,\theta)|1\le r\le 2, 0 \le \theta \le \pi\} = [1,2]\times[0,\pi]$$
+
+![The domain](domain_polar_one.jpeg)
+
+So we can use the formula:
+
+$$\iint\limits_R (3x+4y^2)dxdy = \int\limits_0^\pi \int\limits_1^2 (3r\cos\theta+4(r\sin\theta)^2)r drd\theta$$
+$$= \int 3r^2\cos\theta + 4r^3\sin^2\theta$$
+$$= [r^3\cos\theta + r^4\sin^2\theta]|_1^2$$
+$$= \int\limits_0^\pi [7\cos\theta + 15\sin^2\theta]d\theta$$
+$$\int sin^2\theta = \int {1-\cos2\theta\over 2}$$
+$$= [7\sin\theta + \frac{15}{2}(\theta - \frac{1}{2}\sin2\theta)]|_0^\pi$$
+$$= \frac{15}{2}\pi$$
+
+</details>
+
+
+<details>
+  <summary>Click to show example 2</summary>
+
+### Question 2
+Find the volume of the [solid](https://llumen.neocities.org/projects/ray-grapher.html?eq=(z)(1-x%5E2-y%5E2-z)&zoom=3&m=[42,-43]) bounded by the plane $z = 0$ and the pararboloid $z = 1-x^2 - y^2$
+
+#### Solution
+First, we determine the bounds. Since the volume is a dome, the domain $R$ is a circle with a radius of where the paraboloid intersects $z=0$, which is $1$:
+
+![domain two](domain_polar_two.jpeg)
+
+$$R = \{(r,\theta)|0\le r \le 1, 0 \le \theta \le 2\pi\} = [0,1]\times[0,2\pi]$$
+
+$$\iint\limits_D (1-x^2 - y^2)dxdy = \int\limits_0^{2\pi}\int\limits_0^1 (1-(r\cos\theta)^2 - (r\sin\theta)^2)rdrd\theta$$
+$$ = (1 - r^2(\cos^2\theta + \sin^2\theta))$$
+$$=\int_0^1 (1 - r^2)rdr$$
+$$\left(\frac{1}{2}r^2 - \frac{1}{4r^4}\right)|_0^1$$
+$$= \int\limits_0^{2\pi}\frac{1}{4}d\theta$$
+$$= \frac{\pi}{2}$$
+
+</details>
+
+## Preview of next lecture
+
+Next lecture we will be covering domains that are polar and have a variable radius or angle bounds.
+
+<script src="https://cdn.jsdelivr.net/npm/texme"></script>
+<link rel="stylesheet" href="/source/theme.css">
