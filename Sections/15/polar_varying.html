@@ -1,0 +1,38 @@
+# Varying Polar Integrals
+
+These are the polar version of the integrals bounded by a function. The domain looks like this:
+
+$$R = \{(r,\theta)|\alpha\le\theta\le\beta, h_1(\theta)\le r \le h_2(\theta)\} = [\alpha, \beta]\times[a,b]$$
+
+So, the integral looks like this:
+
+$$\iint \limits_R f(x,y)dxdy = \int\limits_\alpha^\beta \int \limits_{h_1(\theta)}^{h_2(\theta)} f(x,y)dxdy$$
+
+## Examples
+
+<details>
+  <summary>Click to show Example 3 (Sec 15.3)</summary>
+
+### Question 3 (Sec 15.3)
+Use a double integral to find the area enclosed by one loop of the four-leaved rose $r = \cos2\theta$.
+
+#### Solution
+We are not given much information, so we just place the information we do have into the formula. First, lets see what it looks like.
+
+![Domain](domain_polar_three.jpeg)
+
+$$R = \{(r,\theta)|-\frac{\pi}{4}\le\theta\le\frac{\pi}{4}, 0 \le r \le \cos2\theta\}$$
+
+Since we are finding the area, we can set the function as $1$ (see previous lecture notes for the explanation).
+
+$$Area = \iint\limits_R 1dxdy = \int\limits_{-\pi/4}^{\pi/4}\int\limits_0^{\cos2\theta} rdrd\theta$$
+$$1/2r^2|_0^{\cos2\theta}$$
+$$\int 1/2 \cos^2 2\theta d\theta$$
+$$1/2 \int {1 + \cos4\theta\over 2}d\theta$$
+$$1/4 * (\theta + 1/4\sin(4\theta))|_{-\pi/4}^{\pi/4}$$
+$$1/4 * (\pi/4 - (-\pi/4)) = \pi/8$$
+
+</details>
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">

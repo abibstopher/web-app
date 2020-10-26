@@ -1,0 +1,115 @@
+# Surface Area
+
+## Summary
+
+Essentially, we are adding together all of the squares on top of the surface. This can be done through a certain cross product formula that leads to the following equation:
+
+$$SA=\iint\limits_R \sqrt{f_x^2 + f_y^2 + 1}dxdy$$
+
+## Prior formulas
+
+These will be useful to deriving the above equation.
+
+A parlellogram is equal to 2 times the triangles that make it up. Also, the area of a triangle can be found as:
+
+$$\triangle ABD = \frac{1}{2}|AB||AD|\sin(\theta)$$
+
+So the paralellogram $ABCD$ can be found as:
+
+$$\Box ABCD = 2\triangle ABD = |AB||AD|\sin(\theta)$$
+
+If the angles are at 90 deg, then $\sin(\theta) = 1$, meaning:
+
+$$\Box ABCD = |AB||AD|$$
+
+This time, we are going to find the surface area of a function in a given region:
+
+![surface drawing](surface_area.jpeg)
+
+## Finding the area
+
+Essentially, we are finding the sum of all the rectangles on top of the function. 
+
+$$Area = \lim\limits_{\begin{aligned}\Delta x_i \to 0\\\Delta y_j\to0\end{aligned}}\sum\limits_{i = 1}^n\sum\limits_{j = 1}^m (Area\nobreakspace T_{ij})\begin{bmatrix}\Delta x_i = x_{i+1} - x_i \\\Delta y_j = y_{j+1} - y_j\end{bmatrix}$$
+
+The rectagles are simply parallelograms which have perpendicular sides. The areas of these rectangles can be defined as:
+
+$$T_{ij} = |\vec a\times\vec b|$$
+
+Given $\vec a$ and $\vec b$ are the sides of $T_{ij}$, defined as:
+
+$$\vec a = \langle x_i, x_{i+1} \rangle$$
+$$\vec b = \langle y_j, y_{j+1} \rangle$$
+
+Then the rectangle $R$ which actually rests on the surface is defined as
+
+$$R_{ij} = |\vec u\times\vec v|$$
+$$\vec u = \langle\Delta x_i,0,0\rangle$$
+$$\vec v = \langle0,\Delta y_j,0\rangle$$
+
+And we can get this by using the change in height of z
+
+$$\vec a = \vec u + |\vec u|f_x(x_i,y_j)$$
+$$\vec b = \vec v + |\vec v|f_y(x_i,y_j)$$
+
+To get:
+
+$$\vec a = \Delta x_i\hat i + f_x(x_i,y_j)\Delta x_i \hat k$$
+$$\vec b = \Delta y_j\hat j + f_y(x_i,y_j)\Delta x_i \hat k$$
+
+So the area of T_{ij} is:
+
+$$
+|\vec a\times\vec b| = \begin{vmatrix}
+  i & j & k \\
+  \Delta x_i & 0 & f_x (\Delta x_i) \\
+  0 & \Delta y_j & f_y(\Delta y_j)
+\end{vmatrix}
+$$
+
+$$=|\hat i(-f_x\Delta x_i\Delta y_j)-\hat j(f_y\Delta x_i\Delta y_j) + \hat k(\Delta x_i\Delta y_j)|$$
+$$=\sqrt{(-f_x\Delta x_i\Delta y_j)^2 + (f_y\Delta x_i\Delta y_j)^2 + (\Delta x_i\Delta y_j) ^ 2}$$
+$$=\sqrt{f_x^2 + f_y^2 + 1}*\Delta x_i\Delta y_j$$
+
+$$Area = \lim\limits_{\begin{aligned}\Delta x_i \to 0\\\Delta y_j\to0\end{aligned}}\sum\limits_{i = 1}^n\sum\limits_{j = 1}^m \sqrt{f_x^2 + f_y^2 + 1}\Delta x_i\Delta y_j$$
+
+So the final eqution is
+
+$$=\iint\limits_R \sqrt{f_x^2 + f_y^2 + 1}dxdy$$
+
+The easiest way to remember this is to elate it to the 2-D example, where the length of a curve is given as:
+
+$$\int\limits_a^b\sqrt{1 + f'(x)^2}dx$$
+
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question 1 (Sec 15.5)
+Find the surface area of the part of the surface given by $z = x^2 + 2y$ that lies above the plane with vertices $(0,0),(1,0),(1,1)$
+
+#### Solution
+Let us first draw the area that we are trying to find to visualize it:
+
+![A visualization of the area](triangle_example.jpeg)
+
+So we apply the formula above:
+
+$$Area = \iint\limits_T \sqrt{f_x^2 + f_y^2 + 1}dxdy$$
+$$Area = \iint\limits_T \sqrt{4x^2 + 4 + 1}dxdy$$
+$$Area = \iint\limits_T \sqrt{4x^2 + 5}dxdy$$
+
+Then we can find the region of T (both type1 and 2):
+
+$$T = \{(x,y)|0\le x\le1, 0\le y \le x\}$$
+
+And integrate:
+
+$$Area = \int\limits_0^1\int\limits_0^x \sqrt{4x^2 + 5}dydx$$
+$$= y\sqrt{4x^2 + 5}|_0^x$$
+$$= x\sqrt{4x^2 + 5}$$
+$$\int\limits_0^1 x\sqrt{4x^2 + 5}dx$$
+
+</details>
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
