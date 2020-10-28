@@ -1,0 +1,95 @@
+# Triple Integrals
+
+These integrals are just a generalization of double integrals.
+
+## Notation
+
+$$\iiint\limits_D f(x,y,z)dxdydz = \iiint\limits_D f(x,y,z)dV$$
+
+Where $D \in  ℝ^3$ is a 3D region, and $dV$ stands for change in volume.
+
+Assuming $D$ is a rectangular box given by:
+
+$$D = \{(x,y,z)|a\le x\le b, c\le y\le d, e\le z\le f\}$$
+
+$D$ can also be defined as $[a,b],[c,d],[e,f]$
+
+## Computation
+
+To find this integral, we break the volume up into small cubes, instead of squares or lines like a two- or one-dimensional integral. So we can define the integral as the sum of all of these cubes, or the sum of their multiplied sides and the function:
+
+$$\iiint\limits_D f(x,y,z)dV = \lim\limits_{\begin {cases}\Delta x_i \to 0\\\Delta y_j \to 0\\\Delta z_l \to 0\end{cases}}\sum\limits_{i=1}^n\sum\limits_{j=1}^m\sum\limits_{l=1}^k f(x_i, y_j, z_l)\Delta x_i\Delta y_j\Delta z_l$$
+
+Where 
+
+$$\Delta x_i = x_i - x_{i-1}$$
+$$\Delta y_j = y_j - y_{j-1}$$
+$$\Delta z_l = z_l - z_{l-1}$$
+
+Since $\Delta x_i\Delta y_j\Delta z_l$ represents the volume of each individual box, you can see why we shorten it to $dV$.
+
+To explain this relationship more intuitively, the function $f(x,y,z)$ can be visualized as a density function, where is gives the value of the density in some point in space. For example, $f(x,y,z) = {1\over x+y+z}$ would be very dense in the center (near the origin), and gradually decrease as the distance from the center increases.
+
+### Fubini's Theorem for Triple Integrals
+If $D = [a,b],[c,d],[e,f]$, then:
+
+$$\iiint\limits_D f(x,y,z)dV = \int\limits_a^b\int\limits_c^d\int\limits_e^f f(x,y,z)dzdydx = \left(\int\limits_a^b\left(\int\limits_c^d\left(\int\limits_e^f f(x,y,z)dz\right)dy\right)dx\right)$$
+
+The order of these integrals can be rearranged as necessary, but the boundaries of each variable must be paired with it in the integration.
+
+$$\int\limits_e^f\int\limits_c^d\int\limits_a^b f(x,y,z)dxdydz$$
+
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question 1 (sec 15.6)
+Find the triple integral $\iiint\limits_B xyz^2dV$, where B is the rectangular box $[0,1],[-1,2],[0,3]$
+
+#### Solution
+
+$$\iiint xyz^2dV = \int\limits_0^1\int\limits_{-1}^2\int\limits_0^3 xyz^2dzdydx$$
+
+$$\int\limits_0^3 xyz^2dz = \frac{1}{3}xyz^3|_0^3$$
+
+$$\int\limits_{-1}^2 9xydy = \frac{9}{2}xy^2|_{-1}^2$$
+
+$$\int\limits_0^1 \left(18x - \frac{9}{2}x\right)dx$$
+
+$$9x^2 - \frac{9}{4}x^2|_0^1 = 9-\frac{9}{4}$$
+
+$$\frac{27}{4}$$
+
+</details>
+
+## Type 1,2, and 3 Domains
+
+### Type 1
+
+The domain $D\in  ℝ^3$ is said to be type 1 if it can be given as
+
+$$D = \{(x,y,z)|(x,y)\in ℝ, h_1(x,y)\le z\le h_2(x,y)\}$$
+
+This means that z is not a constant value, but a function.
+
+![A visual example](type_one_three_dim.jpg)
+
+So, we can insert these functions into the normal formula:
+
+$$\iiint\limits_D f(x,y,z)dV = \iint\limits_R\int\limits_{h_1(x,y)}^{h_2(x,y)} f(x,y,z)dzdydx = \int\limits_a^b\int\limits_c^d\int\limits_{h_1(x,y)}^{h_2(x,y)} f(x,y,z)dzdydx$$
+
+So we first integrate the inner integral, which leaves us with a double integral.
+
+### Type 2 and 3
+
+This is just where instead of $z$ being defined by a function, it is $x$ or $y$ 
+
+$$D = \{(x,y,z)|(y,z)\in ℝ, h_1(x,y)\le x\le h_2(x,y)\}$$
+
+$$\iiint\limits_D f(x,y,z)dV = \iint\limits_R\int\limits_{h_1(x,y)}^{h_2(x,y)} f(x,y,z)dxdydz$$
+
+$$D = \{(x,y,z)|(x,z)\in ℝ, h_1(x,y)\le y\le h_2(x,y)\}$$
+
+$$\iiint\limits_D f(x,y,z)dV = \iint\limits_R\int\limits_{h_1(x,y)}^{h_2(x,y)} f(x,y,z)dydxdz$$
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
