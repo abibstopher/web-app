@@ -1,0 +1,103 @@
+# Triple Integrals In Spherical Coordinates
+
+## Explaining Spherical Coordinates
+
+Similar to cylindrical coordinates, spherical coordinates represent part of the cartisian coordinate system as polar representations. In this case, however, the entire set is polar, instead of just $xy$. This means a point in polar coordinates is represented by:
+
+
+$$P = (\rho, \theta\ \phi)$$
+
+![An example of spherical coords](spherical.jpeg)
+
+### Equations in polar coordinates
+
+Similar to normal polar coordinates, spherical coordinates can be used in functions. For example, the equation [$\rho = C$](https://llumen.neocities.org/projects/ray-grapher.html?eq=r%3Dv&zoom=4&m=[-28,-23]&v=2) is the equation representing a sphere. Similarly, $\rho \lt C$ is a solid sphere.
+
+This shows that polar coordinates are very useful for showing round objects with simplicity.
+
+Another example: [$\rho\cos\phi = 1$](https://llumen.neocities.org/projects/ray-grapher.html?eq=rcos(phi)%3D1&zoom=10&m=[0,-25]) This exuation can be interpreted as $z = 1$, because when converting from polar to cartesian, $z = \rho\cos\phi$
+
+In this case, the equation should have been left as cartesian, because it becomes more complex in polar coordinates.
+
+A final example: [$\rho = \cos\phi$](https://llumen.neocities.org/projects/ray-grapher.html?eq=r%3Dcos(phi)&zoom=2&m=[69,-7]) In this case, the object ends up being sphereical object not centered at the origin, an equation that would be more complex in cartesian coordinates.
+
+### Conversion
+
+Cartesian coordinates can be converted to spherical using the following relationships:
+
+$$
+\begin{cases}
+  x = \rho\cos\theta\sin\phi \\
+  y = \rho\sin\theta\sin\phi \\
+  z = \rho\cos\phi 
+\end{cases}
+\cong
+\begin{cases}
+  \rho = z^2 + y^2 + z^2 \\
+  \theta = \arctan(y/x) \\
+  \phi = \arccos(\rho/z)
+\end{cases}
+$$
+
+These come from the fact that trigonometric identities can be used by representing this point as a pair of triangles: $xy$ and $\theta z$
+
+![An illustration](spherical_conv.jpeg)
+
+We can find $a$ as 
+
+$$a = {x\over\cos\theta} = \rho\sin\phi$$
+
+So we can find that
+
+$$x = \rho\cos\theta\sin\phi$$
+
+Similarly,
+
+$$y = \rho\sin\theta\sin\phi$$
+
+$z$ is simpler, as it can be found with just the first triangle:
+
+$$z = \rho\cos\phi$$
+
+### Example
+
+[$z = x^2 y^2$](https://llumen.neocities.org/projects/ray-grapher.html?eq=z%3Dx%5E2y%5E2&zoom=10&m=[-100,-73]&v=1) in spherical coords is:
+
+$$\rho\cos\phi = (\rho\sin\phi\cos\theta)^2 + (\rho\sin\phi\sin\theta)^2$$
+
+$$\cos\phi = \rho^3\sin^4\phi\sin^2\theta\cos^2\theta$$
+
+## Spherical Integrals
+
+### Domains
+
+First, let's represent a domain in spherical coords:
+
+$$E = \{(\rho, \theta\phi) | a \le \rho \le b, \alpha \le \theta \le \beta, c \le \phi \le d\}$$
+
+This can be calles a spherical rectangular box, or more accurately, a spherical wedge.
+
+### Integrals
+
+These can be represented as:
+
+$$\iiint\limits_E f(x,y,z)dV = \int\limits_a^b\int\limits_{\alpha}^{\beta}\int\limits_c^d f(\rho\cos\theta\sin\phi, \rho\sin\theta\sin\phi, \rho\cos\phi) \rho^2\sin\phi\ d\rho d\theta d\phi$$
+
+Note that it is multiplied by $\rho^2\sin\phi$ in the second, similar to conversion to polar in double integrals.
+
+### Example
+
+Compute $\iiint\limits_E y^2\ dV$ where $E$ is the solid hemisphere given by $x^2 + y^2 + z^2 \lt 9$, $y \ge 0$
+
+First, let's convert the domain to spherical coords. Since $\rho^2 = x^2 + y^2 + z^2$, we can see that $0\le\rho\le3$. By visualizing the domain, we can deduce that $0\le \theta\le\pi$ and $0\le\phi\le\pi$.
+
+By the above equation:
+
+$$\iiint\limits_E y^2dV = \int\limits_a^b\int\limits_{\alpha}^{\beta}\int\limits_c^d (\rho\sin\theta\sin\phi)^2\ \rho^2\sin\phi\ d\rho d\theta d\phi$$
+
+$$\int\limits_a^b\int\limits_{\alpha}^{\beta}\int\limits_c^d \rho^4\sin^2\theta\sin^3\phi\ d\rho d\theta d\phi$$
+
+This can now be integrated normally
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
