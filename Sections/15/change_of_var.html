@@ -1,0 +1,207 @@
+# Change of Variables in Multiple Integrals
+
+In the previous lectures, we mentioned how you can substitute various polar coordinates into normal integrals. This will explain how we can summarize the method of this substitution.
+
+Ex:
+
+$$\iiint\limits_E f(x,y,z)dV = \int_a^b\int_{\alpha}^\beta \int_c^d f(r\cos\theta, r\sin\theta, z) r\ dzd\theta dr$$
+
+$$
+(x,y,z) \to (r,\theta,z) \because 
+\begin{cases}
+  x = r\cos\theta \\
+  y = r\sin\theta \\ 
+  z = z
+\end{cases}
+$$
+
+## Transformation of Coordinate Systems
+
+So we can define a transformation formula $T: (x,y) \to (u,v)$ as:
+
+$$
+T:
+\begin{aligned}
+  x = g(u,v) \\
+  y = h(u,v)
+\end{aligned}
+$$
+
+Where $g$ and $h$ have an inverse and are continuous and differentiable.
+
+This works by mapping each point $(x,y)$ in one coordinate system to another point $(u,v)$ in the other coordinate system. This mapping should be one-to-one, requiring the functions to have a valid inverse.
+
+$$
+\begin{aligned}
+  u = g^{-1}(x,y) \\
+  v = h^{-1}(x,y)
+\end{aligned}
+$$
+
+<details>
+  <summary>Click to show Example</summary>
+
+### Question
+
+Let $T$ be $x = u^2$ and $y = v$. If $S$ is a triangular region with vertices $(0,0),(1,1),(0,1)$, find the region $R$ in (x,y)-coordinates that corresponds to $S$ with $T$.
+
+#### Solution
+
+First, lets visualize $S$:
+
+![The region S](triangle_conversion.jpeg)
+
+With $T$, "curves go to curves", meaning each line or side in $S$ will turn into a curve bordering region $R$. So, we need to define these curves.
+
+For the left side, $x = 0$ turns to $u = \sqrt{x} = 0$ In addition, it goes from $y = 0$ to $y = 1$. So, $v$ is from $[0,1]$ ($v = y$). So, the side is just a straight line from (0,0) to (0,1).
+
+Similarly, the top line will be straight, and have ends (0,1) and (1,1).
+
+The slanted line is slightly more complex. Since it is $y = x$, we can substitute and get $v = u^2$, with ends from (0,0) to (1,1)
+
+</details>
+
+## Use with Integrals
+
+### Theorem
+
+If $T$ is a transformation of (x,y)-coorinate system to the (u,v)-coordinate system given by $x = g(u,v)$, $y(u,v)$, then
+
+$$\iint\limits_R f(x,y)dxdy = \iint\limits_S f(g(u,v), h(u,v)) \left|{\delta(x,y)\over\delta(u,v)}\right| dudv$$
+
+Where $\left|{\delta(x,y)\over\delta(u,v)}\right|$ is called a Jacobian and $R$ and $S$ are the regions in the respective systems, following a similar transformation to the one above.
+
+A **Jacobian** is:
+
+$$
+\left|{\delta(x,y)\over\delta(u,v)}\right| = 
+\begin{vmatrix}
+  {\delta x\over\delta u} && {\delta x\over\delta v} \\
+  {\delta y\over\delta u} && {\delta y\over\delta v}
+\end{vmatrix}
+= {\delta x\over\delta u} {\delta y\over\delta v} - {\delta x\over\delta v} {\delta y\over\delta u}
+$$
+
+Or more generally, 
+
+$$
+\begin{vmatrix}
+  {\delta g(u,v)\over\delta u} &&{\delta g(u,v)\over\delta v} \\
+  {\delta h(u,v)\over\delta u} &&{\delta h(u,v)\over\delta v}
+\end{vmatrix}
+$$
+
+So, as an example:
+
+$$\iint\limits_D f(x,y)dxdy = \iint\limits_{[a,b]\times[\alpha,\beta]} f(r\cos\theta, r\sin\theta)r\ drd\theta$$
+
+$$
+\begin{aligned}
+  x = r\cos\theta \\
+  y = r\sin\theta
+\end{aligned}
+$$
+
+So we can use the formula above to get:
+
+$$\iint\limits_S f(r\cos\theta, r\sin\theta) \left|{\delta(x,y)\over\delta(u,v)}\right| drd\theta$$
+
+So the Jacobian is:
+
+$$
+\begin{vmatrix}
+  {\delta (r\cos\theta)\over\delta r} &&{\delta (r\cos\theta)\over\delta \theta} \\
+  {\delta (r\sin\theta)\over\delta r} &&{\delta (r\sin\theta)\over\delta \theta}
+\end{vmatrix}
+=
+\begin{vmatrix}
+  {\cos\theta} &&{-r\sin\theta} \\
+  {\sin\theta} &&{r\cos\theta}
+\end{vmatrix}
+$$
+$$
+= 
+\cos\theta r\cos\theta + r\sin\theta\sin\theta
+= 
+r(\cos^2\theta + \sin^2\theta)
+=
+r
+$$
+
+And for three dimensions the Jacobian can be represented as
+
+$$
+{\delta (x,y,z)\over\delta (u,v,w)}
+=
+\begin{vmatrix}
+  {\delta x\over\delta u} && {\delta x\over\delta v} && {\delta x\over\delta w} \\
+  {\delta y\over\delta u} && {\delta y\over\delta v} && {\delta y\over\delta w} \\
+  {\delta z\over\delta u} && {\delta z\over\delta v} && {\delta z\over\delta w} 
+\end{vmatrix}
+$$
+
+<details>
+  <summary>Click to show Example</summary>
+
+### Question
+
+The transformation:
+
+$$
+\begin{cases}
+  x = \frac{1}{4}(v + u)\\
+  y = \frac{1}{4}(v - 3u)
+\end{cases}
+$$
+
+$$R = \Box (-1,3),(1,-3),(1,5),(3,-1)$$
+
+Compute $\iint\limits_R(4x + 8y)dxdy$ by going to (u,v)-coords
+
+Computing this straightforward will require much more effort.
+
+#### Solution
+
+Using the main formual:
+
+$$\iint\limits_R (4x + 8y)dxdy = \iint\limits_S (4 \frac{1}{4}(v + u) + 8 \frac{1}{4}(v - 3u))\left|{\delta(x,y)\over\delta(u,v)}\right|dudv$$
+
+The Jacobian is
+
+$$
+\begin{vmatrix}
+  {\delta (\frac{1}{4}(v + u))\over\delta u} &&{\delta (\frac{1}{4}(v + u))\over\delta v} \\
+  {\delta (\frac{1}{4}(v - 3u))\over\delta u} &&{\delta (\frac{1}{4}(v - 3u))\over\delta v}
+\end{vmatrix}
+= 
+\begin{vmatrix}
+  {1\over 4} &&{1\over 4} \\
+  -{3\over 4} && {1\over 4}
+\end{vmatrix}
+=
+\frac{1}{16} + \frac{3}{16} = \frac{1}{4}
+$$
+
+And now we need the region $R$:
+
+If we draw it out, it is a diagonal rectangle. We can take each of the sides and transform it. Additionally, the transformations are both linear, meaning they change lines back to other lines, so we know they will still be straight. So, we can just change each corner:
+
+$$\Box (-1,3),(1,-3),(1,5),(3,-1) = (\frac{1}{4}(v + u), \frac{1}{4}(v - 3u))$$
+
+So we need to find the solution of the equations
+$$
+\begin{cases}
+  x = \frac{1}{4}(v + u)\\
+  y = \frac{1}{4}(v - 3u)
+\end{cases}
+$$
+For each point.
+
+$$R = \Box (-4,8),(4,8),(-4,0),(4,0)$$
+
+This makes the integral much easier to compute.
+
+</details>
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
