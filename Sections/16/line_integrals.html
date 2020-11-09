@@ -1,0 +1,117 @@
+# Line Integrals
+
+## Overview
+
+This type of integrals is not related to triple integrals, but is defined as an integral of a function over a line.
+
+This means we are computing the value at each point and summing them up over the length of a curve $C$. This means finding the value of the function $f(x_i, y_i)$ at each point, then multiplying by the length of the subarc between that point and the next $\Delta s_i$
+
+$$\lim\limits_{\Delta s_i \to 0}\sum f(x_i, y_i) \Delta s_i$$
+
+This way we can split the line into many sections which can be summed up to find the integral, and we can show this as the following formula:
+
+$$\int\limits_a^b f(x(t), y(t))\sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2}dt$$
+
+(We use the sqare root above because it represent the length of the curve as we integrate)
+
+<details>
+  <summary>Click to show example</summary>
+
+### Question
+
+Find the line integral $\int\limits_C xy^2 ds$, where $C$ is the upper half of the unit circle.
+
+#### Solution
+To find this, we need to first find a parameterization of $C$. Since $C$ is a half circle above the x-axis, we can use a standard parameterization: $x = \cos(t)$, $y = \sin(t)$, $0 \le t \le \pi$
+
+Next, we can use the formula above to get:
+
+$$\int\limits_C xy^2 ds = \int_0^\pi\cos(t)(\sin(t))^2\sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2}dt$$
+$$\int_0^\pi\cos(t)(\sin(t))^2\sqrt{\left(-\sin(t)\right)^2 + \left(\cos(t)\right)^2}dt$$
+$$\int_0^\pi\cos(t)(\sin(t))^2dt$$
+
+</details>
+
+## What if C is in 3D space?
+
+For the function $f(x,y,z)$, we have
+
+$$\int\limits_C f(x,y,z)ds = \int\limits_a^b f(x(t), y(t), z(t))\sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2}$$
+
+where $x = x(t)$, $y = y(t)$, $z = z(t)$, $a\le t\le b$ is a parameterization of $C$.
+
+Even though there are an unlimited number of parameterizations of $C$, which one is used does not affect the answer. The right-hand side of the formulas do not depend on the parameterization of $C$.
+
+Also, the length of the curve $C$ is equal to:
+
+$$\int\limits_C 1\ ds = \int\limits_a^b |r'(t)|dt$$
+
+If we define the vector function $\vec r(t) = \langle x(t), y(t), z(t)\rangle$, $a\le t\le b$, then $\vec r(t)$ is a vector parameterization of $C$. Also, the formula can be rewritten as:
+
+$$\int\limits_C f(x,y,z)ds = \int\limits_a^b f(\vec r(t))|r'(t)|dt$$
+
+This is because, by definition, $|r'(t)|$ is
+
+$$\sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2}$$
+
+<details>
+  <summary>Click to show example</summary>
+
+### Question
+
+Find $\int\limits_C y\sin(z) ds$, where C is the helix given by $x = \cos(t), y = \sin(t), z = t, 0\le t\le2\pi$
+
+Since the parameterization is given, we do not need to draw the function. We can simply apply the formula:
+
+$$\int\limits_0^{2\pi} \sin(t)\sin(t)|r'(t)|dt$$
+
+$$|r'(t)| = \sqrt{\left(\frac{d\cos(t)}{dt}\right)^2 + \left(\frac{d\sin(t)}{dt}\right)^2 + \left(\frac{dt}{dt}\right)^2} = 1$$
+
+$$\int\limits_0^{2\pi} \sin^2(t)dt$$
+$$\int\limits_0^{2\pi} (1 - \cos(2t))dt$$
+$$\int\limits_0^{2\pi} (1 - \cos(2t))dt$$
+
+</details>
+
+These are useful becuase you can apply functions along a line, such as the weight of a varying density wire. However, the main use of these is computing the total force applied along a path.
+
+Given a smooth curve through space asume that at each point in the 3D space a force $\vec F$ is acting. This means we can define $\vec F$ as a function of $x,y,z$ that results in a force $x_i, y_i, z_i$, otherwise known as a vector function. 
+
+This is also called a '**vector field**'.
+
+If, for example, $F$ represents a gravitational force, it can be called a gravitational field, for example.
+
+### Question
+
+What is the work that the force field $\vec F$ does to move a particle from point $A$ to point $B$ along curve $C$.
+
+This is asking how the forces act along the path that the particle travels when acted on that force at each point.
+
+For Example: if $\vec F$ is a constant and the curve $C$ is straight line, then the work $W$ done by $\vec F$ will be $W = \vec F \cdot \vec{AB}$. This is the general formula from high school.
+
+In the general case, the work is equal to
+
+$$W = \int\limits_C \vec F(x,y,z)*\vec T(x,y,z) ds$$
+
+Where $\vec T$ is the unit vector at the point (x,y,z), which is the tangent vector to $C$ at that point with length equal to 1.
+
+This is called the line integral of the vector field $\vec F$ along the curve $C$
+
+$$\vec T = {\vec r'(x_0, y_0, z_0)\over |\vec r'(x_0, y_0, z_0)|}$$
+
+using the formula above, 
+
+$$\int\limits_a^b \vec F(\vec r(t)) * {\vec r'(t)\over |\vec r'(t)|} * |\vec r'(t)|dt$$
+
+And the two $|\vec r'(t)|$ cancel, so it simplifies to:
+
+$$\int\limits_a^b \vec F(\vec r(t)) * {\vec r'(t)}dt$$
+
+The line integral of $\vec F$ along $C$ is denoted by
+
+$$\int\limits_C \vec F \cdot dr = \int \vec F(\vec r(t)) \vec r'(t)dt$$
+
+This integral will be discussed in more detail next.
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
