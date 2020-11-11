@@ -1,0 +1,141 @@
+# Fundamental Theorem for Line Integrals
+
+## Integrals for vector fields
+
+For integrating a points movement in a vector field, we have the following equation (from the previos notes)
+
+$$\int\limits \vec F \cdot dr = \int\limits \vec F \cdot \vec T dr$$
+
+Today we will discuss an integration technque for these vector fields.
+
+### Def: Conservative Vector fields
+A vector field is conservative if there is a function $f$ such that $\nabla f = \vec F$
+
+### Examples 
+1. If $\vec F(x,y) = x^2\hat i + y^2\hat j = \langle x^2, y^2\rangle$ then $\vec F$ is conservative
+
+This is because we can define $f(x,y) = 1/3x^3 + 1/3y^3$
+Then $\nabla f$ is $\langle x^2, y^2$
+
+2. $\vec F (x,y) = x^2\hat i + (x^2 + y^2)\hat j$
+This is not a conservative vector field
+
+## The fundamental theorem of Line Integrals
+
+Let C be a curve with initial point A and end point B. 
+Let also $\vec F$ be a conservative vector field such that for some $f$, $\nabla f = \vec F$
+
+Then,
+
+$$\int\limits_C \vec F dr = f(B) - f(A)$$
+
+In other words, 
+
+$$\int\limits_C \nabla f \cdot dr = f(B) - f(A)$$
+
+This is very similar to the normal romanian integral
+
+$$\int\limits_a^b F'(x)dx = F(x)|_a^b = F(b) - F(a)$$
+
+### Uses
+
+This tells us that the force needed to move a particle from A to B is not dependent on the path, since only $f(A)$ and $f(B)$ matter
+
+If C is a closed curve, meaning $(A = B)$, then the total force is equal to 0. This is true because the direction going one way is the opposite of the force needed to move the other way. 
+
+The opposite is also correct, if the function is 'nice', then if the force along a closed curve is negative, than the field is conservative
+
+<details>
+  <summary>Click to show Example</summary>
+
+### Question
+
+Find the work done by the force field $F(x,y) = x^3\hat i + y^3\hat j$ to move the particle from (1,0) to (7,2)
+
+#### Solution
+
+We have that for the function $f(x,y) = 1/4x^4 + 1/4y^4$
+
+$$\nabla f = \vec F$$
+
+So F is conservative
+
+By the fundamental theorem
+
+$$W = \int\limits_C \vec F \cdot dr = f(B) - f(A) = f(7,2)-f(1,0) = 8 - 1/4 = 7\frac{3}{4}$$
+
+</details>
+
+## Determining if a field is conservative
+
+If $\vec F(x,y) = P(x,y)\hat i + Q(x,y)\hat j = \langle P(x,y), Q(x,y)\rangle$
+Then $\vec F(x,y)$ is conservative if and only if
+
+$${\delta P\over \delta y} = {\delta Q\over \delta x}$$
+
+If this is not true, it is not conservative.
+
+Now we can show why $\vec F (x,y) = x^2\hat i + (x^2 + y^2)\hat j$
+is is not a conservative vector field.
+
+Because
+
+$${\delta x^2\over \delta y} = 0 \ne {\delta (x^2 + y^2)\over \delta x} = 2x$$
+
+The previous function $\vec F(x,y) = x^2\hat i + y^2\hat j = \langle x^2, y^2\rangle$ is conservative because
+
+$${\delta x^2\over \delta y} = 0 = {\delta y^2\over \delta x}$$
+
+### What if the vector field depends on 3 variables?
+
+$$\vec F(x,y,z) = P(x,y,z)\hat i +  Q(x,y,z)\hat j +  R(x,y,z)\hat k$$
+
+The above definition does not work here. Three dimensions will be given later, and will be more complex.
+
+### Examples
+
+Is $\vec F$ conservative? If so, find f such that $\nabla f = \vec F$.
+
+1. $\vec F = (x^y + y^2)\hat i + (x^2 + 2xy)\hat j$
+
+$$2y \ne 2x + 2y$$
+
+Not conservative.
+
+2. $\vec F(x,y) = (y^2 - 1x)\hat i + 2xy\hat j$
+
+$$2y = 2y$$
+
+It is conservative.
+
+### Finding $f(x,y)$
+
+To find $f(x,y)$ s.t. $\nabla f = \vec F$ is the same as finding $f$ such that
+
+$$
+\begin{cases}
+  {\delta f \over \delta x} = P(x,y) \to f(x,y) = \int P(x,y)dx \\
+  {\delta f\over \delta y} = Q(x,y) \to f(x,y) = \int Q(x,y)dy
+\end{cases}
+$$
+
+So for this problem, we can use:
+
+$$
+\begin{cases}
+  \int (y^2 - 1x)dx = y^2x - x^2 + h(y) \\
+  \int (2xy)dy = y^2x + g(x)
+\end{cases}
+$$
+
+Where $h(y)$ is a function not depending on x, but possibly depending on y and $g(x)$ is a similar function for x.
+
+So
+
+$$f(x,y) = y^2x - x^2 + h(y) = y^2x + g(x)$$
+$$h(y) = 0$$
+$$g(y) = -x^2$$
+$$f(x,y) = y^2x - x^2 (+ C)$$
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
