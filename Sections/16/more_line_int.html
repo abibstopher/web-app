@@ -1,0 +1,117 @@
+# Line Integrals and Double Integrals
+
+## Useful Concepts (Topology)
+
+**Simple curves**: these are cuves that does not cross itself
+
+**closed curve**: the end comes back to the beginning - it is a closed loop
+
+**simply connected region**: a closed region that has no other cavities inside it - ex: this is not simply connected
+
+![A non-simply closed region](simply_connected.jpg)
+
+**orientation**: which direction the curve goes; from A to B or B to A. $-C$ is the same as $C$ with the opposite orientation.
+$$C: \vec r(t), a \le t \le b$$
+$$-C: \vec r(t), b \le t \le a$$
+
+### Definition:
+
+If $C$ is a closed curve, then the counterclockwise orientation of $C$ is the positive orientation.
+
+### Theorem: (Green's Theorem, Sec 16.4)
+
+If $C$ is a positively oriented, closed, simple curve, and $D$ is the simply connected region enclosed by $C$, the 
+
+$$\int\limits_C\vec F\cdot dr = \iint\limits_D \left({\delta Q\over \delta x} - {\delta P\over \delta y}\right)dxdy$$
+
+Where $\vec F(x,y) = \langle P(x,y), Q(x,y)\rangle$
+
+Alternative notation of $\int\limits_C \vec F \cdot dr = \int\limits_D P(x,y)dx + Q(x,y)dy$
+
+## An application
+
+If $\vec F$ is conservative, ${\delta Q\over \delta x}={\delta P \over \delta y}$
+
+Therefore, by Green's Theorem,
+
+$$\int\limits_C \vec F \cdot dr = \int\limits_D \left({\delta Q\over \delta x} - {\delta P\over \delta y}\right)dxdy$$
+$$=0$$
+
+This is because ${\delta Q\over \delta x} - {\delta P\over \delta y}$ cancels out sice they are both the same. Going from the start to halfway is the same work as going from halfway to the end (which is back at the start). This is a result of what was mentioned earlier, that the path does not affect the work done.
+
+## Examples
+
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question
+Let $\vec F(x,y) = \langle ye^x, 2e^x\rangle$
+Compute $\int\limits_C\vec F \cdot dr$ where C is the rectangle from (0,0) to (3,4).
+
+#### Solution
+$C$ is closed simple curve
+
+by Green's Theorem
+$$\int\limits_C\vec F \cdot dr = \int\limits_C ye^xdx +2e^x dy$$
+$$\iint\limits_D \left({\delta 2e^x\over \delta x} - {\delta y e^x\over\delta y}\right)dxdy$$
+$$\int\limits_0^4\int\limits_0^3 (2e^x - e^x)dxdy$$
+$$\iint e^x dxdy$$
+$$4e^3$$
+
+</details>
+<details>
+  <summary>Click to show Example 2</summary>
+
+### Question
+Compute $\int\limits_C y^4dx + 2xy^3dy$ hwere C is the ellipse given by $x^2 + 2y^2 = 2$
+
+#### Solution
+By Green's Theorem
+
+$$\iint\limits_D \left({\delta 2xy^3\over \delta x} - {\delta y^4\over\delta y}\right) dxdy$$
+
+$$-2\iint\limits_D y^3 dxdy$$
+$$
+\begin{cases}
+  x = r\sqrt{2}\cos\theta\\
+  y = r\cos\theta
+\end{cases}
+$$
+
+$$-2\int\limits_0^1\int\limits_0^{2\pi} r^3 \cos^3\theta \left|{\delta(x,y)\over\delta(r,\theta)}\right|drd\theta$$
+$$-2\iint r^3\cos^3\theta (r2\sqrt{2})drd\theta$$
+
+We use a change of variables here to make the bounds more convenient. In addition, note that the $dx$ and $dy$ switch between $P$ and $Q$ going from a line integral to a double integral.
+
+</details>
+<details>
+  <summary>Click to show Example 3</summary>
+
+### Question
+
+$$\int\limits_C (1-y^3)dx + (x^3 +e^{y^2})dy$$
+Where the curve $C$ is the boundary of the area between the circles with radius 2 and 4. Here we can assume that it is connected from the outer portion to the inner, making it connected, but self-intersection.
+
+![illustration](circles.jpg)
+
+$$\int\limits_{C_1} \vec F\cdot dr + \int\limits_{C_2} \vec F\cdot dr$$
+
+This also inludes the portions that connect the two portions, but they cancel out since they are the same but reversed.
+We can do this because we can split apart curves into portions when integrating.
+
+$$\int\limits_{C_1 + C_2} \vec F\cdot dr = \int\limits_{C_1} \vec F\cdot dr + \int\limits_{C_2} \vec F\cdot dr$$
+
+So, we can split the domain into two sections, one on the bottom half, and one on the top half to get:
+
+$$\int\limits_{C} \vec F\cdot dr = \int\limits_{C_1} \vec F\cdot dr + \int\limits_{C_2} \vec F\cdot dr$$
+
+Then use Green's Theorem for $C_1$ and $C_2$
+
+$$\iint\limits_{D_1}f + \iint\limits_{D_1}g$$
+
+(functions omitted for simplicity)
+
+</details>
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
