@@ -1,0 +1,130 @@
+# Curl and Divergence
+
+## Curl
+
+Curl is the measure of how much the field rotates, meaning that a particle will rotate as it travels through the field. Clockwise is negative adn counter-clockwise is positive. If curl is 0, the particle does not rotate, but may move.
+
+Imporantly, if curl is 0, then the vector field is conservative, and it can be integrated, meaning that there is an $f$ such that $\nabla f = \vec F$.
+
+$$Curl = \left({\delta R \over \delta y} - {\delta Q \over \delta z}\right)\hat i + \left({\delta P \over \delta z} - {\delta R \over \delta x}\right)\hat j + \left({\delta Q \over \delta x} - {\delta P \over \delta y}\right)\hat k$$
+
+This is a bit of a pain to remember, so let's use a more convenient formula. Recall that 
+
+$$\nabla f = \langle {\delta f\over \delta x}, {\delta f\over \delta y},  {\delta f\over \delta z}\rangle$$
+
+We can show $\nabla$ as a special vector of derivatives and this as a scalar product.
+
+$$\nabla = {\delta \over \delta x}\hat i + {\delta \over \delta y} \hat j + {\delta \over \delta z}\hat k$$
+
+Using this notation, curl can be defined as:
+
+$$curl\ \vec F = \nabla \times \vec F$$
+
+By computing the cross product of this we get back to the same formula, but through a much easier-to-remeber way.
+
+## Divergence
+
+Divergence is the measure of how much the field pushes the particles away from their starting point. Ex: an explosion would be higly positive, a black hole would be higly negative. If the particle does not move, divergence is = 0.
+
+Similarly to curl, divergence can be defined using $\nabla$:
+
+$$div\ \vec F = \nabla \cdot \vec F$$
+
+This is a bit simpler to compute:
+
+$$div\ \vec F = {\delta P\over\delta x} + {\delta P\over\delta y} + {\delta P\over\delta z}$$
+
+### Theorem
+
+If $\vec F$ is a vector field and P,Q,R have continuous second pertial derivatives, then:
+
+$$div\ curl\ \vec F = 0$$
+
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question 1
+
+Find curl and divergence for 
+
+$$\vec F = 0i + x^3yz^3j + yz^3k$$
+
+#### Solution
+
+$$Curl = \hat i (x^3yz^3 dz + yz^3 dy) - \hat j(0dz yz^3 dx) + \hat k (0dy + x^3yz^3 dx)$$
+
+$$= (z^3 - 3x^3yz^2)\hat i - 0\hat j + (3x^2yz^3)\hat k$$
+
+$$Div = \nabla \cdot \vec F = 0 + x^3z^3 + 3yz^2$$
+
+Since neither of these is equal to 0, it will move away from it's location and rotate.
+
+</details>
+<details>
+  <summary>Click to show Example 2</summary>
+
+### Question 2
+
+$$\vec F(x,y,z) = ln(2y +3z)\hat i + ln(x-z)\hat j + ln(x+2y)\hat k$$
+
+#### Solution
+
+$$ curl\ \vec F = i ({z\over(x + 2y)} - ({-1 \over x - z}) - j{1\over x+2y} - {3\over(2y + 3z)} + k{1\over(x-z)} - {2\over(2y+3z)} \ne 0$$
+
+$$div\ F = 0 + 0 + 0$$
+
+This means that particle does not move, but it does rotate (in a complex, chaotic way)
+
+</details>
+<details>
+  <summary>Click to show Example 3</summary>
+
+### Question 3
+
+$$\vec F = {\sqrt{x}\over 1 + z}\hat i + {\sqrt{y}\over 1 + x}\hat j + {\sqrt{z}\over 1 + y}\hat k$$ 
+
+#### Solution
+
+This time, the curl is equal to 0, so F is conservative
+
+The Divergence of F is:
+
+$${1\over2(1 +z)\sqrt{x}} + ...$$
+
+So, it is not = 0, meaning that the particles move away but do not rotate.
+
+</details>
+<details>
+  <summary>Click to show final Example</summary>
+
+### Example
+
+Show that $\vec F$ is conservative and find $f(x,y,z)$ such that $\nabla f = \vec F$
+
+$$\vec F = y^2z^3i + 2xyz^3j+3xy^2z^3k$$
+
+#### Solution
+
+First, we check that $\vec F$ is conservative.
+
+$$Curl\ \vec F = i (6xyz^2 - 6xyz^2) + j(3y^2z^2 - 3y^2z^2) + k(2yz^3 - 2yz^2)$$
+
+To find the second part, we want to find $f(x,y,z)$ such that $\nabla f = \vec F$, meaning
+
+$${\delta f\over \delta x} = P(x,y,z) = y^2 z^3$$
+$${\delta f\over \delta y} = Q(x,y,z) = 2xyz^3$$
+$${\delta f\over \delta z} = R(x,y,z) = 3xy^2z^3$$
+
+To do this, we simply need to integrate and ensure that the integral works for all three partial derivatives. 
+
+$$f = \int P = \int y^2z^3 dx = xy^2z^3 + h(y,z)$$
+
+Then we see what h(y,z) needs to be to ensure that the derivatives are correct. After differentiating it with respect to y and z, we can see that it already works, and that h(y,z) is actually = 0.
+
+$${\delta\over\delta y}xy^2z^3 = 2xyz^3 = Q$$
+$${\delta\over\delta z}xy^2z^3 = 3xy^2z^2 = R$$
+
+</details>
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">

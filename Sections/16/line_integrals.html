@@ -14,6 +14,16 @@ $$\int\limits_a^b f(x(t), y(t))\sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{
 
 (We use the sqare root above because it represent the length of the curve as we integrate)
 
+This is the line integral with respect to the length, or $\int\limits_C f(x,y)ds$. 
+However, we can also find line integrals with respect to other variables:
+
+$$\int\limits_C f(x,y)dx = \int\limits_a^b f(x(t), y(t)) x'(t)dt$$
+$$\int\limits_C f(x,y)dy = \int\limits_a^b f(x(t), y(t)) y'(t)dt$$
+
+This can also work for triple integrals and multiple types per function. For Example:
+
+$$\int\limits_C f(x,y,z)dx + g(x,y,z)dz = \int\limits_a^b f(x(t), y(t), z(t))x'(t) + g(x(t), y(t), z(t))z'(t)dt$$
+
 <details>
   <summary>Click to show example</summary>
 
