@@ -1,0 +1,180 @@
+# Parametric Surfaces - 16.6
+
+Remember that we defined parametric equations for curves earlier:
+
+$$
+\vec r(t) = 
+\begin{cases}
+  x = x(t) \\
+  y = y(t) \\
+  z = z(t) \\
+\end{cases}
+$$
+
+This shows that parametric just means that each coordinate has it's own function, taking in two separate *parameters*.
+
+For parametric surfaces, the vector function $\vec r$ is dependent on two variables.
+
+$$
+\vec r(u,v) = 
+\begin{cases}
+  x = x(u,v) \\
+  y = y(u,v) \\
+  z = z(u,v) 
+\end{cases}
+$$
+
+Where $(u,v)\in D$ is the domain in the $(u,v)$-plane.
+
+![An example domain](uv-domain.jpeg)
+
+One point to note is that an equation can be parameterized in many different ways; often infinitely many.
+
+<details>
+  <summary>Click to show example 1</summary>
+
+### Question 1
+
+Identify the surface with the given vector equation:
+
+$$r(u,v)  (u + v)\hat i + (3 - u)\hat j + (1 +4u + 5v)\hat k$$
+
+#### Solution
+
+We can find z in terms of $x$ and $y$ by finding a pair of numbers which can be multiplied or added to $x$ and $y$ to get the equation for $z$.
+
+$$z = ax + by + c$$
+$$1 +4u + 5v = a(u + v) + b(3 - u) + c$$
+
+We can also define $u$ and $v$ in terms of $x$ and $y$:
+
+$$y = 3 - u \to u = 3 - y$$
+$$x = u + v \to v = x - u \to v = x - (3 - y)$$
+$$z = 1 + 4u + 5v = 1 + 4(3 - y) + 5(x - 3 + y)$$
+
+So we can find that $z = 5x + y - 2$
+
+$$5x +y-z=2$$
+
+So, we can describe S as the plane that passes through (0,0,-2) and has the normal vector $\vec u = \langle 5,1,-1\rangle$
+
+</details>
+<details>
+  <summary>Click to show example 2</summary>
+
+### Question 2
+
+$$\vec r(s,t) = \langle s\cos t, s\sin t, s\rangle$$
+
+#### Solution
+
+From the above equation, we can see that if we add the squares of $x$ and $y$:
+
+$$x^2 + y^2 = (s\cos t)^2 + (s\sin t)^2 = s^2(\sin^2 + \cos^2) = s^2 = z^2$$
+
+So the surface is a paraboloid.
+
+</details>
+<details>
+  <summary>Click to show example 3</summary>
+
+### Question 3
+
+$$\vec r(s,t) = \langle 3\cos t, s, \sin t\rangle$$
+$$-1\le s\le 1$$
+
+#### Solution
+
+We can see that in this equation, $y$ is only determined by $s$, and the others are only of $t$. This means we can ignore $y$ for now.
+
+Again, we can recognize that there is a similarity to the $\sin^2 + \cos^2$ property, so we can try to define an equation that changes $x$ and $z$ to this property:
+
+$$x^2 = 9\cos^2 t$$
+
+$$9\cos^2 t + 9\sin^2 t = 9$$
+
+$$z^2 = \sin^2 t \to (3z)^2 = 9\sin^2 t$$
+
+$$x^2 + (3z)^2 = 9$$
+
+This shows that any cross-section of the surface will be an ellipse, and since y increases with s, the surface is a cylinder.
+
+Since the equation goes from $[-1,1]$, the cylinder goes from $-1$ to $1$ in height.
+
+</details>
+<details>
+  <summary>Click to show example 4</summary>
+
+### Question 4
+
+Find parametric representation of the surface S:
+
+$$x^2 + y^2 + z^2 = a^2$$
+
+#### Solution
+
+In spherical coordinates:
+
+$$
+\begin{cases}
+  x = \rho \cos \theta\sin\phi \\
+  y = \rho\sin\theta\sin\phi \\
+  z = \rho\cos\phi 
+\end{cases}
+$$
+
+In spherical coordinates, we can say that a sphere is $\rho = a$. So, we can define the sphere as:
+
+$$
+\begin{cases}
+  x = a \cos \theta\sin\phi \\
+  y = a\sin\theta\sin\phi \\
+  z = a\cos\phi 
+\end{cases}
+$$
+
+We can simply define $\theta$ and $\phi$ as the other two parametric variables:
+
+$$\vec r(\theta, \phi) = a\cos\theta\sin\phi\hat i + a\sin\theta\sin\phi \hat j + a\cos\phi\hat k$$
+
+$$
+\begin{vmatrix}
+  0 \le \theta \le 2\pi \\
+  0 \le \phi \le \pi
+\end{vmatrix}
+$$
+
+</details>
+<details>
+  <summary>Click to show example 5</summary>
+
+### Question 5
+
+S: is the plane thrrough the origin that contains the vectors $\hat i - \hat j$ and $\hat j - \hat k$.
+
+#### Solution
+
+First, let us define the equation of the plane by finding the normal:
+
+$$
+\vec n = (\hat i - \hat j)\times(\hat j - \hat k) = 
+\begin{vmatrix}
+  \hat i && \hat j && \hat k \\
+  1 && -1 && 0 \\
+  0 && 1 && -1
+\end{vmatrix}
+= \langle 1,1,1 \rangle
+$$
+
+So we can use that in the vector equation:
+
+$$S: x + y + z = 0$$
+
+$$\vec r(u,v) = u\hat i + v\hat j + (-u - v)\hat k$$
+
+This is found by simply setting $x$ and $y$ equal to $u$ and $v$, then solving for $z$.
+
+</details>
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
