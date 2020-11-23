@@ -1,12 +1,15 @@
+/* Colors from the nord theme */
+/* https://nordtheme.com/ */
+
 body {
-  background: #222;
-  color: #ddd;
+  background: #2e3440;
+  color: #d8dee9;
 }
 main {
   box-sizing: border-box;
   width: 80vw;
   max-width: 50em;
-  background: #333;
+  background: #3b4252;
   box-shadow: 2px 2px 4px 4px #0005;
   padding: 2em;
 }
@@ -16,11 +19,11 @@ h1 {
   font-variant: small-caps;
   margin: auto;
   text-align: center;
-  border-bottom: 4px double #ddd;
+  border-bottom: 4px double #e5e9f0;
 }
 
 h2 {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e5e9f0;
 }
 
 img {
@@ -28,9 +31,12 @@ img {
   display: flex;
 }
 
-a:link,
+a:link {
+  color: #5e81ac !important;
+}
+
 a:visited {
-  color: #6497e6 !important;
+  color: #81a1c1 !important;
 }
 
 @media screen and (max-width: 600px) {
@@ -50,14 +56,14 @@ a:visited {
   body {
     padding: 0;
     margin: 0;
-    background-color: white;
+    background-color: #eceff4;
   }
 
   main {
     width: 100%;
     margin: 0;
     box-shadow: none;
-    background-color: white;
-    color: black;
+    background-color: #eceff4;
+    color: #2e3440;
   }
 }

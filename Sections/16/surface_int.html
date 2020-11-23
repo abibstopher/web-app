@@ -1,0 +1,172 @@
+# Surface Integrals (16.7)
+
+## The main integral
+
+As discussed in the previous lecture, a surface can be described as:
+
+$$\vec r(u,v) = x(u,v)\hat i + y(u,v)\hat j + z(u,v)\hat k$$
+
+The surface integral of a function $f(x,y,z)$ over the surface S is:
+
+$$I = \iint\limits_S f(x,y,z)ds = \iint\limits_D f(\vec r(u,v))|\vec r_u \times \vec r_v| dudv$$
+
+Where 
+$$\vec r_u = \left\langle {\delta x\over\delta u},{\delta y\over\delta u},{\delta z\over\delta u}\right\rangle$$
+$$\vec r_v = \left\langle {\delta x\over\delta v},{\delta y\over\delta v},{\delta z\over\delta v}\right\rangle$$
+
+To find this, let's visualize how this integral would work. It sums up very small rectangles over the top of the surface. This means we are summing up the areas of all of those small rectangles.
+
+$$I = \sum\limits_{i}\sum\limits_j f(P_{ij})\Delta_{ij}$$
+
+Similar to previous lectures, we can find the area of the Surface by using 1 as the function we are integrating:
+
+$$I = \iint\limits_S 1ds = \iint\limits_D |\vec r_u \times \vec r_v| dudv$$
+
+If $z = f(x,y)$, and $S$ is the graph of f, then 
+
+$$S = \vec r(u,v) = u\hat i + v\hat j + f(u,v)\hat k$$
+$$S = \vec r(x,y) = x\hat i + y\hat j + f(x,y)\hat k$$
+
+This is simply a way of converting a normal surface to a parameterized version for use in this equation.
+
+$$\vec r_x \times \vec r_y = \sqrt{\left({\delta f\over\delta x}\right)^2 + \left({\delta f\over\delta y}\right)^2 + 1}$$
+
+So we can find the area like this:
+
+$$Area\ of\ S = \iint\limits_S 1ds = \iint\limits_D \sqrt{\left({\delta f\over\delta x}\right)^2 + \left({\delta f\over\delta y}\right)^2 + 1} dydx$$
+
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question 1
+
+Find:
+
+$$\iint\limits_S (x+y+z)ds$$
+
+Given:
+
+$$
+\begin{cases}
+  x = u + v \\
+  y = u - v \\
+  z = 1 + 2u + v
+\end{cases}
+$$
+
+$$\vec r(u,v) = (u + v)\hat i + (u - v)\hat j +(1 + 2u + v)\hat k$$
+
+Where $0 \le x\le 1$ and $0\le y\le 2$. So we can use the formula:
+
+$$\iint\limits_D [(u+v)+(u-v)+(1+2u+v)]|\vec r_u \times \vec r_v | dudv$$
+
+And find the magnitude as follows:
+
+$$\vec r_u = \langle1, -1, 2\rangle$$
+$$\vec r_v = \langle1, -1, 1\rangle$$
+
+$$
+\vec r_u \times \vec r_v = 
+\begin{vmatrix}
+  i && j && k \\
+  1 && -1 && 2 \\
+  1 && -1 && 1
+\end{vmatrix}
+= \sqrt{14}
+$$
+
+$$\iint\limits_D (4u + v + 1)\sqrt{14}dudv$$
+
+</details>
+<details>
+  <summary>Click to show Example 2</summary>
+
+### Question 2
+
+$$\iint\limits_S xyz ds$$
+
+$$
+S = 
+\begin{cases}
+  x = u\cos v \\
+  y = u\sin v \\ 
+  z = u
+\end{cases}
+$$
+
+$$0 \le u \le 1, 0\le v\le {\pi\over 2}$$
+
+$$\iint\limits_D u\cos v + u\sin v + u|\vec r_u \times \vec r_v | dudv$$
+
+$$\vec r_u = \langle \cos v, \sin v, 1\rangle$$
+$$\vec r_v = \langle -u\sin v, u\cos v, 0 \rangle$$
+
+$$
+\vec r_u \times \vec r_v = 
+\begin{vmatrix}
+  i && j && k \\
+  \cos v && \sin v && 1 \\
+  -u\sin v && u\cos v && 0
+\end{vmatrix}
+= -u\cos v i - u\sin v j + uk
+$$
+
+$$\iint\limits_D u\cos v + u\sin v + u \sqrt{u^2 (\cos^2 + \sin^2 + 1)}$$
+
+</details>
+<details>
+  <summary>Click to show Example 3</summary>
+
+### Example 3
+
+$$I = \iint\limits_S (x^2 + y^2)ds$$
+
+$$\vec r(u,v) = \langle 2uv, u^2-v^2, u^2+v^2\rangle$$
+
+$$u^2 + v^2 = 1$$
+
+$$\iint (u^2 + v^2)^2 |\vec r_u \times \vec r_v|dudv$$
+
+$$|\vec r_u \times \vec r_v | = \sqrt{32(u^2 + v^2)}$$
+
+$$\iint (u^2 + v^2)^{5/2} \sqrt{32}dudv$$
+
+This would be easiest to compute as a polar integral:
+
+$$\sqrt{32}\iint r^5 r d\theta dr$$
+
+</details>
+
+## Unit normal vector
+
+The unit normal vector of $S$ at point $P$ is the vector that is perpendicular to the surface at that point.
+
+This vector can be found as:
+
+$$\vec n = {\vec r_u \times \vec r_v\over |\vec r_u \times \vec r_v|}$$
+
+So, we are finding the normal vector of the plane that contains the vectors $\vec r_u$ and $\vec r_v$, which give a plane that is tangent to the surface at that point.
+
+## Surface Integrals of Vector Fields
+
+We can integrate a vector field $\vec F(x,y,z)$ over $S$ like this:
+
+$$\iint\limits \vec F \cdot ds = \iint \limits_S \vec F \cdot \vec n ds$$
+
+To help make this equation a bit easier to compute, we can use:
+
+$$\iint\limits_D \vec F \cdot (\vec r_u \times r_v) dudv$$
+
+This equation comes from converting the previous one to a normal integral.
+
+$$\iint\limits \vec F \cdot ds = \iint \limits_S \vec F \cdot \vec n ds = \iint\limits_D \vec F \cdot {\vec r_u \times \vec r_v\over |\vec r_u \times \vec r_v|}|\vec r_u \times \vec r_v|dudv$$
+
+So, it cancels to:
+
+$$\iint\limits_D \vec F \cdot (\vec r_u \times r_v) dudv$$
+
+Note that this uses both dot product and cross product.
+Also, this is called flux, sometimes flux of $\vec F$ across $S$, related to fluid dynamics.
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
