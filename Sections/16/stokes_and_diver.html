@@ -1,0 +1,252 @@
+# Stokes Theorem and Divergence Theorem
+
+Remember that Green's Theorem gave us a way to convert a surface to a normal double integral:
+
+$$\int\limits_C \vec F(x) \cdot dr = \iint\limits_D \left({\delta Q\over \delta x} - {\delta P\over\delta y}\right) dA$$
+
+Stokes theorem is similar, allowing us to use a surface that is not flat, or a space curve. Essentially, it extends it fro 2D to 3D.
+
+## Stokes Theorem
+
+$$\int\limits_C \vec F \cdot dr = \iint\limits_S curl \vec F \cdot dS$$
+
+So for a curve $C$, the integral over it is equal to the suface integral over the surface it borders. Also, if we simplify this further, we get:
+
+$$\iint\limits_D curl \vec F \cdot dS$$
+
+Where $D$ is the parametric domain of S. We can also say this means the work done in oving a particle through a vector field along a closed curve is mathematically equivalent to the flux of the curl of $\vec F$ over any surface the curve encloses.
+
+<details>
+  <summary>Click to show Example 1</summary>
+
+### Question 1
+Use Stokes theorem to find $\int\limits_C \vec F \cdot dr$ where $\vec F = \langle z^2, 2x, y^2\rangle$ and $C$ is the curve of the [intersection of](https://llumen.neocities.org/projects/ray-grapher.html?eq=(y%2Bz-2)(x%5E2%2By%5E2-1)&zoom=7.6&m=[-134,-36]&v=1) the plane $y + z = 2$ and the cylinder $x^2 + y^2 = 1$. C is counterclockwise from above.
+
+$$\int\limits_C \vec F \cdot dr = \iint\limits_S curl \vec F \cdot ds$$
+
+$$curl \vec F = \Delta \times F = \langle {\delta\over\delta x}, {\delta\over\delta y}, {\delta\over\delta z}\rangle\times\langle z^2, 2x, y^2\rangle$$
+$$
+= \begin{vmatrix}
+\vec i &&\vec j &&\vec k \\
+{\delta\over\delta x}&& {\delta\over\delta y}&& {\delta\over\delta z} \\
+z^2 && 2x && y^2
+\end{vmatrix}
+=
+\langle 2y, -(-2z), 2\rangle
+$$
+
+Here, $S$ is the surface enclosed by $C$, where $C$ is the curve of [intersection of](https://llumen.neocities.org/projects/ray-grapher.html?eq=(y%2Bz-2)(x%5E2%2By%5E2-1)&zoom=7.6&m=[-134,-36]&v=1) the plane $y + z = 2$ and the cylinder $x^2 + y^2 = 1$.
+
+So, we need to parameterize the plane, as $C$ is the boundary curve of the plane.
+
+$$
+\begin{cases}
+  z = y - 2 \\
+  x = x \\
+  y = y 
+\end{cases}
+$$
+
+So, $\vec r(x,y) = \langle x,y,y-2\rangle$. Next, let's find $r_x \times r_y$
+
+$$
+r_x \times r_y = 
+\begin{vmatrix}
+  \vec i && \vec j && \vec k \\
+  1 && 0 && 0 \\
+  0 && 1 && 1 
+\end{vmatrix}
+=
+\langle 0, -1, 1 \rangle
+$$
+
+This is what you need to check the orientation of. Since it has a positive $z$, it is positively oriented, and you do not have to change the orientation.
+
+$$\int\limits_C \vec F\cdot dr = \iint\limits_S curl \vec F \cdot ds = \iint\limits_D curl \vec F(r(x,y))\cdot (r_x \times r_y) dA$$
+
+Where $D$ is the parametirc domain, or $x^2 + y^2 \le 1$. So we plug in the parametric into $C$:
+
+$$\iint\langle 2y, 2(y-2), 2 \rangle \cdot \langle 0,-1,1\rangle dA$$
+
+$$\iint (0 -2(y - 2) + 2) dA$$
+
+$$\iint\limits_{x^2+y^2\le1} (6 - 2y)dA$$
+
+$$= \int\limits_0^{2\pi}\int\limits_0^1 (6 - 2r\sin\theta)rdrd\theta$$
+
+$$\int\limits_0^{2\pi}\int\limits_0^1 (6r - 2r^2\sin\theta)drd\theta$$
+$$\int\limits_0^{2\pi}(3r^2 - 2/3r^3\sin\theta)|_0^1d\theta$$
+$$=6\pi$$
+
+So, to summarize, Stokes converts a line integral to a double integral over the surface it encloses of the curl of $F$. Step 1, find the curl. Step 2, find the surface C encloses (here the plane). Step 3, find the cross of the partial derivatives to make sure the orientation is positive. Step 4, do the double integral over the paramaterized domain.
+
+</details>
+
+<details>
+  <summary>Click to show Example 2</summary>
+
+### Question 2
+
+Use Stokes' Theorem to find the integral where $\vec F = \langle x^2, y^2, xy\rangle$ where $C$ is the triangle with the vertices $(1,0),(0,1,0),(0,0,2)$. $C$ is counterclockwise from above.
+
+$$\int\limits_C \vec F\cdot dr = \iint\limits_S curl \vec F \cdot ds = \iint\limits_D curl \vec F(r(u,v))\cdot (r_u \times r_v) dA$$
+
+Where $C$ is the boundary of $S$, and $D$ is the parametric domain of $S$.
+
+#### Step 1: Find Curl
+
+$$curl F = \langle {\delta\over\delta y}R -  {\delta\over\delta z}Q, {\delta\over\delta z}P -  {\delta\over\delta x}R, {\delta\over\delta x}Q -  {\delta\over\delta y}P\rangle, \langle x, 2z - y, 0\rangle$$
+
+#### Step 2: Parameterize S
+$S$ is the plane passing through $(1,0),(0,1,0),(0,0,2)$. The plane is $\vec n \cdot(\vec r - \vec r_0) = 0$, or the normal dot $\vec r$ minus one of the points.
+
+$$\vec n = \vec {PQ}\times\vec{PR} = \langle2,2,1\rangle$$
+
+$$\vec n \cdot(\vec r - \vec r_0) = 0 \to \langle2,2,1\rangle \cdot\langle x - 1, y, z\rangle = 0$$
+$$2x - 2 + 2y + z = 0$$
+
+Now we need to change that to parameters:
+
+$$
+\begin{cases}
+  x = x \\
+  y = y \\
+  z = 2 - 2x - 2y
+\end{cases}
+$$
+
+$$\vec r(x,y) = \langle x, y, 2 - 2x - 2y\rangle$$
+
+#### Step 3: Check the Orientation
+
+$$r_x \times r_y = \langle 2,2,1\rangle$$
+
+Note that this is the same as the normal, which is the case if you are parameterizing a plane. $z$ is positive, so it is positively oriented.
+
+$$\iint\limits_D curl F(r(x,y))\cdot (r_x\times r_y)dA$$
+$$\iint\limits_D \langle x, 2(2 - 2x - 2y) - y, 0\rangle \cdot \langle 2,2,1\rangle dA$$
+$$\iint\limits_D (-6x - 10y + 8) dA$$
+
+Where $D$ is the domain of $S$, or $[0,1]\times[0,1-x]$
+
+$$\int\limits_0^1\int\limits_0^{1-x} -6x - 10y + 8 dydx$$
+
+This is now simple to solve
+
+</details>
+
+<details>
+  <summary>Click to show Example 3</summary>
+
+This example shows Stokes theorem in the opposite direction, using the line integral to find the surface integral. If you are asked to find the surface integral using Stokes, do not find the curl, since you are going backward.
+
+### Question 3
+Find the **surface integral** $\iint\limits_S \vec F\cdot dr$ where $\vec F = \langle x^2\sin z, y^2, xy\rangle$ and $S$ is the part of the [paraboloid](https://llumen.neocities.org/projects/ray-grapher.html?eq=(1-x%5E2-y%5E2-z)(z)&zoom=3.4&m=[-134,-36]&v=1) $z = 1-x^2-y^2$ that lies above the $xy$ plane, oriented upward.
+
+So, we have the surface, and we need to find $C$, which is the boundary curve of it. In this case, we can take the border of $S$ as the intersection of the paraboloid and the $xy$ plane. Since it is the circle $x^2 + y^2 = 1$, the parameterization is:
+
+$$C = \vec r(\theta) = \langle \sin\theta, \cos\theta, 0\rangle$$
+
+$$\vec F = \langle x^2\sin z, y^2, xy\rangle$$
+
+$$\int\limits_C \vec F \cdot dr = \int\limits_0^{2\pi}\vec F(r(\theta))\cdot (r'(\theta))d\theta$$
+
+$$= \int\limits_0^{2\pi} \langle \cos^2\theta\sin(0), \sin^2\theta, \cos\theta\sin\theta\rangle \cdot\langle -\sin\theta, \cos\theta, 0\rangle d\theta$$
+
+$$= \int\limits_0^{2\pi} \sin^2\theta\cos\theta d\theta$$
+
+$$={\sin^3\theta\over 3}|_0^{2\pi}$$
+
+</details>
+
+## Divergence Theorem
+
+The Divergence Theorem converts a surface integral over a closed surface into a triple integral of the volume the surface contains. This is basically Green Theorem for surfaces instead of curves.
+
+$$\iint\limits_S \vec F \cdot dS = \iiint\limits_E div\vec F dV$$
+
+Note that the divergence of $\vec F$ will result in a scalar.
+
+<details>
+  <summary>Click to show Example 4</summary>
+
+### Question 4
+Use divergence theorem to evaluate $\iint\limits_S \vec F \cdot dS$ where $\vec F = \langle x + \sin z, 2y + \cos x, 3z + \tan y\rangle$ over the sphere $x^2 + y^2 + z^2 = 4$
+
+$$\iint\limits_S \vec F \cdot dS = \iiint\limits_E div\vec F dV$$
+
+Where $E$ is the sphere $x^2 + y^2 + z^2 = 4$. Since speres are closed, we are able to use this theorem. 
+
+#### Step 1: Find div $\vec F$
+
+$$div (\vec F) = \nabla \cdot \vec F = 1 + 2 + 3 = 6$$
+
+$$\iint\limits_S \vec F \cdot dS = \iiint\limits_E 6 dV$$
+
+This is now a basic triple integral, which would be easiest in spherical coordinates.
+
+#### Step 2: find the triple integral
+
+$$\int\limits_0^{2\pi}\int\limits_0^{\pi}\int\limits_0^2 6 (\rho^2\sin\phi) d\rho d\phi d\theta$$
+
+$$\int\limits_0^{2\pi}d\theta\int\limits_0^\pi 6\sin\phi d\phi\int\limits_0^2 \rho^2d\rho$$
+
+$$(2\pi)(-6(-2))(\frac{8}{3})$$
+
+</details>
+
+<details>
+  <summary>Click to show Example 5</summary>
+
+### Question 5
+
+$S$ is the surface of the solid bounded by the paraboloid $z = 4 - x^2 - y^2$ and the $xy$-plane. $\vec F = \langle x^3, 2xz^2, 3y^2z\rangle$
+
+$S$ is closed, so we can use the divergence theorem.
+
+$$div \vec F = 3x^2 + 3y^2$$
+
+$$\iiint\limits_E (3x^2 + 3y^2) dV$$
+
+So, now we find the region to integrate over. First, surface to surface, then line to line, then constant to constant. However, we can see that this is a cylindrical integral, using $x^2 + y^2 = r^2$.
+
+$$z = 4 - r^2$$
+
+$$0\le\theta\le2\pi, 0\le r\le 2, 0\le z\le 4 - r^2$$
+
+$$\int\limits_0^{2\pi}\int\limits_0^2\int\limits_0^{4-r^2}3r^2dz(r)drd\theta$$
+$$\int\limits_0^{2\pi}\int\limits_0^2\int\limits_0^{4-r^2}3r^3dzdrd\theta$$
+
+This can now be easily integrated.
+
+</details>
+
+<details>
+  <summary>Click to show Example 6</summary>
+
+### Question 6
+
+Find the flux of the vector field $\vec F = \langle z\cos y, x\sin z, xz\rangle$ where $S$ is the tetrahedron bounded by the planes $x = 0$, $y = 0$, $z = 0$, adn $2x + y + z = 2$.
+
+Flux of $\vec F$ is $\iint\limits_S F\cdot ds$. The divergence of it is $0 + 0 + x$, so:
+
+$$=\iiint\limits_E xdV$$
+
+$$
+\begin{cases}
+  0\le z\le 2 - 2x - y \\
+  0 \le y \le 2-2x \\
+  0 \le x \le 1
+\end{cases}
+$$
+
+$$=\int\limits_0^1\int\limits_0^{2-2x}\int\limits_0^{2-2x-y}xdzdydx$$
+$$=\int\limits_0^1\int\limits_0^{2-2x}2x-2x^2-xy\ dydx$$
+$$=\int\limits_0^1 2xy-2x^2y-1/2xy^2\ |_0^{2-2x}dx$$
+$$=\int\limits_0^1 2x(2-2x)-2x^2(2-2x)-1/2x(2-2x)^2\ dx$$
+$$=\int\limits_0^1 4x^2 - 6x^3\ dx$$
+
+</details>
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
