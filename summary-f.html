@@ -1,0 +1,224 @@
+# Summary, Chapter 16 - Vector Calculus
+
+## Vector Fields
+
+Vector fields are functions that represent vectors for each point in space. They go from a location (vector or multiple variables) to another vector that can represent speed, force, or another vector quantity.
+
+$$\vec F(x,y) = P(x,y)\hat i + Q(x,y)\hat j$$
+$$= \langle P(x,y), Q(x,y) \rangle$$
+$$\vec F(x,y,z) = P(x,y,z)\hat i + Q(x,y,z)\hat j + R(x,y,z)\hat k$$
+$$= \langle P(x,y), Q(x,y), R(x,y) \rangle$$
+
+Example of a two-dimensional vector field:
+
+![A vector field example](Sections/14/slope-field.jpg)
+
+## [Line Integrals](Sections/16/line_integrals.html)
+
+Line integrals represent taking the integral of all the values in a field along a certain path. 
+
+To explain what this means, we are basically taking the value of the function $f$ at each point, represented by some parametric equation $\vec r(t) = \langle x(t), y(t) \rangle$, and multiplying it by the length of the change in $t$ (this is essentially multiplying the force at that point by the portion of the line it influences.)
+
+$$\lim\limits_{\Delta t \to 0}\sum f(x(t), y(t)) |\Delta t|$$
+
+Which leads to the equation
+
+$$\int\limits_C f(x,y)ds = \int\limits_a^b f(x(t), y(t)) |\vec r'(t)| dt$$
+
+This is the line integral with respect to the length (as shown by $|\vec r'(t)|$, normally denoted $ds$). However, the integral can be taken with respect to other variables, or even to multiple.
+
+$$\int\limits_C f(x,y)dx = \int\limits_a^b f(x(t), y(t))\ x'(t)dt$$
+$$\int\limits_C f(x,y)dx + g(x,y)dy $$
+$$= \int\limits_a^b f(x(t), y(t))\ x'(t)dt + g(x(t), y(t))\ y'(t)dt$$
+
+These can also be represented in 3D:
+
+$$\int\limits_C f(x,y,z)ds = \int\limits_a^b f(x(t), y(t), z(t)) |r'(t)|dt$$
+
+To simplify this for integrals over vector fields, they are shown as the integral over a curve of a vector field:
+
+$$\int\limits_C \vec F \cdot dr$$
+
+This means:
+
+$$\int \vec F(\vec r(t))\vec r'(t)dt$$
+
+Note: the length is cancelled out due to the derivation of this formula. See the notes for more.
+
+### [Fundamental Theorem for Line Integrals](Sections/16/fund_theorem.html)
+
+Given a conservative vector field $\vec F$, and a function $f$ such that $\nabla f = \vec F$ the integral can be found as:
+
+$$\int\limits_C \vec F dr = f(B) - f(A)$$
+
+Essentially, this means we can find the anti-derivative of a vector field as a function whose gradient is the vector field and evaluate it similar to a normal integral.
+
+This only works for conservative vector fields, which can be found by comparing:
+
+$${\delta P\over\delta y} = {\delta Q\over\delta x}$$
+
+This only works for 2D fields; the full definition will be given below.
+
+To actually find $f$, we just need to take the normal integral of one of the parts and then find what needs to be added to ensure the rest of the parts work.
+
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+Find $f$ such that $\nabla f = \vec F$, then find the integral. 
+
+$$\vec F = 3yz + 2x, 3xz, 3xy - 1\langle$$
+$$\vec r(t) = \langle 2t, t^2, 3 \rangle$$
+$$0 \le t \le 1$$
+
+**Solution**  
+
+First, we take the integral of $P$.
+
+$$\int 3yz + 2x = 3xyz + x^2 + h(y,z)$$
+
+In this case, we use $h(y,z)$ instead of a constant $C$ because a constant with respect to $x$ can be a function of $y$ and $z$. So, now we find what $h(y,z)$ is. One way to do this is to take the derivative with respect to $y$ and $z$ and determine what else is needed, the other is to simply reason it out.
+
+$${d\over dy}(3xyz + x^2 + h(y,z))$$
+$$3xz + {dh\over dy} = 3xz$$
+
+Here we can see that the derivative already results in $Q$, so the function with respect to $y$ is constant, meaning only $z$ remains.
+
+$${d\over dz}(3xyz + x^2 + h(z))$$
+$$3xy + {dh\over dz} = 3xy - 1$$
+
+So ${dh\over dz} = -1$, meaning $h(z) = -z$. Now we have the full function:
+
+$f = 3xyz + x^2 - z$
+
+To evaluate the integral, we simply plug in the initial and final points:
+
+$$\vec r(0) = \langle 0,0,3\rangle$$
+$$\vec r(1) = \langle 2,1,3\rangle$$
+
+So:
+
+$$\int\limits_C F \cdot dr = f(2,1,3) - f(0,0,3)$$
+$$= 18 + 4 - 3 - (-3) = 22$$
+
+</details> 
+
+### [Green's Theorem](Sections/16/more_line_int.html)
+
+Green's theorem allows us to convert a line integral into a double integral (for curves in the xy-plane):
+
+$$\int\limits_C F\cdot dr = \iint\limits_D \left({\delta Q\over \delta x} - {\delta P\over \delta y}\right)dxdy$$
+
+## [Curl and Divergence](Sections/16/curl_and_divergence.html)
+
+### Curl
+
+Curl is defined as the cross product of $\nabla$ and $\vec F$. It represents the rotation of the movement field (as a vector that represents the axis of rotation, I think).
+
+$$
+curl\ \vec F = \nabla \times \vec F = 
+\begin{vmatrix}
+  \hat i && \hat j && \hat k \\
+  P && Q && R \\
+  {\delta\over \delta x} && {\delta\over \delta y} && {\delta\over \delta z}
+\end{vmatrix}
+$$
+$$= \left({\delta R\over \delta y}\right) - \left({\delta Q\over \delta z}\right)\hat i + 
+\left({\delta P\over \delta z}\right) - \left({\delta R\over \delta x}\right)\hat j + 
+\left({\delta Q\over \delta x}\right) - \left({\delta P\over \delta y}\right)\hat k$$
+
+### Divergence
+
+Divergence is defined as the dot product of $\nabla$ and $\vec F$. It represents the movement of the vector field away from the center (it is essentially the derivative, or change in position).
+
+$$div\ \vec F = \nabla \cdot \vec F = {\delta P \over\delta x} + {\delta Q \over\delta y} + {\delta R \over\delta z} $$
+
+## [Parametric Surfaces](Sections/16/parametric_surfaces.html)
+
+Parametric surfaces are parametric functions of two variables.
+
+$$
+\vec r(u,v) = 
+\begin{cases}
+  x = f(u,v) \\
+  y = g(u,v) \\
+  z = h(u,v)
+\end{cases}
+$$
+
+This takes two variables $(u,v)$ and outputs a point in space $(x,y,z)$. This allows for a surface to be created, and is the 2D (suface) equivalent of a line (curve).
+
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+Find the equation of the surface with the given parameterization:
+
+$$\vec r(u,v) = \langle v\cos u, v\sin u, v \rangle$$
+
+**Solution**  
+To make this easier, convert the parametric equations to a normal equation. To do this, try and convert it to (x,y,z).
+
+This problem becomes much easier when you notice that we can use $x^2 + y^2$ to cancel out the trigonometric functions:
+
+$$x^2 + y^2 = s^2(\cos^2 + \sin^2) = s^2 = z^2$$
+$$z^2 = x^2 + y^2$$
+
+This equation represents a paraboloid.
+
+</details> 
+
+### Surface Areas
+
+We can find the surface area  by summing up the rectangles on the surface of the function. Since the area of these paralellograms can be given as $|side1 \times side2|$, we can represent this as:
+
+$$\iint\limits_D |\vec r_u \times \vec r_v|dA$$
+
+This means the double integral over the domain of $S$ of the length of the cross product of the parial derivatives of $S\ (\vec r(u,v))$.
+
+## [Integrals over Surfaces](Sections/16/surface_int.html)
+
+It turns out the previous equation can be extended to general surface integrals, just replacing the function (which is 1 for area) with the function we are integrating:
+
+$$\iint\limits_S f(x,y,z)ds = \iint\limits_D f(\vec r(u,v))|\vec r_u \times \vec r_v|dudv$$
+
+As a side note, if $S$ is the graph of $z = f(x,y)$, then $|\vec r_u \times \vec r_v|$ can be given more simply as:
+
+$$\sqrt{\left({\delta f\over \delta x}\right) + \left({\delta f\over \delta y}\right) + 1}$$
+
+Over a vector field, the equation becomes:
+
+$$\iint\limits_D \vec F \cdot (\vec r_u \times \vec r_v)dudv$$
+
+This is also called **Flux**.
+
+### [Stokes' Theorem](Sections/16/stokes_and_diver.html)
+
+Stokes theorem allows us to change a curve integral to a surface integral.
+
+$$\int\limits_C \vec F \cdot dr = \iint\limits_S curl\ \vec F \cdot dS$$
+
+This only works for a closed curve (to make the surface $S$).
+
+### [The Divergence Theorem](Sections/16/stokes_and_diver.html)
+
+The divergence theorem allows us to convert a surface integral to a triple integral. It uses divergence in the formula, hence the name:
+
+$$\iint\limits_S \vec F \cdot dS = \iiint\limits_E div\ \vec F\ dV$$
+This only works for a closed surface (to make the volume $E$).
+
+Note that $div\ \vec F$ is scalar, so we will not have a vector as an answer.
+
+<!-- Example template
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+
+**Solution**  
+
+</details> 
+-->
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">

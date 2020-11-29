@@ -1,0 +1,265 @@
+# Summary, Chapter 15 - Multi-variable integrals
+
+## [Double Integrals](Sections/15/integrals.html)
+
+Double integrals are simply integrals taken over an area instead of a range of numbers (line). To do them, you just integrate one variable at a time:
+
+$$\iint f(x,y) dA = \int\limits_{x_0}^{x_1}\int\limits_{y_0}^{y_1} f(x,y)dydx$$
+
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+Find the double integral of the function $f(x,y) = \sin x + 2y$ over the rectangle $(0,1),(0,2), (1,1),(1,2)$ 
+
+**Solution**  
+This is the double integral of the function:
+
+$$\int\limits_0^1\int\limits_1^2 (\sin x + 2y)dydx$$
+$$\int\limits_0^1 (y\sin x + y^2)|_1^2dx$$
+$$\int\limits_0^1 (2\sin x + 4-\sin x - 1)dx = \int\limits_0^1 (\sin x + 3)dx$$
+$$-\cos x + 3x |_0^1$$
+$$-\cos 1 + 3 - 1$$
+$$-\cos 1 + 2$$
+
+</details> 
+
+This integral can also be over a variable domain, where one of the variables is a functions, and x and y can be swapped if necessary to make it more convenient.
+
+$$\iint f(x,y)dA = \int\int f(x,y)dydx = \int\int f(x,y)dxdy$$
+
+and the domain could be 
+
+$$0\le x\le 1, x^2 \le y \le x$$
+
+or
+
+$$y \le x\le \sqrt{y}, 0 \le y \le 1$$
+
+The latter domain would be best integrated as a $dxdy$ to make the integration possible:
+
+$$\iint f(x,y)dA = \int\limits_0^1\left(\int\limits_y^{\sqrt{y}} f(x,y)dy\right)dx$$
+
+### [Polar Double Integrals](Sections/15/polar_integrals.html)
+
+Instead of using normal cartesian coordinates, we can use polar coordinates for some domains such as a circle to make it easier. In the conversion, we need to multiply by $r$ to make sure the math is correct (for an explanation, see [change of variables and Jacobians](Sections/15/change_of_var.html)).
+
+$$\iint f(x,y)dxdy = \iint f(r\cos\theta, r\sin\theta) r\ drd\theta$$
+
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+Find the integral of $1 + x$ over the half-circle with radius 3 above the x-axis.
+
+**Solution**  
+The domain is easily described in polar, as $0 \le r \le 3, 0\le\theta\le\pi$, but it is much more complex in cartesian. So, we should use a poar integral.
+
+$$\iint f(x,y)dxdy = \int\limits_0^\pi\int\limits_0^3 (1 + r\cos\theta) r\ drd\theta$$
+
+</details> 
+
+### Applications of Double integrals
+
+Double integrals can be applied to several physics concepts, such as density and mass, where you are integrating a variable density over the area of an object, centers of mass, moment of inertia, and probability, where you integrate a variable probability over a certain area.
+
+In my opinion, this will likely not be on the exam, or it will be intuitive how to set the problem up. So, just be familiar with the idea that there can be a physical representation of multiple integrals.
+A more common application is Surface Area; since we are integrating a function over an area, we can simply integrate the function $f(x,y) = 1$ to get the area.
+
+$$\iint 1 dA = Area\ of\ A$$
+
+(This likely will be on the test)
+
+## [Triple Integrals](Sections/15/triple_integals.html)
+
+Triple integrals are like double integrals, but with three variables instead of two. (As a side note, you could theoretically extend this to any number of variables, although the complexity would obviously grow very high for 6 or 7 variables.) 
+
+$$\iiint f(x,y,z)dV = \int_{x_0}^{x_1}\int_{y_0}^{y_1}\int_{z_0}^{z_1} f(x,y,z)dzdydx$$
+
+As with double integrals, the order of x, y, and z can be changed. 
+
+$$\iiint f(x,y,z)dV = \int\int\int f(x,y,z)dzdydx = \int\int\int f(x,y,z)dxdydz, etc.$$
+
+Also, the domain can be variable, allowing any description as long as each integration results in a function of the remaining variables. This allows the domain to be a volume.
+
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+Integrate the function $xyz$ over the [volume](https://llumen.neocities.org/projects/ray-grapher.html?eq=(1-x%2By-z)xyz&zoom=4.3&m=[-39.44,-37.29]&v=1) under the plane $1-x+y$ and bounded by the x, y, and z planes.
+
+**Solution**  
+The domain can be found by representing the bounded areas as limits for each variable. Since we have an equation for $z$, let's start there.
+
+$$0 \le z \le 1-x+y$$
+
+Then, we can find the area that x and y will be integrated over. Set $z = 0$ to find y, then both to 0 to find x.
+
+$$z = 1 - x + y$$
+$$0 = 1 - x + y$$
+$$y = 1 - x$$
+
+So this is the line that bounds the top of the xy-domain. Next, find the limits of x.
+
+$$0 = 1 - x$$
+$$x = 1$$
+
+$$0\le y\le 1-x$$
+$$0\le x\le 1$$
+
+So, now we can integrate:
+
+$$\int\limits_0^1\int\limits_0^{1-x}\int\limits_0^{1-x+y} xyz\ dzdydx$$
+
+</details> 
+
+If we integrate over the function $f(x,y,z) = 1$, we get the volume of the domain, similar to the double integral.
+
+### [Cylindrical Triple Integrals](Sections/15/triple_int_cyl.html)
+
+Triple integrals have more than one other coordinate system we can use for integrating. The first is cylindrical doordinates. These are coordinates where we use a set of polar coordinates for two variables and leave the other. Usually, this is in the form $(r, \theta, z)$. This easily allows us to represent cylindrical domains.
+
+The triple integral over cylindirical coordinates must first be converted to that coordinate system, and similar to polar integrals will require an extra $r$ to be multiplied after. (again, see [change of variables and Jacobians](Sections/15/change_of_var.html) for an explanation)
+
+$$\iiint f(x,y,z)dV = \int\int\int f(r\cos\theta, r\sin\theta, z)\ dz(r)drd\theta$$
+
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+Find the integral of the function $z - x^2 - y^2$ over the cylinder with radius 3 on the positive y side of the xz-plane, and height 1.
+
+**Solution**  
+The domain can be shown as $0\le r\le 3, 0\le \theta\le \pi, 0\le z\le 1$. So, we can integrate:
+
+$$\int\limits_0^1\int\limits_0^\pi\int\limits_0^3 (z - r^2)dz(r)drd\theta$$
+
+Note that $x^2 + y^2 = r^2$.
+
+</details> 
+
+Cylindrical integrals can also have variable domains and change the order of integration. We can also use x and z or y and z as the two variables to change to polar instead of x and y.
+
+### [Spherical Triple Integrals](Sections/15/triple_int_sph.html)
+
+Spherical integrals convert the $(x,y,z)$ coordinates to $(\rho, \theta, \phi)$ coordinates where:
+
+$$
+\begin{cases}
+  \rho = \sqrt{x^2 + y^2 + z^2} \\
+  \theta = \arctan(y/x) \\
+  \phi = \arccos(z/\rho)
+\end{cases}
+$$
+
+and
+
+$$
+\begin{cases}
+  x = \rho\cos\theta\sin\phi \\
+  y = \rho\sin\theta\sin\phi \\
+  z = \rho\cos\phi
+\end{cases}
+$$
+
+This converts everything to a radius and angle. An important thing to note is that $\phi$ is measured from the z-up direction down, not from the xy-plane up.
+
+For integrals in spherical coords, we need to convert to spherical coordinates and add $\rho^2\sin\phi$ to the end. (again, see [change of variables and Jacobians](Sections/15/change_of_var.html) for an explanation)
+
+$$\iiint f(x,y,z)dV = \int\int\int f(\rho\cos\theta\sin\phi, \rho\sin\theta\sin\phi, \rho\cos\phi)\ \rho^2\sin\phi\ d\rho d\phi d\theta$$
+
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+Integrate the function $x-y-2z$ over the domain bounded by the sphere of radius 2 in the first quadrant.
+
+**Solution**  
+Since the domain is only in the first quadrant, we can say that $0\le \theta\le\pi/2, 0\le\phi\le\pi/2$. $\rho$ is given to us, so we can now integrate.
+
+$$\int\limits_0^{\pi/2}\int\limits_0^{\pi/2}\int\limits_0^2 (\rho\cos\theta\sin\phi-\rho\sin\theta\sin\phi-2\rho\cos\phi)\rho^2\sin\phi\ d\rho d\phi d\theta$$
+
+</details> 
+
+As with other integrals, the domain can be variable and the integration order can be changed.
+
+## [Change of variables (Jacobians)](Sections/15/change_of_var.html)
+As has been made clear in the above examples, it is often useful to change the coordinate system to make the domain a simpler shape. This can not only be done with cylindrical and spherical coordinates, but with any transformation from one system to another. This sections explains how to do this for integrals.
+
+We can define a transformation formula $T: (x,y) \to (u,v)$ as 
+
+$$
+T = 
+\begin{cases}
+  u = g(x, y) \\
+  v = h(x, y)
+\end{cases}
+$$
+
+These functions have to be one-to-one to ensure they have a valid inverse:
+
+$$
+\begin{cases}
+  x = g^{-1}(u, v) \\
+  y = h^{-1}(u, v)
+\end{cases}
+$$
+
+So, we can use this in an integral. However, to convert the $dxdy$ to $dudv$, we have to use a **Jacobian**:
+
+$$\iint f(x,y)dxdy = \iint f(g(u,v), h(u,v))\left|{\delta(x,y)\over\delta(u,v)}\right|dudv$$
+
+$$
+\left|{\delta(x,y)\over\delta(u,v)}\right| = 
+\begin{vmatrix}
+  {\delta x\over\delta u} && {\delta x\over\delta v} \\
+  {\delta y\over\delta u} && {\delta y\over\delta v} 
+\end{vmatrix}
+= 
+{\delta x\over\delta u}{\delta y\over\delta v} - {\delta x\over\delta v}{\delta y\over\delta u}
+$$
+
+This can be used in three dimensions also, as a 3x3 matrix.
+
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+Show the conversion of an integral from cartesian to polar coordinates using Jacobians.
+
+**Solution**  
+$$\iint f(x,y)dA = \iint f(r\cos\theta, r\sin\theta) \left|{\delta(x,y)\over\delta(r,\theta)}\right|drd\theta$$
+$$
+\left|{\delta(x,y)\over\delta(r,\theta)}\right| = 
+\begin{vmatrix}
+  {\delta x\over\delta r} && {\delta x\over\delta \theta} \\
+  {\delta y\over\delta r} && {\delta y\over\delta \theta} 
+\end{vmatrix}
+=
+\begin{vmatrix}
+  \cos\theta && -r\sin\theta \\
+  \sin\theta && r\cos\theta 
+\end{vmatrix}
+$$
+
+$$
+= r\cos^2\theta - (-r\sin^2\theta)
+= r(\cos^2\theta + \sin^2\theta)
+= r
+$$
+
+</details> 
+
+<!-- Example template
+<details>
+  <summary>Click to show Example</summary>
+
+**Question**  
+
+**Solution**  
+
+</details> 
+-->
+
+<script src="/source/texme.js"></script>
+<link rel="stylesheet" href="/source/theme.css">
